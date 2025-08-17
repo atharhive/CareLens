@@ -75,7 +75,16 @@ A cutting-edge web application that **Detects** early risk, **Connects** people 
 - **Rule-Based Recommendations**: Condition-specific guidance
 - **Cultural Adaptation**: Multi-language support and cultural considerations
 - **Lifestyle Integration**: Diet, exercise, and monitoring schedules
-- **Progress Tracking**: Follow-up timelines and lab retesting windows
+- **Progress Tracking**: Follow-up timelines and lab retesting windows 
+
+## 👥 **Team**
+
+| Role | Name | GitHub | 
+|------|------|---------|
+| 🧠 **Project Lead** | Md Athar Jamal Makki | [@atharhive](https://github.com/atharhive) |
+| 🎨 **Frontend Lead** | Akshad Jogi | [@akshad-exe](https://github.com/akshad-exe) |
+| 🛠️ **Backend Lead** | Ayush Sarkar | [@dev-Ninjaa](https://github.com/dev-Ninjaa) |
+
 
 ## 🛠️ Technology Stack
 
@@ -582,14 +591,6 @@ MONITORING_ENDPOINT=${MONITORING_URL}
 - 🤖 Integration with telemedicine platforms
 - 📊 Advanced analytics dashboard for healthcare providers
 
-## 👥 **Team**
-
-| Role | Name | GitHub | 
-|------|------|---------|
-| 🧠 **Project Lead** | Md Athar Jamal Makki | [@atharhive](https://github.com/atharhive) |
-| 🎨 **Frontend Lead** | Akshad Jogi | [@akshad-exe](https://github.com/akshad-exe) |
-| 🛠️ **Backend Lead** | Ayush Sarkar | [@dev-Ninjaa](https://github.com/dev-Ninjaa) |
-
 ### Advisory & Support Team
 - **Medical Advisory Board** - Clinical validation and medical expertise
 - **Data Science Consultants** - Model development and validation
@@ -657,26 +658,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Commercial Use:** Permitted with attribution  
 **Medical Use:** For educational and research purposes only. Not FDA-approved for clinical diagnosis.
-
-## 📞 Support & Contact
-
-### Getting Help
-- 📚 **Documentation**: [docs.carelens.ai](https://docs.carelens.ai)
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/atharhive/CareLens/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/atharhive/CareLens/discussions)
-- 📧 **Email Support**: support@carelens.ai
-
-### Professional Services
-- 🏢 **Enterprise Deployment**: enterprise@carelens.ai
-- 🔒 **HIPAA Compliance**: compliance@carelens.ai
-- 🔍 **Custom Models**: research@carelens.ai
-- 📊 **Data Partnerships**: partnerships@carelens.ai
-
-### Community
-- 💬 **Discord**: [CareLens Community](https://discord.gg/carelens)
-- 🐦 **Twitter**: [@CareLensAI](https://twitter.com/carelensai)
-- 📺 **YouTube**: [CareLens AI Channel](https://youtube.com/@carelensai)
-- 📰 **Newsletter**: [Subscribe for updates](https://carelens.ai/newsletter)
 
 ---
 
