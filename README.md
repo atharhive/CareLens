@@ -2,12 +2,37 @@
 
 *Advanced AI-Powered Health Risk Assessment Platform*
 
+<!-- Badges -->
+<div align="center">
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![GitHub issues](https://img.shields.io/github/issues/atharhive/CareLens)](https://github.com/atharhive/CareLens/issues)
-[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![React](https://img.shields.io/badge/react-18+-blue.svg)](https://reactjs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
+[![Documentation](https://img.shields.io/badge/docs-available-brightgreen.svg)](docs/)
+[![Demo](https://img.shields.io/badge/demo-coming%20soon-orange.svg)](#)
+
+</div>
+
+<!-- Technology Stack Badges -->
+<div align="center">
+
+**Technology Stack:**
+
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
+[![Material UI](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)](https://mui.com/)
+
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
+
+[![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+[![AWS](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com/)
+
+</div>
 
 A cutting-edge web application that **Detects** early risk, **Connects** people to the right care, and **Personalizes** guidance using advanced ML models and intelligent data processing.
 
@@ -557,13 +582,18 @@ MONITORING_ENDPOINT=${MONITORING_URL}
 - 🤖 Integration with telemedicine platforms
 - 📊 Advanced analytics dashboard for healthcare providers
 
-## 👥 Team & Acknowledgments
+## 👥 **Team**
 
-### Core Team
-- **AtharHive Development Team** - Full-stack development and ML engineering
+| Role | Name | GitHub | 
+|------|------|---------|
+| 🧠 **Project Lead** | Md Athar Jamal Makki | [@atharhive](https://github.com/atharhive) |
+| 🎨 **Frontend Lead** | Akshad Jogi | [@akshad-exe](https://github.com/akshad-exe) |
+| 🛠️ **Backend Lead** | Ayush Sarkar | [@dev-Ninjaa](https://github.com/dev-Ninjaa) |
+
+### Advisory & Support Team
 - **Medical Advisory Board** - Clinical validation and medical expertise
-- **Data Science Team** - Model development and validation
-- **Security & Privacy Team** - HIPAA compliance and security architecture
+- **Data Science Consultants** - Model development and validation
+- **Security & Privacy Consultants** - HIPAA compliance and security architecture
 
 ### Inspiration & References
 
@@ -581,6 +611,45 @@ This project draws inspiration from several open-source medical AI projects:
 - **Kaggle Medical Competitions** - Diabetes, heart disease, and stroke datasets  
 - **PhysioNet** - Clinical time series data
 - **MIMIC-III** - Critical care database (for research validation)
+
+## 🛠️ Resources for Building Medical AI Projects
+
+### Educational Resources
+- **[Medical AI Course by Stanford](https://stanfordmlgroup.github.io/courses/aicc_spring2021/)** - Comprehensive course on AI in healthcare
+- **[Healthcare AI Specialization (Coursera)](https://www.coursera.org/specializations/ai-for-medicine)** - Deep learning for medical diagnosis
+- **[Clinical NLP with Python](https://github.com/allenai/clinical-bert)** - Pre-trained models for clinical text processing
+- **[Medical Imaging Deep Learning](https://github.com/Project-MONAI/MONAI)** - PyTorch-based framework for medical imaging AI
+
+### Development Tools & Libraries
+- **[scikit-learn](https://github.com/scikit-learn/scikit-learn)** - Core machine learning algorithms
+- **[SHAP](https://github.com/slundberg/shap)** - Model explainability for healthcare transparency
+- **[Imbalanced-learn](https://github.com/scikit-learn-contrib/imbalanced-learn)** - Handling class imbalance in medical data
+- **[Feature-engine](https://github.com/feature-engine/feature_engine)** - Feature engineering for clinical datasets
+- **[PDF parsing tools](https://github.com/camelot-dev/camelot)** - Extract structured data from medical reports
+- **[FastAPI](https://github.com/tiangolo/fastapi)** - Modern API framework with automatic documentation
+- **[React Medical Dashboard](https://github.com/app-generator/react-soft-ui-dashboard)** - UI components for healthcare apps
+
+### Medical Datasets
+- **[UCI Medical Datasets](https://archive.ics.uci.edu/ml/datasets.php?format=&task=cla&att=&area=life&numAtt=&numIns=&type=&sort=nameUp&view=table)** - Classic medical datasets for ML
+- **[Kaggle Healthcare Competitions](https://www.kaggle.com/competitions?search=medical)** - Real-world medical prediction challenges
+- **[PhysioNet](https://physionet.org/content/)** - Clinical databases and challenge datasets
+- **[The Cancer Genome Atlas (TCGA)](https://www.cancer.gov/tcga)** - Comprehensive cancer genomics data
+- **[OHDSI](https://www.ohdsi.org/data-standardization/)** - Observational health data standards
+
+### Similar Open Source Projects
+- **[MedPalm](https://github.com/GoogleCloudPlatform/healthcare-data-harmonization)** - Google's medical AI framework
+- **[ClinicalBERT](https://github.com/EmilyAlsentzer/clinicalBERT)** - Pre-trained language model for clinical text
+- **[DeepChem](https://github.com/deepchem/deepchem)** - Deep learning for drug discovery
+- **[TorchXRayVision](https://github.com/mlmed/torchxrayvision)** - X-ray image analysis with PyTorch
+- **[MedNIST](https://github.com/Project-MONAI/MedNIST)** - Medical image classification dataset
+- **[OpenMRS](https://github.com/openmrs/openmrs-core)** - Open source medical record system
+
+### Compliance & Ethics Resources
+- **[HIPAA Compliance Guide](https://www.hhs.gov/hipaa/for-professionals/index.html)** - US healthcare privacy regulations
+- **[AI Ethics in Healthcare](https://www.nature.com/articles/s41591-019-0548-6)** - Research on responsible AI in medicine
+- **[Model Cards for Medical AI](https://arxiv.org/abs/1810.03993)** - Transparency and accountability in ML
+- **[Algorithmic Bias in Healthcare](https://www.science.org/doi/10.1126/science.aax2342)** - Addressing fairness in medical AI
+- **[Clinical AI Validation](https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-aiml-enabled-medical-devices)** - FDA guidance for AI medical devices
 
 ## 📜 License
 
