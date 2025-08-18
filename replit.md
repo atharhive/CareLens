@@ -11,27 +11,29 @@ Preferred communication style: Simple, everyday language.
 ## System Architecture
 
 ### Frontend Architecture
-The application uses a modern React-based architecture with TypeScript for type safety:
-- **Framework**: React with Vite as the build tool for fast development and optimized production builds
-- **UI Components**: Shadcn/ui components built on Radix UI primitives for accessibility and customization
+The application uses Next.js with TypeScript for a modern, scalable frontend:
+- **Framework**: Next.js 15 with React 19 for SSR/SSG capabilities and optimized performance
+- **UI Components**: Shadcn/ui components built on Radix UI primitives for accessibility and customization  
 - **Styling**: Tailwind CSS with custom healthcare-themed color variables and responsive design
-- **State Management**: Zustand with persistence middleware for assessment form data and user progress
-- **Routing**: Wouter for lightweight client-side routing
-- **Data Fetching**: TanStack React Query for server state management and caching
+- **State Management**: Zustand for client-side state management with persistence middleware
+- **API Integration**: Custom API client with TypeScript interfaces for FastAPI backend communication
+- **Data Fetching**: Built-in Next.js fetch with error handling and loading states
 
-### Backend Architecture
-The backend is designed as a FastAPI-based microservice architecture:
-- **Framework**: FastAPI with Pydantic for API validation and automatic documentation
-- **Machine Learning**: Planned integration with scikit-learn, XGBoost, and LightGBM for condition-specific models
-- **Document Processing**: PDF parsing and OCR capabilities for lab report extraction
-- **Explainability**: SHAP integration for transparent model predictions
-- **Session Management**: Redis for temporary data storage and session handling
+### Backend Architecture  
+The backend is implemented as a production-ready FastAPI microservice:
+- **Framework**: FastAPI with Pydantic for API validation and automatic OpenAPI documentation
+- **Machine Learning**: Integrated scikit-learn, XGBoost, and LightGBM for condition-specific risk models
+- **Document Processing**: PDF parsing and OCR capabilities using pdfplumber, camelot, and pytesseract
+- **Explainability**: SHAP integration for transparent model predictions and feature attribution
+- **Session Management**: Redis for temporary data storage with 30-minute TTL for HIPAA compliance
+- **Privacy**: Automatic data deletion and anonymized logging for healthcare compliance
 
 ### Data Storage Solutions
-The application implements a dual-storage approach:
+The application implements a privacy-first storage approach:
 - **Temporary Storage**: Redis for session data, assessment progress, and uploaded files (30-minute TTL)
-- **Persistent Storage**: PostgreSQL with Drizzle ORM for healthcare provider data, system configuration, and non-sensitive metadata
+- **File Storage**: Local temporary storage for uploaded documents with automatic cleanup
 - **Privacy Compliance**: No permanent storage of personal health information (PHI) to ensure HIPAA compliance
+- **Configuration**: Environment-based settings for deployment flexibility
 
 ### Assessment Flow Architecture
 The system follows a multi-step assessment pipeline:
@@ -45,9 +47,9 @@ The system follows a multi-step assessment pipeline:
 ## External Dependencies
 
 ### Core Infrastructure
-- **Neon Database**: PostgreSQL hosting for persistent data storage
 - **Redis**: Session management and temporary data caching
-- **Vite**: Frontend build tool and development server
+- **Next.js**: Full-stack React framework with SSR capabilities
+- **FastAPI**: High-performance Python web framework for APIs
 
 ### UI and Component Libraries
 - **Radix UI**: Accessible component primitives for forms, dialogs, and navigation
