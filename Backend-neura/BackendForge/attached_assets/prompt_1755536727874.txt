@@ -1,0 +1,246 @@
+You are a senior backend engineer and healthcare systems architect. Create a production-ready Python FastAPI backend for an AI-powered health risk assessment platform with medical-grade security and privacy.
+
+Project Goal: HIPAA-compliant backend serving ML models for multi-condition health risk detection with document processing and care coordination.
+
+1. BACKEND ARCHITECTURE
+
+Tech Stack:
+•  FastAPI + Pydantic for API and validation
+•  scikit-learn + XGBoost + LightGBM for ML models
+•  Redis for session management and caching
+•  pdfplumber + camelot + pytesseract for document processing
+•  SHAP for model explainability
+•  Uvicorn/Gunicorn for ASGI serving
+
+Folder Structure:backend/
+├── app/
+│   ├── main.py
+│   ├── routers/
+│   │   ├── ingest.py      # Form & file ingestion
+│   │   ├── extract.py     # Document processing
+│   │   ├── detect.py      # ML model inference
+│   │   ├── triage.py      # Risk classification
+│   │   ├── recommend.py   # Personalization
+│   │   ├── carefinder.py  # Provider search
+│   │   └── share.py       # Result sharing
+│   ├── services/
+│   │   ├── extraction_service.py
+│   │   ├── detection_service.py
+│   │   ├── triage_service.py
+│   │   └── recommendation_service.py
+│   ├── ml/
+│   │   ├── models/        # Model artifacts
+│   │   ├── pipelines.py   # Preprocessing
+│   │   ├── registry.py    # Model loading
+│   │   ├── calibration.py # Probability calibration
+│   │   └── explainer.py   # SHAP explanations
+│   ├── extract/
+│   │   ├── pdf_parser.py
+│   │   ├── ocr_engine.py
+│   │   ├── lab_mapper.py
+│   │   └── unit_converter.py
+│   ├── core/
+│   │   ├── config.py
+│   │   ├── security.py
+│   │   ├── privacy.py
+│   │   └── schemas.py     # Pydantic models
+│   └── rules/
+│       ├── triage_rules.yaml
+│       ├── specialist_mapping.yaml
+│       └── recommendations.yaml 
+
+2. API ENDPOINTS (Following Documentation Specs)
+
+Data Ingestion Routes (/ingest) 
+
+@router.post("/form")
+async def ingest_form(patient_data: PatientIntakeSchema)
+# Validate demographics, vitals, symptoms, medical history
+# Return session_id and normalized data with BMI, risk factors
+
+@router.post("/file")
+async def upload_file(file: UploadFile, session_id: str)
+# Accept PDF/JPG/PNG medical documents
+# Store temporarily with TTL, return file_id
+# Support multiple files per session 
+
+Document Processing Routes (/extract) 
+@router.post("/file/{file_id}")
+async def extract_document(file_id: str)
+# Multi-stage extraction: Camelot → pdfplumber → OCR
+# Return structured lab values with confidence scores
+# Flag low-confidence extractions for manual review 
+
+ML Detection Routes (/detect) 
+@router.post("/")
+async def detect_risks(detection_request: DetectionRequest)
+# Run ensemble models for selected conditions
+# Return calibrated risk scores with confidence intervals
+# Include SHAP explanations and model cards
+# Support batch processing for multiple conditions
+
+Triage Routes (/triage) 
+@router.post("/")
+async def triage_assessment(triage_request: TriageRequest)
+# Rule-based urgency classification (Red/Amber/Green)
+# Generate specialist recommendations
+# Include safety netting and warning signs
+# Time-based action recommendations 
+
+Care Navigation Routes (/carefinder) 
+@router.get("/")
+async def find_providers(lat: float, lng: float, specialty: str)
+# Google Maps API integration for provider search
+# Filter by distance, ratings, insurance, language
+# Return structured provider information
+# Support radius-based search 
+
+Personalization Routes (/recommend)
+@router.post("/")
+async def generate_recommendations(recommendation_request: RecommendationRequest)
+# Rule-based personalized guidance
+# Lifestyle modifications based on risk profile
+# Cultural and dietary adaptations
+# Follow-up scheduling and lab recommendations 
+
+3. ML MODEL INTEGRATION
+
+Model Registry System:
+class ModelRegistry:
+    def __init__(self):
+        self.models = {}  # condition -> ensemble models
+        self.calibrators = {}  # condition -> calibration
+        self.explainers = {}  # condition -> SHAP explainers
+    
+    def load_condition_models(self, condition: str):
+        # Load LR + XGBoost + LightGBM ensemble
+        # Load Isotonic/Platt calibrator
+        # Initialize SHAP explainer 
+
+Condition-Specific Detectors:
+•  DiabetesDetector, HeartDiseaseDetector, StrokeDetector
+•  CKDDetector, LiverDiseaseDetector, AnemiaDetector, ThyroidDetector
+•  Each with preprocessing, prediction, and explanation methods
+
+Model Performance Monitoring:
+•  Prediction confidence tracking
+•  Drift detection for input features
+•  Model version management
+•  Performance metric logging
+
+4. DOCUMENT PROCESSING PIPELINE
+
+PDF/Image Processing:
+class DocumentProcessor:
+    async def process_document(self, file_path: Path) -> Dict:
+        # Stage 1: Table extraction with Camelot
+        # Stage 2: Text extraction with pdfplumber
+        # Stage 3: OCR fallback with Tesseract
+        # Stage 4: Lab value normalization
+        return extracted_data 
+
+Lab Value Extraction:
+•  Regex patterns for common lab markers
+•  Unit standardization (mg/dL, %, U/L, etc.)
+•  Confidence scoring based on context
+•  Reference range validation
+
+OCR Integration:
+•  Preprocessing for image quality
+•  Multi-language support
+•  Confidence thresholding
+•  Manual review flagging
+
+5. PRIVACY & SECURITY IMPLEMENTATION
+
+Session Management:
+class PrivacyManager:
+    def create_session(self) -> str:
+        # Generate UUID with 30-minute TTL
+        # Store in Redis with automatic expiry
+    
+    def cleanup_session(self, session_id: str):
+        # Delete all associated data
+        # Remove temporary files
+        # Clear Redis cache 
+
+File Handling:
+•  Temporary storage with automatic cleanup
+•  Encrypted at-rest storage
+•  5-minute file TTL after processing
+•  No persistent health data storage
+
+Compliance Features:
+•  Request logging for audit trails
+•  Data minimization principles
+•  Automatic anonymization
+•  HIPAA-ready architecture
+
+6. EXTERNAL INTEGRATIONS
+
+Google Maps API:
+•  Provider search with radius filtering
+•  Distance calculations
+•  Place details retrieval
+•  Rate limiting compliance
+
+LLM Integration (Optional):
+•  OpenAI API for explanation enhancement
+•  Prompt templates for medical contexts
+•  Response validation and filtering
+•  Fallback to rule-based explanations
+
+7. ERROR HANDLING & MONITORING
+
+Centralized Error Handling:
+class ErrorHandler:
+    def handle_validation_error(self, error: ValidationError)
+    def handle_model_error(self, error: ModelException)
+    def handle_extraction_error(self, error: DocumentError)
+    # Return consistent error responses with request IDs
+
+Health Checks:
+•  Model loading status
+•  Redis connectivity
+•  File system health
+•  External API availability
+
+8. CONFIGURATION & DEPLOYMENT
+
+Environment Variables:
+# Core Settings
+FASTAPI_ENV=production
+DEBUG=false
+CORS_ORIGINS=["https://carelens.ai"]
+
+# ML Configuration
+MODEL_REGISTRY_PATH=/app/models/
+SHAP_CACHE_SIZE=1000
+CALIBRATION_METHOD=isotonic
+
+# Privacy Settings
+SESSION_TTL_MINUTES=30
+FILE_TTL_MINUTES=5
+SHARE_LINK_MAX_DAYS=7
+
+# External APIs
+GOOGLE_MAPS_API_KEY=${MAPS_KEY}
+REDIS_URL=redis://redis:6379
+
+9. OUTPUT REQUIREMENT
+
+Generate a complete FastAPI project with:
+•  requirements.txt with all dependencies
+•  app/main.py with FastAPI app initialization
+•  Complete router implementations matching API documentation
+•  Pydantic schemas for all request/response models
+•  ML model loading and inference pipeline
+•  Document processing with multiple extraction methods
+•  Privacy-first session management
+•  Comprehensive error handling
+•  Configuration management
+•  Health check endpoints
+•  Docker-ready structure
+•  Unit tests for critical components
+
+Include mock model artifacts and sample data for immediate testing. Ensure medical-grade error handling and logging throughout.

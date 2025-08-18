@@ -1,0 +1,76 @@
+"""
+Mock diabetes model file - placeholder for actual model binary.
+In production, this would be a pickled scikit-learn or XGBoost model.
+"""
+
+import pickle
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+import warnings
+warnings.filterwarnings('ignore')
+
+# Create mock diabetes model for development
+def create_mock_diabetes_model():
+    """Create a mock diabetes prediction model."""
+    
+    # Generate synthetic training data
+    np.random.seed(42)
+    n_samples = 1000
+    n_features = 10
+    
+    # Features: age, bmi, glucose, bp_systolic, bp_diastolic, pregnancies, insulin, skin_thickness, diabetes_pedigree, family_history
+    X = np.random.rand(n_samples, n_features)
+    
+    # Make features more realistic
+    X[:, 0] = np.random.normal(45, 15, n_samples)  # age
+    X[:, 1] = np.random.normal(28, 6, n_samples)   # bmi
+    X[:, 2] = np.random.normal(120, 30, n_samples) # glucose
+    X[:, 3] = np.random.normal(130, 20, n_samples) # bp_systolic
+    X[:, 4] = np.random.normal(80, 15, n_samples)  # bp_diastolic
+    X[:, 5] = np.random.poisson(1, n_samples)      # pregnancies
+    X[:, 6] = np.random.normal(100, 80, n_samples) # insulin
+    X[:, 7] = np.random.normal(25, 10, n_samples)  # skin_thickness
+    X[:, 8] = np.random.uniform(0.1, 2.0, n_samples) # diabetes_pedigree
+    X[:, 9] = np.random.binomial(1, 0.3, n_samples)  # family_history
+    
+    # Create realistic target with some correlation to features
+    diabetes_risk = (
+        0.02 * X[:, 0] +  # age effect
+        0.1 * np.maximum(0, X[:, 1] - 25) +  # BMI effect (obesity)
+        0.01 * np.maximum(0, X[:, 2] - 100) +  # glucose effect
+        0.01 * np.maximum(0, X[:, 3] - 120) +  # blood pressure effect
+        0.5 * X[:, 8] +   # diabetes pedigree
+        0.3 * X[:, 9] +   # family history
+        np.random.normal(0, 0.5, n_samples)  # noise
+    )
+    
+    # Convert to binary classification (diabetes yes/no)
+    y = (diabetes_risk > np.percentile(diabetes_risk, 70)).astype(int)
+    
+    # Train model
+    model = RandomForestClassifier(n_estimators=100, random_state=42, max_depth=10)
+    model.fit(X, y)
+    
+    return model
+
+# Create and save the mock model
+if __name__ == "__main__":
+    model = create_mock_diabetes_model()
+    
+    # Save the model
+    with open('diabetes_model.pkl', 'wb') as f:
+        pickle.dump(model, f)
+    
+    print("Mock diabetes model created and saved to diabetes_model.pkl")
+    print(f"Model accuracy on training data: {model.score(model.X_train if hasattr(model, 'X_train') else np.random.rand(100, 10), model.y_train if hasattr(model, 'y_train') else np.random.randint(0, 2, 100)):.2f}")
+
+# For direct use in FastAPI, create the model object
+mock_diabetes_model = create_mock_diabetes_model()
+
+# Save as binary data (simulates a real pickle file)
+model_data = pickle.dumps(mock_diabetes_model)
+
+# This would normally be read from disk, but for the file system we'll create it
+with open(__file__.replace('.py', '.pkl'), 'wb') as f:
+    f.write(model_data)

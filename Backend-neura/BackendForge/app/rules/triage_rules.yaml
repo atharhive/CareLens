@@ -1,0 +1,189 @@
+# Triage Rules Configuration for AI Health Risk Assessment Platform
+# Defines urgency classification criteria and decision logic
+
+urgency_levels:
+  red:
+    description: "Immediate attention required"
+    score_threshold: 6
+    timeframe: "Within 1-2 hours"
+    action: "Seek immediate medical attention at emergency department"
+    
+  amber:
+    description: "Urgent attention recommended"
+    score_threshold: 3
+    timeframe: "Within 24 hours"
+    action: "Schedule urgent medical appointment or visit urgent care"
+    
+  green:
+    description: "Routine follow-up"
+    score_threshold: 0
+    timeframe: "Within 1-2 weeks"
+    action: "Schedule routine medical appointment for evaluation"
+
+scoring_criteria:
+  risk_scores:
+    very_high: 3  # >= 0.8
+    high: 2       # >= 0.6
+    moderate: 1   # >= 0.4
+    low: 0        # < 0.4
+    
+  symptoms:
+    red_flag:
+      score: 3
+      patterns:
+        - "chest pain"
+        - "severe pain"
+        - "difficulty breathing"
+        - "shortness of breath"
+        - "unconscious"
+        - "seizure"
+        - "severe headache"
+        - "sudden weakness"
+        - "confusion"
+        - "severe bleeding"
+        - "severe nausea"
+        - "severe vomiting"
+        
+    amber_flag:
+      score: 1
+      patterns:
+        - "pain"
+        - "headache"
+        - "nausea"
+        - "dizziness"
+        - "fatigue"
+        - "weakness"
+        - "numbness"
+        - "tingling"
+        - "blurred vision"
+        - "frequent urination"
+        
+  vital_signs:
+    critical:
+      score: 2
+      patterns:
+        - "severe hypertension"
+        - "severe hypotension"
+        - "tachycardia"
+        - "bradycardia"
+        - "fever"
+        - "hypothermia"
+        - "severe pain"
+        
+    abnormal:
+      score: 1
+      patterns:
+        - "hypertension"
+        - "hypotension"
+        - "elevated heart rate"
+        - "low heart rate"
+        - "elevated temperature"
+        - "low temperature"
+        
+  demographics:
+    age_modifiers:
+      advanced_age:  # >= 75
+        score: 2
+        description: "Advanced age increases urgency"
+        
+      senior_age:    # >= 65
+        score: 1
+        description: "Senior age requires closer monitoring"
+        
+      pediatric:     # < 18
+        score: 1
+        description: "Pediatric patient requires specialized care"
+        
+    medical_history:
+      high_risk_conditions:
+        score: 1
+        conditions:
+          - "diabetes"
+          - "heart disease"
+          - "stroke"
+          - "kidney disease"
+          - "liver disease"
+          - "cancer"
+          - "copd"
+          - "immunocompromised"
+
+condition_specific_modifiers:
+  cardiovascular:
+    conditions:
+      - "heart_disease"
+      - "stroke"
+    high_risk_bonus: 1
+    description: "Cardiovascular conditions require urgent attention"
+    
+  diabetes:
+    conditions:
+      - "diabetes"
+    symptoms_multiplier: 1.2
+    description: "Diabetes complications can be serious"
+
+safety_netting:
+  red:
+    message: "If symptoms worsen or you feel unwell, call emergency services (911) immediately. Do not delay seeking emergency care."
+    
+  amber:
+    message: "If symptoms worsen significantly or new concerning symptoms develop, seek immediate medical attention. Return if not improving within 24-48 hours."
+    
+  green:
+    message: "Monitor symptoms and follow up as planned. Seek medical attention if symptoms worsen or new concerning symptoms develop."
+
+warning_signs:
+  general:
+    - "Any sudden worsening of symptoms"
+    - "New or severe chest pain"
+    - "Difficulty breathing or shortness of breath"
+    - "Severe headache or confusion"
+    - "Loss of consciousness or fainting"
+    - "Severe bleeding or injury"
+    
+  condition_specific:
+    diabetes:
+      - "Extreme thirst or frequent urination"
+      - "Severe fatigue or weakness"
+      - "Blurred vision or changes in vision"
+      - "Fruity breath odor"
+      - "Rapid breathing"
+      
+    heart_disease:
+      - "Chest pain or pressure"
+      - "Pain radiating to arm, jaw, or back"
+      - "Irregular heartbeat or palpitations"
+      - "Sudden severe shortness of breath"
+      - "Swelling in legs or abdomen"
+      
+    stroke:
+      - "Sudden weakness or numbness"
+      - "Sudden speech problems"
+      - "Sudden severe headache"
+      - "Sudden vision changes"
+      - "Sudden balance problems"
+      
+    kidney_disease:
+      - "Swelling in face, hands, or feet"
+      - "Changes in urination pattern"
+      - "Persistent nausea or vomiting"
+      - "Metallic taste in mouth"
+      - "Muscle cramps or weakness"
+
+escalation_triggers:
+  multiple_high_risk:
+    threshold: 2
+    description: "Multiple high-risk conditions present"
+    action: "Escalate urgency level"
+    
+  age_plus_symptoms:
+    age_threshold: 65
+    symptom_count: 2
+    description: "Senior with multiple symptoms"
+    action: "Consider amber level minimum"
+    
+  rapid_deterioration:
+    indicators:
+      - "worsening symptoms"
+      - "increasing pain"
+      - "new symptoms appearing"
+    action: "Immediate reassessment recommended"

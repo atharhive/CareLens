@@ -1,0 +1,80 @@
+"""
+Mock heart disease model file - placeholder for actual model binary.
+In production, this would be a pickled scikit-learn or XGBoost model.
+"""
+
+import pickle
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+import warnings
+warnings.filterwarnings('ignore')
+
+# Create mock heart disease model for development
+def create_mock_heart_disease_model():
+    """Create a mock heart disease prediction model."""
+    
+    # Generate synthetic training data
+    np.random.seed(43)
+    n_samples = 1000
+    n_features = 12
+    
+    # Features: age, sex, chest_pain_type, resting_bp, cholesterol, fasting_bs, resting_ecg, max_hr, exercise_angina, oldpeak, st_slope, family_history
+    X = np.random.rand(n_samples, n_features)
+    
+    # Make features more realistic for heart disease
+    X[:, 0] = np.random.normal(55, 12, n_samples)  # age
+    X[:, 1] = np.random.binomial(1, 0.6, n_samples)  # sex (male=1)
+    X[:, 2] = np.random.randint(0, 4, n_samples)   # chest_pain_type
+    X[:, 3] = np.random.normal(130, 20, n_samples) # resting_bp
+    X[:, 4] = np.random.normal(240, 60, n_samples) # cholesterol
+    X[:, 5] = np.random.binomial(1, 0.15, n_samples) # fasting_bs
+    X[:, 6] = np.random.randint(0, 3, n_samples)   # resting_ecg
+    X[:, 7] = np.random.normal(150, 25, n_samples) # max_hr
+    X[:, 8] = np.random.binomial(1, 0.3, n_samples)  # exercise_angina
+    X[:, 9] = np.random.exponential(1, n_samples)  # oldpeak
+    X[:, 10] = np.random.randint(0, 3, n_samples)  # st_slope
+    X[:, 11] = np.random.binomial(1, 0.4, n_samples) # family_history
+    
+    # Create realistic target with correlation to cardiovascular risk factors
+    heart_risk = (
+        0.03 * X[:, 0] +  # age effect
+        0.5 * X[:, 1] +   # male sex effect
+        0.3 * (X[:, 2] == 0) +  # typical angina effect
+        0.01 * np.maximum(0, X[:, 3] - 120) +  # high blood pressure
+        0.005 * np.maximum(0, X[:, 4] - 200) + # high cholesterol
+        0.4 * X[:, 8] +   # exercise angina
+        0.3 * X[:, 9] +   # oldpeak
+        0.6 * X[:, 11] +  # family history
+        -0.01 * X[:, 7] + # max heart rate (inverse)
+        np.random.normal(0, 0.8, n_samples)  # noise
+    )
+    
+    # Convert to binary classification (heart disease yes/no)
+    y = (heart_risk > np.percentile(heart_risk, 65)).astype(int)
+    
+    # Train model
+    model = RandomForestClassifier(n_estimators=100, random_state=43, max_depth=12)
+    model.fit(X, y)
+    
+    return model
+
+# Create and save the mock model
+if __name__ == "__main__":
+    model = create_mock_heart_disease_model()
+    
+    # Save the model
+    with open('heart_disease_model.pkl', 'wb') as f:
+        pickle.dump(model, f)
+    
+    print("Mock heart disease model created and saved to heart_disease_model.pkl")
+
+# For direct use in FastAPI, create the model object
+mock_heart_disease_model = create_mock_heart_disease_model()
+
+# Save as binary data (simulates a real pickle file)
+model_data = pickle.dumps(mock_heart_disease_model)
+
+# This would normally be read from disk, but for the file system we'll create it
+with open(__file__.replace('.py', '.pkl'), 'wb') as f:
+    f.write(model_data)

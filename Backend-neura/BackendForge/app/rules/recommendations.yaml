@@ -1,0 +1,292 @@
+# Recommendations Configuration for AI Health Risk Assessment Platform
+# Evidence-based lifestyle and follow-up recommendations
+
+lifestyle_recommendations:
+  diet:
+    diabetes:
+      high_risk:
+        - recommendation: "Follow a low-carbohydrate diet with emphasis on complex carbohydrates, fiber-rich foods, and portion control"
+          priority: 5
+          evidence_level: "high"
+          personalization_factors: ["diabetes_risk", "blood_sugar_control"]
+          
+        - recommendation: "Limit refined sugars and processed foods; choose whole grains and lean proteins"
+          priority: 4
+          evidence_level: "high"
+          personalization_factors: ["glucose_management"]
+          
+      moderate_risk:
+        - recommendation: "Adopt a balanced diet with controlled carbohydrate portions and regular meal timing"
+          priority: 3
+          evidence_level: "high"
+          personalization_factors: ["prediabetes_prevention"]
+          
+    heart_disease:
+      high_risk:
+        - recommendation: "Adopt a Mediterranean-style diet rich in fruits, vegetables, whole grains, lean proteins, and healthy fats"
+          priority: 5
+          evidence_level: "high"
+          personalization_factors: ["cardiovascular_risk", "cholesterol_management"]
+          
+        - recommendation: "Limit sodium intake to less than 2300mg per day; reduce saturated and trans fats"
+          priority: 4
+          evidence_level: "high"
+          personalization_factors: ["blood_pressure_control"]
+          
+    ckd:
+      high_risk:
+        - recommendation: "Limit sodium, phosphorus, and protein intake as appropriate; focus on kidney-friendly foods"
+          priority: 4
+          evidence_level: "high"
+          personalization_factors: ["kidney_function", "mineral_balance"]
+          
+    general:
+      - recommendation: "Eat a variety of colorful fruits and vegetables daily"
+        priority: 3
+        evidence_level: "high"
+        personalization_factors: ["general_health"]
+        
+      - recommendation: "Stay adequately hydrated with water throughout the day"
+        priority: 2
+        evidence_level: "moderate"
+        personalization_factors: ["hydration"]
+
+  exercise:
+    general:
+      sedentary:
+        - recommendation: "Start with 150 minutes of moderate-intensity aerobic activity per week, such as brisk walking"
+          priority: 5
+          evidence_level: "high"
+          personalization_factors: ["sedentary_lifestyle", "cardiovascular_health"]
+          
+        - recommendation: "Begin with 10-15 minute walks and gradually increase duration and intensity"
+          priority: 4
+          evidence_level: "high"
+          personalization_factors: ["exercise_initiation"]
+          
+      active:
+        - recommendation: "Continue regular physical activity and consider adding strength training 2-3 times per week"
+          priority: 3
+          evidence_level: "high"
+          personalization_factors: ["active_lifestyle", "strength_building"]
+          
+    condition_specific:
+      diabetes:
+        - recommendation: "Engage in both aerobic and resistance training to improve insulin sensitivity"
+          priority: 4
+          evidence_level: "high"
+          personalization_factors: ["diabetes_prevention", "insulin_sensitivity"]
+          
+      heart_disease:
+        - recommendation: "Participate in cardiac rehabilitation program if available; focus on gradual aerobic exercise"
+          priority: 5
+          evidence_level: "high"
+          personalization_factors: ["cardiac_rehabilitation"]
+          
+    age_specific:
+      senior:
+        - recommendation: "Include balance and flexibility exercises to prevent falls and maintain mobility"
+          priority: 4
+          evidence_level: "high"
+          personalization_factors: ["senior_age", "fall_prevention"]
+
+  weight_management:
+    obesity:
+      - recommendation: "Aim for 5-10% weight loss through combined diet and exercise approach with medical supervision"
+        priority: 5
+        evidence_level: "high"
+        personalization_factors: ["obesity", "health_risk_reduction"]
+        
+    overweight:
+      - recommendation: "Target gradual weight loss of 1-2 pounds per week through lifestyle modifications"
+        priority: 4
+        evidence_level: "high"
+        personalization_factors: ["overweight", "gradual_weight_loss"]
+        
+    underweight:
+      - recommendation: "Focus on healthy weight gain through nutrient-dense foods and strength training"
+        priority: 3
+        evidence_level: "moderate"
+        personalization_factors: ["underweight", "healthy_weight_gain"]
+
+  smoking_cessation:
+    current_smoker:
+      - recommendation: "Quit smoking immediately using evidence-based cessation methods including counseling and pharmacotherapy"
+        priority: 5
+        evidence_level: "high"
+        personalization_factors: ["smoking_cessation", "health_risk_reduction"]
+        
+      - recommendation: "Consider nicotine replacement therapy, prescription medications, or smoking cessation programs"
+        priority: 4
+        evidence_level: "high"
+        personalization_factors: ["cessation_support"]
+
+  stress_management:
+    high_stress:
+      - recommendation: "Practice stress reduction techniques such as meditation, yoga, or deep breathing exercises daily"
+        priority: 4
+        evidence_level: "moderate"
+        personalization_factors: ["high_stress", "mental_health"]
+        
+    moderate_stress:
+      - recommendation: "Incorporate regular relaxation activities and consider stress management counseling"
+        priority: 3
+        evidence_level: "moderate"
+        personalization_factors: ["moderate_stress", "wellness"]
+
+  sleep:
+    poor_sleep:
+      - recommendation: "Aim for 7-9 hours of quality sleep per night with consistent sleep schedule and good sleep hygiene"
+        priority: 3
+        evidence_level: "high"
+        personalization_factors: ["sleep_quality", "circadian_rhythm"]
+
+follow_up_recommendations:
+  laboratory_tests:
+    diabetes:
+      high_risk:
+        - test_type: "hba1c"
+          timeframe: "3 months"
+          reason: "Monitor blood sugar control and diabetes risk"
+          priority: 5
+          
+        - test_type: "fasting_glucose"
+          timeframe: "3 months"
+          reason: "Screen for diabetes development"
+          priority: 4
+          
+      moderate_risk:
+        - test_type: "hba1c"
+          timeframe: "6 months"
+          reason: "Monitor blood sugar control"
+          priority: 3
+          
+    heart_disease:
+      high_risk:
+        - test_type: "lipid_panel"
+          timeframe: "6 months"
+          reason: "Monitor cholesterol and cardiovascular risk"
+          priority: 4
+          
+        - test_type: "blood_pressure_monitoring"
+          timeframe: "3 months"
+          reason: "Monitor cardiovascular health"
+          priority: 4
+          
+    ckd:
+      high_risk:
+        - test_type: "kidney_function_tests"
+          timeframe: "6 months"
+          reason: "Monitor kidney function and early kidney disease"
+          priority: 4
+          
+        - test_type: "urine_analysis"
+          timeframe: "6 months"
+          reason: "Screen for protein in urine"
+          priority: 3
+
+  preventive_screening:
+    age_based:
+      over_40:
+        - test_type: "annual_physical"
+          timeframe: "Annual"
+          reason: "Comprehensive health assessment"
+          priority: 3
+          
+      over_50:
+        - test_type: "colonoscopy"
+          timeframe: "Every 10 years"
+          reason: "Colorectal cancer screening"
+          priority: 4
+          
+    gender_specific:
+      female_over_40:
+        - test_type: "mammogram"
+          timeframe: "Annual"
+          reason: "Breast cancer screening"
+          priority: 4
+          
+      female_over_21:
+        - test_type: "pap_smear"
+          timeframe: "Every 3 years"
+          reason: "Cervical cancer screening"
+          priority: 3
+
+  vaccinations:
+    annual:
+      - test_type: "annual_flu_vaccine"
+        timeframe: "Annual"
+        reason: "Prevent influenza infection"
+        priority: 2
+        
+    age_specific:
+      over_65:
+        - test_type: "pneumonia_vaccine"
+          timeframe: "As recommended"
+          reason: "Prevent pneumonia infection in seniors"
+          priority: 3
+          
+        - test_type: "shingles_vaccine"
+          timeframe: "As recommended"
+          reason: "Prevent shingles infection"
+          priority: 2
+
+cultural_adaptations:
+  mediterranean:
+    diet_modifications:
+      - "Continue traditional Mediterranean dietary patterns with emphasis on olive oil, fish, and fresh vegetables"
+      - "Incorporate traditional herbs and spices for flavor without added sodium"
+      
+  asian:
+    diet_modifications:
+      - "Incorporate traditional Asian dietary principles with reduced sodium and increased vegetable content"
+      - "Use traditional cooking methods like steaming and stir-frying with minimal oil"
+      
+  hispanic:
+    diet_modifications:
+      - "Adapt traditional recipes using healthier cooking methods and ingredients"
+      - "Incorporate traditional foods like beans, peppers, and tomatoes"
+      
+  african:
+    diet_modifications:
+      - "Include traditional nutrient-rich foods like leafy greens and legumes"
+      - "Adapt traditional cooking methods to reduce added fats and sodium"
+
+personalization_factors:
+  dietary_preferences:
+    vegetarian:
+      - "Ensure adequate protein intake through plant-based sources"
+      - "Monitor vitamin B12 and iron levels"
+      
+    vegan:
+      - "Focus on complete proteins and nutrient density"
+      - "Consider B12, vitamin D, and omega-3 supplementation"
+      
+  accessibility_needs:
+    mobility_limited:
+      - "Adapt exercise recommendations for seated or low-impact activities"
+      - "Focus on exercises that can be performed at home"
+      
+    low_income:
+      - "Provide cost-effective healthy food options"
+      - "Suggest community resources and assistance programs"
+
+evidence_levels:
+  high:
+    description: "Strong evidence from multiple randomized controlled trials"
+    confidence: "Very high confidence in recommendation"
+    
+  moderate:
+    description: "Moderate evidence from clinical studies"
+    confidence: "Moderate confidence in recommendation"
+    
+  low:
+    description: "Limited evidence or expert consensus"
+    confidence: "Low to moderate confidence in recommendation"
+
+priority_levels:
+  5: "Critical - immediate action recommended"
+  4: "High - action recommended within weeks"
+  3: "Moderate - action recommended within months"
+  2: "Low - action recommended when convenient"
+  1: "Optional - consider if other priorities are met"

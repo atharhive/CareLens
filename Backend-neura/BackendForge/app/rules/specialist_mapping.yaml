@@ -1,0 +1,252 @@
+# Specialist Mapping Configuration for AI Health Risk Assessment Platform
+# Maps medical conditions to appropriate specialist types
+
+condition_mappings:
+  diabetes:
+    primary_specialist: "endocrinology"
+    alternative_specialists:
+      - "internal_medicine"
+      - "family_medicine"
+    urgency_modifiers:
+      high_risk: "endocrinology"
+      moderate_risk: "internal_medicine"
+      low_risk: "family_medicine"
+    description: "Hormone and metabolic disorders"
+    
+  heart_disease:
+    primary_specialist: "cardiology"
+    alternative_specialists:
+      - "internal_medicine"
+      - "cardiac_surgery"
+    urgency_modifiers:
+      high_risk: "cardiology"
+      moderate_risk: "cardiology"
+      low_risk: "internal_medicine"
+    description: "Heart and blood vessel conditions"
+    
+  stroke:
+    primary_specialist: "neurology"
+    alternative_specialists:
+      - "emergency_medicine"
+      - "internal_medicine"
+    urgency_modifiers:
+      high_risk: "emergency_medicine"
+      moderate_risk: "neurology"
+      low_risk: "neurology"
+    description: "Brain and nervous system disorders"
+    
+  ckd:
+    primary_specialist: "nephrology"
+    alternative_specialists:
+      - "internal_medicine"
+      - "family_medicine"
+    urgency_modifiers:
+      high_risk: "nephrology"
+      moderate_risk: "nephrology"
+      low_risk: "internal_medicine"
+    description: "Kidney diseases and disorders"
+    
+  liver_disease:
+    primary_specialist: "gastroenterology"
+    alternative_specialists:
+      - "hepatology"
+      - "internal_medicine"
+    urgency_modifiers:
+      high_risk: "gastroenterology"
+      moderate_risk: "gastroenterology"
+      low_risk: "internal_medicine"
+    description: "Liver and digestive system disorders"
+    
+  anemia:
+    primary_specialist: "hematology"
+    alternative_specialists:
+      - "internal_medicine"
+      - "family_medicine"
+    urgency_modifiers:
+      high_risk: "hematology"
+      moderate_risk: "hematology"
+      low_risk: "internal_medicine"
+    description: "Blood disorders and diseases"
+    
+  thyroid:
+    primary_specialist: "endocrinology"
+    alternative_specialists:
+      - "internal_medicine"
+      - "family_medicine"
+    urgency_modifiers:
+      high_risk: "endocrinology"
+      moderate_risk: "endocrinology"
+      low_risk: "internal_medicine"
+    description: "Thyroid and hormone disorders"
+
+specialist_types:
+  cardiology:
+    full_name: "Cardiology"
+    description: "Heart and cardiovascular system specialists"
+    common_conditions:
+      - "heart_disease"
+      - "hypertension"
+      - "arrhythmia"
+      - "heart_failure"
+    search_terms:
+      - "cardiologist"
+      - "heart doctor"
+      - "cardiovascular specialist"
+      
+  endocrinology:
+    full_name: "Endocrinology"
+    description: "Hormone and metabolic disorder specialists"
+    common_conditions:
+      - "diabetes"
+      - "thyroid"
+      - "adrenal_disorders"
+      - "metabolic_syndrome"
+    search_terms:
+      - "endocrinologist"
+      - "diabetes doctor"
+      - "hormone specialist"
+      
+  nephrology:
+    full_name: "Nephrology"
+    description: "Kidney disease specialists"
+    common_conditions:
+      - "ckd"
+      - "kidney_stones"
+      - "dialysis"
+      - "hypertension"
+    search_terms:
+      - "nephrologist"
+      - "kidney doctor"
+      - "kidney specialist"
+      
+  gastroenterology:
+    full_name: "Gastroenterology"
+    description: "Digestive system and liver specialists"
+    common_conditions:
+      - "liver_disease"
+      - "digestive_disorders"
+      - "inflammatory_bowel_disease"
+    search_terms:
+      - "gastroenterologist"
+      - "GI doctor"
+      - "digestive specialist"
+      - "liver doctor"
+      
+  hematology:
+    full_name: "Hematology"
+    description: "Blood disorder specialists"
+    common_conditions:
+      - "anemia"
+      - "blood_cancers"
+      - "clotting_disorders"
+    search_terms:
+      - "hematologist"
+      - "blood specialist"
+      - "blood doctor"
+      
+  neurology:
+    full_name: "Neurology"
+    description: "Brain and nervous system specialists"
+    common_conditions:
+      - "stroke"
+      - "seizures"
+      - "headaches"
+      - "neurological_disorders"
+    search_terms:
+      - "neurologist"
+      - "brain doctor"
+      - "stroke specialist"
+      
+  internal_medicine:
+    full_name: "Internal Medicine"
+    description: "General internal medicine physicians"
+    common_conditions:
+      - "general_medical_care"
+      - "multiple_conditions"
+      - "complex_medical_problems"
+    search_terms:
+      - "internist"
+      - "internal medicine doctor"
+      - "internal medicine physician"
+      
+  family_medicine:
+    full_name: "Family Medicine"
+    description: "Primary care for all ages"
+    common_conditions:
+      - "primary_care"
+      - "preventive_care"
+      - "routine_checkups"
+    search_terms:
+      - "family doctor"
+      - "family medicine physician"
+      - "primary care doctor"
+      
+  emergency_medicine:
+    full_name: "Emergency Medicine"
+    description: "Emergency and urgent care specialists"
+    common_conditions:
+      - "acute_conditions"
+      - "urgent_care"
+      - "emergency_situations"
+    search_terms:
+      - "emergency room"
+      - "urgent care"
+      - "emergency medicine"
+
+referral_guidelines:
+  immediate_referral:
+    risk_threshold: 0.8
+    conditions:
+      - "heart_disease"
+      - "stroke"
+      - "severe_diabetes"
+    timeframe: "within_24_hours"
+    
+  urgent_referral:
+    risk_threshold: 0.6
+    conditions:
+      - "diabetes"
+      - "ckd"
+      - "liver_disease"
+    timeframe: "within_1_week"
+    
+  routine_referral:
+    risk_threshold: 0.4
+    conditions:
+      - "thyroid"
+      - "anemia"
+      - "mild_conditions"
+    timeframe: "within_2_weeks"
+
+default_specialist: "internal_medicine"
+
+specialty_availability:
+  high_availability:
+    - "internal_medicine"
+    - "family_medicine"
+    - "cardiology"
+    
+  moderate_availability:
+    - "endocrinology"
+    - "gastroenterology"
+    - "neurology"
+    
+  limited_availability:
+    - "nephrology"
+    - "hematology"
+    - "specialized_subspecialties"
+
+emergency_conditions:
+  immediate_emergency:
+    - "acute_stroke"
+    - "heart_attack"
+    - "severe_diabetic_emergency"
+    specialist: "emergency_medicine"
+    action: "call_911"
+    
+  urgent_emergency:
+    - "severe_hypertension"
+    - "diabetic_ketoacidosis"
+    - "acute_kidney_injury"
+    specialist: "emergency_medicine"
+    action: "emergency_department"

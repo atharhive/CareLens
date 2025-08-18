@@ -1,0 +1,81 @@
+"""
+Mock stroke model file - placeholder for actual model binary.
+In production, this would be a pickled scikit-learn or XGBoost model.
+"""
+
+import pickle
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+import warnings
+warnings.filterwarnings('ignore')
+
+# Create mock stroke prediction model for development
+def create_mock_stroke_model():
+    """Create a mock stroke prediction model."""
+    
+    # Generate synthetic training data
+    np.random.seed(44)
+    n_samples = 1000
+    n_features = 10
+    
+    # Features: age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status, family_history
+    X = np.random.rand(n_samples, n_features)
+    
+    # Make features more realistic for stroke
+    X[:, 0] = np.random.normal(60, 18, n_samples)  # age
+    X[:, 1] = np.random.binomial(1, 0.35, n_samples)  # hypertension
+    X[:, 2] = np.random.binomial(1, 0.25, n_samples)  # heart_disease
+    X[:, 3] = np.random.binomial(1, 0.8, n_samples)   # ever_married
+    X[:, 4] = np.random.randint(0, 4, n_samples)      # work_type (encoded)
+    X[:, 5] = np.random.binomial(1, 0.6, n_samples)   # residence_type (urban=1)
+    X[:, 6] = np.random.normal(110, 40, n_samples)    # avg_glucose_level
+    X[:, 7] = np.random.normal(28, 7, n_samples)      # bmi
+    X[:, 8] = np.random.randint(0, 3, n_samples)      # smoking_status (encoded)
+    X[:, 9] = np.random.binomial(1, 0.3, n_samples)   # family_history_stroke
+    
+    # Create realistic target with correlation to stroke risk factors
+    stroke_risk = (
+        0.04 * X[:, 0] +  # age effect (strongest)
+        1.2 * X[:, 1] +   # hypertension
+        1.0 * X[:, 2] +   # heart disease
+        0.01 * np.maximum(0, X[:, 6] - 100) +  # high glucose
+        0.05 * np.maximum(0, X[:, 7] - 25) +   # BMI effect
+        0.5 * (X[:, 8] == 2) +  # current smoking
+        0.8 * X[:, 9] +   # family history
+        np.random.normal(0, 1.0, n_samples)  # noise
+    )
+    
+    # Convert to binary classification (stroke yes/no) - stroke is rare
+    y = (stroke_risk > np.percentile(stroke_risk, 85)).astype(int)
+    
+    # Train model
+    model = RandomForestClassifier(
+        n_estimators=100, 
+        random_state=44, 
+        max_depth=10,
+        class_weight='balanced'  # Handle class imbalance
+    )
+    model.fit(X, y)
+    
+    return model
+
+# Create and save the mock model
+if __name__ == "__main__":
+    model = create_mock_stroke_model()
+    
+    # Save the model
+    with open('stroke_model.pkl', 'wb') as f:
+        pickle.dump(model, f)
+    
+    print("Mock stroke model created and saved to stroke_model.pkl")
+
+# For direct use in FastAPI, create the model object
+mock_stroke_model = create_mock_stroke_model()
+
+# Save as binary data (simulates a real pickle file)
+model_data = pickle.dumps(mock_stroke_model)
+
+# This would normally be read from disk, but for the file system we'll create it
+with open(__file__.replace('.py', '.pkl'), 'wb') as f:
+    f.write(model_data)
