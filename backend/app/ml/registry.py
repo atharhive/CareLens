@@ -290,6 +290,15 @@ class ModelRegistry:
         self.is_initialized = False
         await self.initialize()
     
+    async def health_check(self) -> Dict[str, Any]:
+        """Health check for the model registry."""
+        return {
+            "all_loaded": self.is_initialized and len(self.models) > 0,
+            "initialized": self.is_initialized,
+            "conditions_count": len(self.models),
+            "total_models": sum(len(models) for models in self.models.values())
+        }
+    
     async def get_registry_status(self) -> Dict[str, Any]:
         """Get comprehensive status of the model registry."""
         status = {
@@ -414,3 +423,12 @@ class ModelRegistry:
         feature_array = np.array(feature_values).reshape(1, -1)
         
         return feature_array
+    
+    def cleanup(self):
+        """Cleanup model registry resources."""
+        logger.info("Cleaning up model registry")
+        self.models.clear()
+        self.calibrators.clear()
+        self.explainers.clear()
+        self.model_metadata.clear()
+        self.is_initialized = False

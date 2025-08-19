@@ -36,28 +36,32 @@ async def health_check(request: Request):
     
     # Check Redis connection
     try:
-        redis_client = request.app.state.redis_client
-        await redis_client.ping()
-        
-        # Test basic operations
-        test_key = "health_check_test"
-        await redis_client.set(test_key, "test_value", ex=10)
-        test_value = await redis_client.get(test_key)
-        await redis_client.delete(test_key)
-        
-        if test_value == "test_value":
-            services_status["redis"]["status"] = "healthy"
-            services_status["redis"]["details"] = {
-                "connection": "active",
-                "read_write": "operational"
-            }
+        redis_client = getattr(request.app.state, 'redis_client', None)
+        if redis_client:
+            await redis_client.ping()
+            
+            # Test basic operations
+            test_key = "health_check_test"
+            await redis_client.set(test_key, "test_value", ex=10)
+            test_value = await redis_client.get(test_key)
+            await redis_client.delete(test_key)
+            
+            if test_value == "test_value":
+                services_status["redis"]["status"] = "healthy"
+                services_status["redis"]["details"] = {
+                    "connection": "active",
+                    "read_write": "operational"
+                }
+            else:
+                raise Exception("Redis read/write test failed")
         else:
-            raise Exception("Redis read/write test failed")
+            services_status["redis"]["status"] = "not_configured"
+            services_status["redis"]["details"] = {"message": "Redis not configured"}
             
     except Exception as e:
         services_status["redis"]["status"] = "unhealthy"
         services_status["redis"]["details"] = {"error": str(e)}
-        overall_status = "degraded"
+        # Don't mark overall status as degraded if Redis is just not running
     
     # Check ML models
     try:

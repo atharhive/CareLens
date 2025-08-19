@@ -1,0 +1,486 @@
+INFO:     Will watch for changes in these directories: ['/home/atharnex/Carelens/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [14724] using WatchFiles
+Process SpawnProcess-1:
+Traceback (most recent call last):
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 69, in serve
+    await self._serve(sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 76, in _serve
+    config.load()
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/atharnex/Carelens/backend/app/main.py", line 14, in <module>
+    from app.core.config import settings
+  File "/home/atharnex/Carelens/backend/app/core/__init__.py", line 6, in <module>
+    from .config import settings
+  File "/home/atharnex/Carelens/backend/app/core/config.py", line 87, in <module>
+    settings = Settings()
+               ^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic_settings/main.py", line 140, in __init__
+    super().__init__(
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic/main.py", line 176, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 11 validation errors for Settings
+ALLOWED_HOSTS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='["localhost", "127.0.0.1...0.0.0", "*.replit.dev"]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+SESSION_TTL
+  Extra inputs are not permitted [type=extra_forbidden, input_value='1800', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MODEL_CONFIDENCE_THRESHOLD
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.7', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+OCR_LANGUAGE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='eng', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+GEOCODING_PROVIDER
+  Extra inputs are not permitted [type=extra_forbidden, input_value='nominatim', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MAX_PROVIDER_RADIUS_MILES
+  Extra inputs are not permitted [type=extra_forbidden, input_value='50', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+DATA_RETENTION_HOURS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.5', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ENABLE_AUDIT_LOGGING
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ANONYMIZE_LOGS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_PER_MINUTE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='60', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_BURST
+  Extra inputs are not permitted [type=extra_forbidden, input_value='10', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+WARNING:  WatchFiles detected changes in 'app/core/config.py'. Reloading...
+Process SpawnProcess-2:
+Traceback (most recent call last):
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 69, in serve
+    await self._serve(sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 76, in _serve
+    config.load()
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/atharnex/Carelens/backend/app/main.py", line 14, in <module>
+    from app.core.config import settings
+  File "/home/atharnex/Carelens/backend/app/core/__init__.py", line 6, in <module>
+    from .config import settings
+  File "/home/atharnex/Carelens/backend/app/core/config.py", line 88, in <module>
+    settings = Settings()
+               ^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic_settings/main.py", line 140, in __init__
+    super().__init__(
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic/main.py", line 176, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 10 validation errors for Settings
+SESSION_TTL
+  Extra inputs are not permitted [type=extra_forbidden, input_value='1800', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MODEL_CONFIDENCE_THRESHOLD
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.7', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+OCR_LANGUAGE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='eng', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+GEOCODING_PROVIDER
+  Extra inputs are not permitted [type=extra_forbidden, input_value='nominatim', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MAX_PROVIDER_RADIUS_MILES
+  Extra inputs are not permitted [type=extra_forbidden, input_value='50', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+DATA_RETENTION_HOURS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.5', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ENABLE_AUDIT_LOGGING
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ANONYMIZE_LOGS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_PER_MINUTE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='60', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_BURST
+  Extra inputs are not permitted [type=extra_forbidden, input_value='10', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+WARNING:  WatchFiles detected changes in 'app/core/privacy.py'. Reloading...
+Process SpawnProcess-3:
+Traceback (most recent call last):
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 69, in serve
+    await self._serve(sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 76, in _serve
+    config.load()
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/atharnex/Carelens/backend/app/main.py", line 14, in <module>
+    from app.core.config import settings
+  File "/home/atharnex/Carelens/backend/app/core/__init__.py", line 6, in <module>
+    from .config import settings
+  File "/home/atharnex/Carelens/backend/app/core/config.py", line 88, in <module>
+    settings = Settings()
+               ^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic_settings/main.py", line 140, in __init__
+    super().__init__(
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic/main.py", line 176, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 10 validation errors for Settings
+SESSION_TTL
+  Extra inputs are not permitted [type=extra_forbidden, input_value='1800', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MODEL_CONFIDENCE_THRESHOLD
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.7', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+OCR_LANGUAGE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='eng', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+GEOCODING_PROVIDER
+  Extra inputs are not permitted [type=extra_forbidden, input_value='nominatim', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MAX_PROVIDER_RADIUS_MILES
+  Extra inputs are not permitted [type=extra_forbidden, input_value='50', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+DATA_RETENTION_HOURS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.5', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ENABLE_AUDIT_LOGGING
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ANONYMIZE_LOGS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_PER_MINUTE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='60', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_BURST
+  Extra inputs are not permitted [type=extra_forbidden, input_value='10', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+WARNING:  WatchFiles detected changes in 'app/routers/health.py'. Reloading...
+Process SpawnProcess-4:
+Traceback (most recent call last):
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 69, in serve
+    await self._serve(sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 76, in _serve
+    config.load()
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/atharnex/Carelens/backend/app/main.py", line 14, in <module>
+    from app.core.config import settings
+  File "/home/atharnex/Carelens/backend/app/core/__init__.py", line 6, in <module>
+    from .config import settings
+  File "/home/atharnex/Carelens/backend/app/core/config.py", line 88, in <module>
+    settings = Settings()
+               ^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic_settings/main.py", line 140, in __init__
+    super().__init__(
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic/main.py", line 176, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 10 validation errors for Settings
+SESSION_TTL
+  Extra inputs are not permitted [type=extra_forbidden, input_value='1800', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MODEL_CONFIDENCE_THRESHOLD
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.7', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+OCR_LANGUAGE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='eng', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+GEOCODING_PROVIDER
+  Extra inputs are not permitted [type=extra_forbidden, input_value='nominatim', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MAX_PROVIDER_RADIUS_MILES
+  Extra inputs are not permitted [type=extra_forbidden, input_value='50', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+DATA_RETENTION_HOURS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.5', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ENABLE_AUDIT_LOGGING
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ANONYMIZE_LOGS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_PER_MINUTE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='60', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_BURST
+  Extra inputs are not permitted [type=extra_forbidden, input_value='10', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+WARNING:  WatchFiles detected changes in 'app/ml/registry.py'. Reloading...
+Process SpawnProcess-5:
+Traceback (most recent call last):
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 69, in serve
+    await self._serve(sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 76, in _serve
+    config.load()
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/atharnex/Carelens/backend/app/main.py", line 14, in <module>
+    from app.core.config import settings
+  File "/home/atharnex/Carelens/backend/app/core/__init__.py", line 6, in <module>
+    from .config import settings
+  File "/home/atharnex/Carelens/backend/app/core/config.py", line 88, in <module>
+    settings = Settings()
+               ^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic_settings/main.py", line 140, in __init__
+    super().__init__(
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic/main.py", line 176, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 10 validation errors for Settings
+SESSION_TTL
+  Extra inputs are not permitted [type=extra_forbidden, input_value='1800', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MODEL_CONFIDENCE_THRESHOLD
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.7', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+OCR_LANGUAGE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='eng', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+GEOCODING_PROVIDER
+  Extra inputs are not permitted [type=extra_forbidden, input_value='nominatim', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MAX_PROVIDER_RADIUS_MILES
+  Extra inputs are not permitted [type=extra_forbidden, input_value='50', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+DATA_RETENTION_HOURS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.5', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ENABLE_AUDIT_LOGGING
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ANONYMIZE_LOGS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_PER_MINUTE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='60', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_BURST
+  Extra inputs are not permitted [type=extra_forbidden, input_value='10', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+WARNING:  WatchFiles detected changes in 'app/ml/registry.py'. Reloading...
+Process SpawnProcess-6:
+Traceback (most recent call last):
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/atharnex/miniconda3/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 69, in serve
+    await self._serve(sockets)
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/server.py", line 76, in _serve
+    config.load()
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/atharnex/Carelens/backend/app/main.py", line 14, in <module>
+    from app.core.config import settings
+  File "/home/atharnex/Carelens/backend/app/core/__init__.py", line 6, in <module>
+    from .config import settings
+  File "/home/atharnex/Carelens/backend/app/core/config.py", line 88, in <module>
+    settings = Settings()
+               ^^^^^^^^^^
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic_settings/main.py", line 140, in __init__
+    super().__init__(
+  File "/home/atharnex/miniconda3/lib/python3.12/site-packages/pydantic/main.py", line 176, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 10 validation errors for Settings
+SESSION_TTL
+  Extra inputs are not permitted [type=extra_forbidden, input_value='1800', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MODEL_CONFIDENCE_THRESHOLD
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.7', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+OCR_LANGUAGE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='eng', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+GEOCODING_PROVIDER
+  Extra inputs are not permitted [type=extra_forbidden, input_value='nominatim', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+MAX_PROVIDER_RADIUS_MILES
+  Extra inputs are not permitted [type=extra_forbidden, input_value='50', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+DATA_RETENTION_HOURS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.5', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ENABLE_AUDIT_LOGGING
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+ANONYMIZE_LOGS
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_PER_MINUTE
+  Extra inputs are not permitted [type=extra_forbidden, input_value='60', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+RATE_LIMIT_BURST
+  Extra inputs are not permitted [type=extra_forbidden, input_value='10', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.7/v/extra_forbidden
+INFO:     Stopping reloader process [14724]

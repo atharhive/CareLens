@@ -281,7 +281,7 @@ redis-server
 cd backend && uvicorn app.main:app --reload --port 8000
 
 # Terminal 3: Frontend (React)
-cd frontend && npm run dev
+cd client && npm run dev
 ```
 
 **Access Points:**
@@ -401,7 +401,7 @@ pytest tests/ -v --cov=app --cov-report=html
 python -m pytest tests/test_ml_models.py -k "test_model_accuracy"
 
 # Frontend testing  
-cd frontend
+cd client
 npm test -- --coverage --watchAll=false
 npm run test:e2e
 

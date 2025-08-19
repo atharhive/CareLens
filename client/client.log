@@ -1,0 +1,26 @@
+
+> my-v0-project@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.2.4
+   - Local:        http://localhost:3000
+   - Network:      http://10.255.255.254:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+ ✓ Ready in 2.9s
+ ○ Compiling / ...
+ ✓ Compiled / in 8.9s (734 modules)
+ GET / 200 in 9598ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1133ms (720 modules)
+ GET / 200 in 272ms
+ GET /providers 404 in 1440ms
+ GET / 200 in 123ms
+ GET / 200 in 205ms
+ GET / 200 in 103ms

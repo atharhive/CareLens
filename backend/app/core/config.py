@@ -15,7 +15,8 @@ class Settings(BaseSettings):
     DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
     SECRET_KEY: str = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
     
-    # CORS Configuration
+    # CORS and Host Configuration
+    ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1", "0.0.0.0", "*.replit.dev"]
     CORS_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://localhost:5000",
@@ -78,10 +79,23 @@ class Settings(BaseSettings):
     PROVIDER_SEARCH_RADIUS_KM: int = int(os.getenv("PROVIDER_SEARCH_RADIUS_KM", "25"))
     MAX_PROVIDERS_RETURNED: int = int(os.getenv("MAX_PROVIDERS_RETURNED", "20"))
     
+    # Additional settings from .env file
+    SESSION_TTL: int = int(os.getenv("SESSION_TTL", "1800"))
+    MODEL_CONFIDENCE_THRESHOLD: float = float(os.getenv("MODEL_CONFIDENCE_THRESHOLD", "0.7"))
+    OCR_LANGUAGE: str = os.getenv("OCR_LANGUAGE", "eng")
+    GEOCODING_PROVIDER: str = os.getenv("GEOCODING_PROVIDER", "nominatim")
+    MAX_PROVIDER_RADIUS_MILES: int = int(os.getenv("MAX_PROVIDER_RADIUS_MILES", "50"))
+    DATA_RETENTION_HOURS: float = float(os.getenv("DATA_RETENTION_HOURS", "0.5"))
+    ENABLE_AUDIT_LOGGING: bool = os.getenv("ENABLE_AUDIT_LOGGING", "false").lower() == "true"
+    ANONYMIZE_LOGS: bool = os.getenv("ANONYMIZE_LOGS", "false").lower() == "true"
+    RATE_LIMIT_PER_MINUTE: int = int(os.getenv("RATE_LIMIT_PER_MINUTE", "60"))
+    RATE_LIMIT_BURST: int = int(os.getenv("RATE_LIMIT_BURST", "10"))
+    
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
         case_sensitive = True
+        extra = "ignore"  # Ignore extra fields in .env
 
 # Global settings instance
 settings = Settings()

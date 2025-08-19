@@ -75,7 +75,7 @@ python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 **Terminal 2: Frontend (Next.js)**
 ```bash
-cd client  # or frontend
+cd client
 npm run dev
 ```
 

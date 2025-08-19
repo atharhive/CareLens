@@ -20,11 +20,24 @@ logger = logging.getLogger(__name__)
 class PrivacyManager:
     """HIPAA-compliant privacy and session management."""
     
-    def __init__(self, redis_client: redis.Redis):
-        """Initialize privacy manager with Redis client."""
+    def __init__(self, redis_client: redis.Redis = None):
+        """Initialize privacy manager with optional Redis client."""
         self.redis = redis_client
         self.temp_file_dir = Path(settings.TEMP_FILE_DIR)
         self.temp_file_dir.mkdir(parents=True, exist_ok=True)
+        
+    async def initialize_redis(self):
+        """Initialize Redis connection."""
+        if not self.redis:
+            self.redis = redis.from_url(settings.REDIS_URL)
+            
+    async def cleanup_all_sessions(self):
+        """Clean up all sessions - called during app shutdown."""
+        if self.redis:
+            try:
+                await self.redis.close()
+            except Exception as e:
+                logger.error(f"Error closing Redis connection: {e}")
         
     async def create_session(self) -> str:
         """Create new privacy-protected session with TTL."""
@@ -345,3 +358,14 @@ class PrivacyManager:
             
         except Exception as e:
             logger.error(f"Cleanup job failed: {str(e)}")
+
+
+# Global privacy manager instance
+_privacy_manager = None
+
+def get_privacy_manager() -> PrivacyManager:
+    """Get or create global privacy manager instance."""
+    global _privacy_manager
+    if _privacy_manager is None:
+        _privacy_manager = PrivacyManager()
+    return _privacy_manager

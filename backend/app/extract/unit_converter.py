@@ -4,7 +4,7 @@ Standardizes units across different lab report formats.
 """
 
 import logging
-from typing import Dict, Optional, Tuple, Any
+from typing import Dict, Optional, Tuple, Any, List
 import re
 
 logger = logging.getLogger(__name__)

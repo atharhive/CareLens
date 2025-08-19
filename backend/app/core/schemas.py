@@ -125,6 +125,12 @@ class PatientIntakeResponse(TimestampedModel):
     risk_factors_identified: List[str] = Field(default=[], description="Identified risk factors")
     data_quality_score: float = Field(..., ge=0, le=1, description="Completeness score")
 
+class SessionResponse(BaseModel):
+    """Response for session creation."""
+    session_id: str = Field(..., description="Unique session identifier")
+    expires_at: datetime = Field(..., description="Session expiration time")
+    status: str = Field("active", description="Session status")
+
 # File upload schemas
 class FileUploadResponse(TimestampedModel):
     """Response for file upload."""
@@ -163,6 +169,8 @@ class DetectionRequest(BaseModel):
 
 class RiskScore(BaseModel):
     """Individual condition risk score."""
+    model_config = {"protected_namespaces": ()}
+    
     condition: ConditionEnum = Field(..., description="Medical condition")
     risk_score: float = Field(..., ge=0, le=1, description="Calibrated risk probability")
     confidence_interval: Dict[str, float] = Field(..., description="95% confidence interval")
@@ -178,6 +186,8 @@ class FeatureImportance(BaseModel):
 
 class ModelExplanation(BaseModel):
     """Model explanation with SHAP values."""
+    model_config = {"protected_namespaces": ()}
+    
     condition: ConditionEnum = Field(..., description="Medical condition")
     top_features: List[FeatureImportance] = Field(..., description="Top important features")
     explanation_text: str = Field(..., description="Human-readable explanation")
@@ -287,6 +297,13 @@ class ErrorDetail(BaseModel):
     message: str = Field(..., description="Human-readable error message")
     field: Optional[str] = Field(None, description="Field causing the error")
     details: Optional[Dict[str, Any]] = Field(None, description="Additional error details")
+
+class HealthCheckResponse(BaseModel):
+    """Health check response schema."""
+    status: str = Field(..., description="Overall service status")
+    timestamp: datetime = Field(default_factory=datetime.utcnow, description="Check timestamp")
+    services: Dict[str, Any] = Field(..., description="Status of individual services")
+    version: str = Field(..., description="API version")
 
 class ErrorResponse(BaseModel):
     """Standard error response."""
