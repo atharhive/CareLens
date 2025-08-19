@@ -75,7 +75,7 @@ A cutting-edge web application that **Detects** early risk, **Connects** people 
 - **Rule-Based Recommendations**: Condition-specific guidance
 - **Cultural Adaptation**: Multi-language support and cultural considerations
 - **Lifestyle Integration**: Diet, exercise, and monitoring schedules
-- **Progress Tracking**: Follow-up timelines and lab retesting windows
+- **Progress Tracking**: Follow-up timelines and lab retesting windows 
 
 ## 🛠️ Technology Stack
 
@@ -315,8 +315,7 @@ cd client && npm run dev
 ```
 📋 Action Plan         📱 Digital Tools        🔄 Follow-up
     ↓                      ↓                       ↓
-• Lifestyle Changes   • App Recommendations   • Progress Tracking
-• Dietary Guidelines  • Monitoring Schedules   • Lab Retesting
+• Lifestyle Changes   • App Recommendations   • Monitoring Schedules   • Lab Retesting
 • Exercise Programs   • Educational Resources  • Plan Adjustments
 • Cultural Adaptation • Reminder Systems      • Provider Updates
 ```
