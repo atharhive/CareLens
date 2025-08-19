@@ -32,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} antialiased`}>
-      <body className="min-h-screen bg-background font-sans text-foreground">
+      <body suppressHydrationWarning className="min-h-screen bg-background font-sans text-foreground">
         <SkipNavigation />
         <AccessibilityToolbar />
         <main id="main-content" role="main">

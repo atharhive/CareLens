@@ -1,6 +1,66 @@
-node_modules
-dist
+
+
+# Node.js
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+./.next/
+# Build output
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+frontend/dist/
+
+# Dependency locks (optional, keep if you want lockfiles in git)
+# frontend/package-lock.json
+# frontend/pnpm-lock.yaml
+
+# OS
 .DS_Store
-server/public
-vite.config.ts.*
+Thumbs.db
+
+# Python
+backend/__pycache__/
+backend/**/*.pyc
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.env
+backend/venv/
+backend/env/
+backend/.coverage
+backend/coverage.xml
+backend/htmlcov/
+backend/backend.log
+
+# VSCode
+.vscode/
+
+# Misc
 *.tar.gz
+*.tgz
+*.zip
+*.swp
+*.swo
+
+# Server (Express dev proxy)
+server/public/
+
+# Ignore Drizzle ORM migrations if not needed
+migrations/
+
+# Ignore environment files
+.env
+.env.*
+
+# Ignore test output
+coverage/
+
+# Ignore attached assets
+backend/attached_assets/
+
+# Ignore compiled shared files
+shared/__pycache__/

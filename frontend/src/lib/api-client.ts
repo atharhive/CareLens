@@ -13,6 +13,75 @@ export interface ApiResponse<T = any> {
   timestamp?: number;
 }
 
+// New: Unified API error class used across services
+export class ApiError extends Error {
+  status: number;
+  code?: string;
+  details?: unknown;
+
+  constructor(message: string, status: number = 500, code?: string, details?: unknown) {
+    super(message);
+    this.name = 'ApiError';
+    this.status = status;
+    this.code = code;
+    this.details = details;
+  }
+}
+
+// New: Lightweight request helper used by services
+export async function apiRequest<T = any>(args: {
+  method: string;
+  url: string;
+  data?: any;
+  headers?: Record<string, string>;
+  signal?: AbortSignal;
+}): Promise<T> {
+  const { method, url, data, headers, signal } = args;
+
+  let endpoint = `${API_BASE_URL}${url}`;
+  let body: BodyInit | undefined;
+  const requestHeaders: Record<string, string> = { ...(headers || {}) };
+
+  // If GET with data, convert to query string
+  if (method.toUpperCase() === 'GET' && data && typeof data === 'object') {
+    const qs = new URLSearchParams(
+      Object.entries(data).reduce((acc, [k, v]) => {
+        if (v !== undefined && v !== null) acc[k] = String(v);
+        return acc;
+      }, {} as Record<string, string>)
+    ).toString();
+    endpoint += endpoint.includes('?') ? `&${qs}` : `?${qs}`;
+  } else if (data instanceof FormData) {
+    body = data;
+    // Let the browser set Content-Type for multipart/form-data
+  } else if (data !== undefined) {
+    body = JSON.stringify(data);
+    requestHeaders['Content-Type'] = requestHeaders['Content-Type'] || 'application/json';
+  }
+
+  const response = await fetch(endpoint, {
+    method,
+    headers: requestHeaders,
+    body,
+    signal,
+  });
+
+  let parsed: any = null;
+  try {
+    parsed = await response.json();
+  } catch {
+    // Ignore parse errors; treat as empty
+  }
+
+  if (!response.ok) {
+    const message = (parsed && (parsed.detail || parsed.message || parsed.error)) || 'Request failed';
+    const code = parsed && (parsed.code || parsed.error_code);
+    throw new ApiError(message, response.status, code, parsed);
+  }
+
+  return parsed as T;
+}
+
 export interface AssessmentSession {
   session_id: string;
   status: 'active' | 'completed' | 'expired';
@@ -58,10 +127,13 @@ class ApiClient {
   ): Promise<ApiResponse<T>> {
     const url = `${this.baseUrl}${endpoint}`;
     
+    // Detect FormData and avoid setting Content-Type
+    const isFormData = options.body instanceof FormData;
+
     const config: RequestInit = {
       headers: {
-        'Content-Type': 'application/json',
-        ...options.headers,
+        ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
+        ...(options.headers || {}),
       },
       ...options,
     };
@@ -72,10 +144,10 @@ class ApiClient {
 
       if (!response.ok) {
         return {
-          error: data.error || 'Request failed',
-          message: data.detail || data.message || 'Unknown error occurred',
-          request_id: data.request_id,
-          timestamp: data.timestamp,
+          error: data?.error || 'Request failed',
+          message: data?.detail || data?.message || 'Unknown error occurred',
+          request_id: data?.request_id,
+          timestamp: data?.timestamp,
         };
       }
 
@@ -118,7 +190,7 @@ class ApiClient {
     return this.request('/extract/upload', {
       method: 'POST',
       body: formData,
-      headers: {}, // Remove Content-Type to let browser set it for FormData
+      headers: {}, // Let browser set multipart Content-Type
     });
   }
 
