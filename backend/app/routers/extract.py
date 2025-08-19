@@ -7,6 +7,8 @@ from pydantic import BaseModel
 import logging
 from typing import Dict, Any, Optional
 
+import uuid
+
 from app.core.privacy import get_privacy_manager, PrivacyManager
 from app.core.exceptions import DocumentError, PrivacyException
 from app.services.extraction_service import ExtractionService, get_extraction_service
@@ -32,27 +34,27 @@ async def extract_document(
     """
     Extract structured data from uploaded medical documents.
     Multi-stage extraction: Camelot → pdfplumber → OCR fallback.
-    
+
     Args:
         file_id: Unique identifier of uploaded file
         extraction_request: Optional extraction parameters
         privacy_manager: Privacy management service
         extraction_service: Document extraction service
-        
+
     Returns:
         ExtractionResponse with structured data and confidence scores
     """
     request_id = getattr(request.state, 'request_id', 'unknown')
-    
+
     try:
         logger.info(f"Processing document extraction - FileID: {file_id} - RequestID: {request_id}")
-        
+
         # Use provided parameters or defaults
         if extraction_request is None:
             extraction_request = ExtractionRequest(file_id=file_id)
-        
+
         session_id = extraction_request.session_id
-        
+
         # Find file in session data
         file_metadata = None
         if session_id:
@@ -62,19 +64,19 @@ async def extract_document(
                     if f['file_id'] == file_id:
                         file_metadata = f
                         break
-        
+
         if not file_metadata:
             # Try to find file across all sessions (less efficient but more flexible)
             file_metadata = await privacy_manager.find_file_metadata(file_id)
             if not file_metadata:
                 raise DocumentError(f"File not found: {file_id}")
-        
+
         # Validate session if provided
         if session_id:
             session_valid = await privacy_manager.validate_session(session_id)
             if not session_valid:
                 raise PrivacyException("Invalid or expired session")
-        
+
         # Process document
         extraction_result = await extraction_service.process_document(
             file_path=file_metadata['file_path'],
@@ -82,7 +84,7 @@ async def extract_document(
             extraction_type=extraction_request.extraction_type,
             ocr_language=extraction_request.ocr_language
         )
-        
+
         # Store extraction results in session
         if session_id:
             session_data = await privacy_manager.get_session_data(session_id) or {}
@@ -92,15 +94,15 @@ async def extract_document(
                 'extracted_at': privacy_manager._get_current_timestamp(),
                 'extraction_type': extraction_request.extraction_type
             }
-            
+
             await privacy_manager.store_session_data(session_id, {
                 **session_data,
                 'extractions': extractions,
                 'status': 'extraction_completed'
             })
-        
+
         logger.info(f"Document extraction completed - FileID: {file_id} - RequestID: {request_id}")
-        
+
         return ExtractionResponse(
             file_id=file_id,
             session_id=session_id,
@@ -110,7 +112,7 @@ async def extract_document(
             confidence_score=extraction_result.get('overall_confidence', 0.0),
             requires_review=extraction_result.get('requires_manual_review', False)
         )
-        
+
     except (DocumentError, PrivacyException):
         raise
     except Exception as e:
@@ -126,30 +128,30 @@ async def get_extraction_status(
 ):
     """
     Get the status of document extraction for a specific file.
-    
+
     Args:
         file_id: Unique identifier of uploaded file
         session_id: Optional session identifier
         privacy_manager: Privacy management service
-        
+
     Returns:
         Extraction status and basic metadata
     """
     request_id = getattr(request.state, 'request_id', 'unknown')
-    
+
     try:
         logger.info(f"Checking extraction status - FileID: {file_id} - RequestID: {request_id}")
-        
+
         # Validate session if provided
         if session_id:
             session_valid = await privacy_manager.validate_session(session_id)
             if not session_valid:
                 raise PrivacyException("Invalid or expired session")
-            
+
             session_data = await privacy_manager.get_session_data(session_id)
             if not session_data:
                 raise PrivacyException("Session data not found")
-            
+
             # Check if file exists and has extraction data
             extractions = session_data.get('extractions', {})
             if file_id in extractions:
@@ -163,7 +165,7 @@ async def get_extraction_status(
                     "confidence_score": extraction_info.get('extraction_result', {}).get('overall_confidence', 0.0),
                     "requires_review": extraction_info.get('extraction_result', {}).get('requires_manual_review', False)
                 }
-        
+
         # Check if file exists but no extraction yet
         file_metadata = await privacy_manager.find_file_metadata(file_id)
         if file_metadata:
@@ -173,9 +175,9 @@ async def get_extraction_status(
                 "uploaded_at": file_metadata.get('uploaded_at'),
                 "filename": file_metadata.get('original_filename')
             }
-        
+
         raise DocumentError(f"File not found: {file_id}")
-        
+
     except (DocumentError, PrivacyException):
         raise
     except Exception as e:
@@ -194,34 +196,34 @@ async def extract_batch_documents(
     """
     Process multiple documents in a single batch operation.
     Useful for processing multiple lab reports or medical documents.
-    
+
     Args:
         file_ids: List of file identifiers to process
         session_id: Session identifier
         extraction_type: Type of extraction to perform
         privacy_manager: Privacy management service
         extraction_service: Document extraction service
-        
+
     Returns:
         Batch processing results with individual file status
     """
     request_id = getattr(request.state, 'request_id', 'unknown')
-    
+
     try:
         logger.info(f"Processing batch extraction - Files: {len(file_ids)} - SessionID: {session_id} - RequestID: {request_id}")
-        
+
         # Validate session
         session_valid = await privacy_manager.validate_session(session_id)
         if not session_valid:
             raise PrivacyException("Invalid or expired session")
-        
+
         session_data = await privacy_manager.get_session_data(session_id)
         if not session_data:
             raise PrivacyException("Session data not found")
-        
+
         results = []
         extractions = session_data.get('extractions', {})
-        
+
         for file_id in file_ids:
             try:
                 # Find file metadata
@@ -230,7 +232,7 @@ async def extract_batch_documents(
                     if f['file_id'] == file_id:
                         file_metadata = f
                         break
-                
+
                 if not file_metadata:
                     results.append({
                         "file_id": file_id,
@@ -238,7 +240,7 @@ async def extract_batch_documents(
                         "error": "File not found"
                     })
                     continue
-                
+
                 # Process document
                 extraction_result = await extraction_service.process_document(
                     file_path=file_metadata['file_path'],
@@ -246,14 +248,14 @@ async def extract_batch_documents(
                     extraction_type=extraction_type,
                     ocr_language="eng"
                 )
-                
+
                 # Store results
                 extractions[file_id] = {
                     'extraction_result': extraction_result,
                     'extracted_at': privacy_manager._get_current_timestamp(),
                     'extraction_type': extraction_type
                 }
-                
+
                 results.append({
                     "file_id": file_id,
                     "status": "success",
@@ -261,7 +263,7 @@ async def extract_batch_documents(
                     "requires_review": extraction_result.get('requires_manual_review', False),
                     "lab_values_found": len(extraction_result.get('lab_values', {}))
                 })
-                
+
             except Exception as e:
                 logger.error(f"Error processing file {file_id} in batch - {e}")
                 results.append({
@@ -269,17 +271,17 @@ async def extract_batch_documents(
                     "status": "error",
                     "error": str(e)
                 })
-        
+
         # Update session data
         await privacy_manager.store_session_data(session_id, {
             **session_data,
             'extractions': extractions,
             'status': 'batch_extraction_completed'
         })
-        
+
         successful = sum(1 for r in results if r['status'] == 'success')
         logger.info(f"Batch extraction completed - Successful: {successful}/{len(file_ids)} - SessionID: {session_id} - RequestID: {request_id}")
-        
+
         return {
             "batch_id": str(uuid.uuid4()),
             "session_id": session_id,
@@ -288,7 +290,7 @@ async def extract_batch_documents(
             "results": results,
             "status": "completed"
         }
-        
+
     except PrivacyException:
         raise
     except Exception as e:

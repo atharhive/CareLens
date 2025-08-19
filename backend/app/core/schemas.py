@@ -9,6 +9,16 @@ from enum import Enum
 
 from pydantic import BaseModel, Field, validator, EmailStr
 
+class ExtractionResponse(BaseModel):
+    """Response model for document extraction."""
+    file_id: str
+    session_id: Optional[str] = None
+    status: str
+    message: str
+    extraction_data: Dict[str, Any]
+    confidence_score: float
+    requires_review: bool
+
 # Enums for standardized values
 class GenderEnum(str, Enum):
     MALE = "male"

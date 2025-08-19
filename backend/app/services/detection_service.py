@@ -364,3 +364,7 @@ class DetectionService:
         except Exception as e:
             logger.error(f"Feature validation failed: {str(e)}")
             return {"valid": False, "error": str(e)}
+
+async def get_detection_service() -> DetectionService:
+    """Get the detection service instance."""
+    return DetectionService()

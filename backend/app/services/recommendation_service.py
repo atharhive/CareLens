@@ -698,3 +698,7 @@ class RecommendationService:
                 "low_risk": "Annual"
             }
         }
+
+async def get_recommendation_service() -> RecommendationService:
+    """Get the recommendation service instance."""
+    return RecommendationService()

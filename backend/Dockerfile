@@ -39,4 +39,4 @@ ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_DEBUG=0
 
 # Run the application with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
+CMD ["pyton", "start_backend.py"]

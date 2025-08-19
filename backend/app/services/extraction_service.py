@@ -347,3 +347,7 @@ class ExtractionService:
             "average_confidence": sum(r.get("confidence", 0) for r in results) / len(results),
             "extraction_methods": list(set(r.get("method", "unknown") for r in results))
         }
+
+async def get_extraction_service() -> ExtractionService:
+    """Get the extraction service instance."""
+    return ExtractionService()

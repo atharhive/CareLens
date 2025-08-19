@@ -432,3 +432,7 @@ class ModelRegistry:
         self.explainers.clear()
         self.model_metadata.clear()
         self.is_initialized = False
+
+async def get_model_registry() -> ModelRegistry:
+    """Get the model registry instance."""
+    return ModelRegistry()
