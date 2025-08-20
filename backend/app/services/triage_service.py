@@ -438,3 +438,7 @@ class TriageService:
             },
             "default_specialist": "internal_medicine"
         }
+
+async def get_triage_service() -> TriageService:
+    """Get the triage service instance."""
+    return TriageService()

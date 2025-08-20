@@ -1,6 +1,7 @@
 # Core FastAPI dependencies
 fastapi==0.111.0
 uvicorn==0.30.1
+gunicorn==21.2.0
 python-multipart==0.0.9
 pydantic==2.7.4
 pydantic-settings==2.3.4
@@ -17,7 +18,7 @@ joblib==1.4.2
 # Document Processing
 PyPDF2==3.0.1
 pdfplumber==0.11.0
-camelot-py[cv]==0.11.0
+camelot-py==0.10.1
 pytesseract==0.3.10
 opencv-python-headless==4.10.0.82
 Pillow==10.4.0
@@ -30,6 +31,7 @@ aioredis==2.0.1
 # HTTP and API utilities
 httpx==0.27.0
 requests==2.32.3
+aiofiles==23.2.1
 
 # Security and validation
 python-jose[cryptography]==3.3.0

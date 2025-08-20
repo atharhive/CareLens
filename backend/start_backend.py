@@ -12,13 +12,12 @@ def start_backend():
     # Ensure we're in the backend directory
     backend_dir = os.path.dirname(os.path.abspath(__file__))
     os.chdir(backend_dir)
-    
+
     print("🚀 Starting CareLens FastAPI Backend...")
     print(f"📁 Working directory: {backend_dir}")
-    print("🌐 Server will be available at: http://localhost:8000")
-    print("📚 API Documentation: http://localhost:8000/docs")
+    print("📚 API Documentation: http://localhost:5000/docs")
     print("")
-    
+
     try:
         # Start uvicorn server
         cmd = [
@@ -29,9 +28,9 @@ def start_backend():
             "--port", "8000",
             "--log-level", "info"
         ]
-        
+
         subprocess.run(cmd, check=True)
-        
+
     except KeyboardInterrupt:
         print("\n👋 Backend server stopped by user")
     except subprocess.CalledProcessError as e:
@@ -40,7 +39,7 @@ def start_backend():
     except Exception as e:
         print(f"❌ Unexpected error: {e}")
         return 1
-    
+
     return 0
 
 if __name__ == "__main__":
