@@ -9,6 +9,7 @@ torchaudio
 # Hugging Face Transformers + Datasets
 transformers
 datasets
+transformers[torch]
 
 # Logging & utilities
 tqdm
