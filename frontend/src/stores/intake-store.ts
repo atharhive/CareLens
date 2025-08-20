@@ -1,6 +1,6 @@
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
-import type { Demographics, Vitals, MedicalHistory, UploadedFile } from "@/src/types"
+import type { Demographics, Vitals, MedicalHistory, UploadedFile } from "@/types"
 import {
   validateAge,
   validateHeight,
@@ -8,7 +8,7 @@ import {
   validateBloodPressure,
   validateHeartRate,
   validateTemperature,
-} from "@/src/utils/validation"
+} from "@/utils/validation"
 
 interface IntakeState {
   // Form data

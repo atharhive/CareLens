@@ -5,15 +5,15 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { useIntakeStore } from "@/src/stores/intake-store"
-import { useUnitConversion } from "@/src/hooks/use-unit-conversion"
+import { useIntakeStore } from "@/stores/intake-store"
+import { useUnitConversion } from "@/hooks/use-unit-conversion"
 import { RotateCcw, Info } from "lucide-react"
 
 export function VitalsForm() {
   const { vitals, setVitals, errors } = useIntakeStore()
   const { convertTemperatureValue } = useUnitConversion()
 
-  const handleInputChange = (field: keyof typeof vitals, value: string | number) => {
+  const handleInputChange = (field: keyof typeof vitals, value: string | number | undefined) => {
     setVitals({ [field]: value })
   }
 
@@ -65,7 +65,10 @@ export function VitalsForm() {
                     min="70"
                     max="250"
                     value={vitals.systolicBP || ""}
-                    onChange={(e) => handleInputChange("systolicBP", Number.parseInt(e.target.value) || undefined)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      handleInputChange("systolicBP", value === "" ? undefined : Number.parseInt(value) || undefined);
+                    }}
                     placeholder="120"
                     className={errors.bloodPressure ? "border-destructive" : ""}
                   />
@@ -83,7 +86,10 @@ export function VitalsForm() {
                     min="40"
                     max="150"
                     value={vitals.diastolicBP || ""}
-                    onChange={(e) => handleInputChange("diastolicBP", Number.parseInt(e.target.value) || undefined)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      handleInputChange("diastolicBP", value === "" ? undefined : Number.parseInt(value) || undefined);
+                    }}
                     placeholder="80"
                     className={errors.bloodPressure ? "border-destructive" : ""}
                   />
@@ -116,7 +122,10 @@ export function VitalsForm() {
                   min="30"
                   max="220"
                   value={vitals.heartRate || ""}
-                  onChange={(e) => handleInputChange("heartRate", Number.parseInt(e.target.value) || undefined)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    handleInputChange("heartRate", value === "" ? undefined : Number.parseInt(value) || undefined);
+                  }}
                   placeholder="72"
                   className={errors.heartRate ? "border-destructive" : ""}
                 />
@@ -152,7 +161,10 @@ export function VitalsForm() {
                 type="number"
                 step="0.1"
                 value={vitals.temperature || ""}
-                onChange={(e) => handleInputChange("temperature", Number.parseFloat(e.target.value) || undefined)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  handleInputChange("temperature", value === "" ? undefined : Number.parseFloat(value) || undefined);
+                }}
                 placeholder={vitals.temperatureUnit === "celsius" ? "37.0" : "98.6"}
                 className={errors.temperature ? "border-destructive" : ""}
               />

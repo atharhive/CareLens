@@ -5,8 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { LoadingSkeleton } from "@/src/components/ui/loading-skeleton"
-import { PDFService, type PDFPageInfo } from "@/src/services/pdf-service"
+import { LoadingSkeleton } from "@/components/ui/custom/loading-skeleton"
+import { PDFService, type PDFPageInfo } from "@/services/pdf-service"
 import { ChevronLeft, ChevronRight, Search, Download, ZoomIn, ZoomOut } from "lucide-react"
 
 interface PDFViewerProps {

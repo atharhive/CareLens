@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { QRService, type QRCodeOptions } from "@/src/services/qr-service"
+import { QRService, type QRCodeOptions } from "@/services/qr-service"
 import { useToast } from "@/hooks/use-toast"
 
 interface QRCodeGeneratorProps {
@@ -215,7 +215,7 @@ export function QRCodeGenerator({
             >
               Copy Text
             </button>
-            {navigator.share && (
+            {'share' in navigator && (
               <button
                 onClick={shareQRCode}
                 className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"

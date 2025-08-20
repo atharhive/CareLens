@@ -1,6 +1,6 @@
 "use client"
 
-import type { Location } from "@/src/types"
+import type { Location } from "@/types"
 
 // Google Maps configuration
 const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""
@@ -125,7 +125,7 @@ export class MapsService {
             destination: { lat: destination.latitude, lng: destination.longitude },
             travelMode: google.maps.TravelMode.DRIVING,
           },
-          (result, status) => {
+          (result: google.maps.DirectionsResult | null, status: google.maps.DirectionsStatus) => {
             if (status === google.maps.DirectionsStatus.OK && result) {
               resolve(result)
             } else {
@@ -150,7 +150,7 @@ export class MapsService {
       const geocoder = new google.maps.Geocoder()
 
       return new Promise((resolve, reject) => {
-        geocoder.geocode({ address }, (results, status) => {
+        geocoder.geocode({ address }, (results: google.maps.GeocoderResult[] | null, status: google.maps.GeocoderStatus) => {
           if (status === google.maps.GeocoderStatus.OK && results && results[0]) {
             const location = results[0].geometry.location
             resolve({

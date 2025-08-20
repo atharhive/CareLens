@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import { useIntakeStore } from "@/src/stores/intake-store"
+import { useIntakeStore } from "@/stores/intake-store"
 
 export function useFormPersistence() {
   const { demographics, vitals, symptoms, medicalHistory, uploadedFiles, currentStep, completedSteps } =

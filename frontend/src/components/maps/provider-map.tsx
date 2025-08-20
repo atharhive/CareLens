@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { MapsService, type MapMarker } from "@/src/services/maps-service"
+import { MapsService, type MapMarker } from "@/services/maps-service"
 import { MapPin, Navigation, Phone } from "lucide-react"
-import type { Provider, Location } from "@/src/types"
+import type { Provider, Location } from "@/types"
 
 interface ProviderMapProps {
   providers: Provider[]

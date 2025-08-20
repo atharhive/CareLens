@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useIntakeStore } from "@/src/stores/intake-store"
+import { useIntakeStore } from "@/stores/intake-store"
 import { Plus, X } from "lucide-react"
 
 const COMMON_CONDITIONS = [

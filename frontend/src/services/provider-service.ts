@@ -1,5 +1,5 @@
-import { apiRequest, ApiError } from "@/src/lib/api-client"
-import type { Provider, Location } from "@/src/types"
+import { apiRequest, ApiError } from "@/lib/api-client"
+import type { Provider, Location } from "@/types"
 
 export interface ProviderSearchRequest {
   location: Location

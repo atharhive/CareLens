@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useCallback } from "react"
-import { convertHeight, convertWeight, convertTemperature } from "@/src/utils/conversions"
+import { convertHeight, convertWeight, convertTemperature } from "@/utils/conversions"
 
 export function useUnitConversion() {
   const [heightUnit, setHeightUnit] = useState<"cm" | "ft">("cm")

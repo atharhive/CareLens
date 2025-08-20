@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useIntakeStore } from "@/src/stores/intake-store"
+import { useIntakeStore } from "@/stores/intake-store"
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 

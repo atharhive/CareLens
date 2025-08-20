@@ -1,6 +1,6 @@
 "use client"
 
-import { useAccessibility } from "@/src/hooks/use-accessibility"
+import { useAccessibility } from "@/hooks/use-accessibility"
 import { Button } from "@/components/ui/button"
 
 export function AccessibilityToolbar() {

@@ -1,9 +1,9 @@
 "use client"
 
-import { FileUpload } from "@/src/components/ui/file-upload"
+import { FileUpload } from "@/components/ui/custom/file-upload"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useIntakeStore } from "@/src/stores/intake-store"
+import { useIntakeStore } from "@/stores/intake-store"
 import { FileText, ImageIcon, AlertCircle } from "lucide-react"
 
 export function DocumentUploadForm() {

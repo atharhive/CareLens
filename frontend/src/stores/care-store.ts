@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import type { Provider, Location } from "@/src/types"
+import type { Provider, Location } from "@/types"
 
 interface CareState {
   // Provider data
@@ -15,7 +15,7 @@ interface CareState {
   availabilityFilter: string
 
   // Location
-  userLocation: Location | null
+  userLocation: Location | undefined
   isLocationLoading: boolean
   locationError: string | null
 
@@ -37,7 +37,7 @@ interface CareState {
   clearFilters: () => void
 
   // Location actions
-  setUserLocation: (location: Location | null) => void
+  setUserLocation: (location: Location | undefined) => void
   setLocationLoading: (loading: boolean) => void
   setLocationError: (error: string | null) => void
   getCurrentLocation: () => Promise<void>
@@ -60,7 +60,7 @@ export const useCareStore = create<CareState>((set, get) => ({
   insuranceFilter: "",
   languageFilter: "",
   availabilityFilter: "",
-  userLocation: null,
+  userLocation: undefined,
   isLocationLoading: false,
   locationError: null,
   isLoadingProviders: false,
@@ -284,7 +284,7 @@ export const useCareStore = create<CareState>((set, get) => ({
       insuranceFilter: "",
       languageFilter: "",
       availabilityFilter: "",
-      userLocation: null,
+  userLocation: undefined,
       isLocationLoading: false,
       locationError: null,
       isLoadingProviders: false,

@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import type { DetectionResults, TriageResult, Recommendations, ShareSettings } from "@/src/types"
+import type { DetectionResults, TriageResult, Recommendations, ShareSettings } from "@/types"
 
 interface ResultsState {
   // Results data
@@ -88,9 +88,9 @@ export const useResultsStore = create<ResultsState>((set, get) => ({
       expiresAt.setDate(expiresAt.getDate() + 7) // 7 days from now
 
       const shareSettings: ShareSettings = {
+        ...settings,
         id: shareId,
         expiresAt,
-        ...settings,
       }
 
       const shareUrl = `${window.location.origin}/shared/${shareId}`

@@ -1,5 +1,5 @@
-import { apiRequest, ApiError } from "@/src/lib/api-client"
-import type { Recommendations, ShareSettings } from "@/src/types"
+import { apiRequest, ApiError } from "@/lib/api-client"
+import type { Recommendations, ShareSettings } from "@/types"
 
 export interface PersonalizedPlanRequest {
   assessmentId: string

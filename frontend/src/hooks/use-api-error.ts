@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useCallback } from "react"
-import { ApiError } from "@/src/lib/api-client"
+import { ApiError } from "@/lib/api-client"
 
 interface UseApiErrorReturn {
   error: string | null
