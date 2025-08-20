@@ -6,9 +6,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useIntakeStore } from "@/src/stores/intake-store"
-import { useUnitConversion } from "@/src/hooks/use-unit-conversion"
-import { calculateBMI, getBMICategory } from "@/src/utils/conversions"
+import { useIntakeStore } from "@/stores/intake-store"
+import { useUnitConversion } from "@/hooks/use-unit-conversion"
+import { calculateBMI, getBMICategory } from "@/utils/conversions"
 import { RotateCcw } from "lucide-react"
 
 const ETHNICITY_OPTIONS = [

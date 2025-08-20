@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { AlertTriangle, Info, TrendingUp, TrendingDown } from "lucide-react"
-import { cn } from "@/src/lib/utils"
-import type { RiskScore } from "@/src/types"
+import { cn } from "@/lib/utils"
+import type { RiskScore } from "@/types"
 
 interface RiskCardProps {
   condition: string
