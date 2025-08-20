@@ -4,8 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, Star, Phone, Globe, Clock, Shield } from "lucide-react"
-import { cn } from "@/src/lib/utils"
-import type { Provider } from "@/src/types"
+import { cn } from "@/lib/utils"
+import type { Provider } from "@/types"
 
 interface ProviderCardProps {
   provider: Provider

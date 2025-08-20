@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { TrendingUp, TrendingDown, Info } from "lucide-react"
-import { cn } from "@/src/lib/utils"
-import type { ContributingFactor } from "@/src/types"
+import { cn } from "@/lib/utils"
+import type { ContributingFactor } from "@/types"
 
 interface AttributionPanelProps {
   factors: ContributingFactor[]

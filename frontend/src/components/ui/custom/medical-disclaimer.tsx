@@ -1,6 +1,6 @@
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertTriangle } from "lucide-react"
-import { cn } from "@/src/lib/utils"
+import { cn } from "@/lib/utils"
 
 interface MedicalDisclaimerProps {
   variant?: "compact" | "full"

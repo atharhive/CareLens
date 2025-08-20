@@ -1,8 +1,8 @@
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { AlertTriangle, Clock, Phone, CheckCircle } from "lucide-react"
-import { cn } from "@/src/lib/utils"
-import type { TriageResult } from "@/src/types"
+import { cn } from "@/lib/utils"
+import type { TriageResult } from "@/types"
 
 interface TriageBannerProps {
   triage: TriageResult

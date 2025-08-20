@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { cn } from "@/src/lib/utils"
+import { cn } from "@/lib/utils"
 
 interface LoadingSkeletonProps {
   variant?: "risk-card" | "provider-card" | "form" | "results"

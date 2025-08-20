@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import { Upload, File, X, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
-import { cn } from "@/src/lib/utils"
-import type { UploadedFile } from "@/src/types"
+import { cn } from "@/lib/utils"
+import type { UploadedFile } from "@/types"
 
 interface FileUploadProps {
   onFilesUploaded: (files: UploadedFile[]) => void
