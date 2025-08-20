@@ -1,0 +1,14 @@
+# Core libraries
+pandas
+numpy
+scikit-learn
+torch
+torchvision
+torchaudio
+
+# Hugging Face Transformers + Datasets
+transformers
+datasets
+
+# Logging & utilities
+tqdm
