@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -7,14 +8,69 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useIntakeStore } from "@/stores/intake-store"
 import { useUnitConversion } from "@/hooks/use-unit-conversion"
-import { RotateCcw, Info } from "lucide-react"
+import { RotateCcw, Info, AlertCircle, CheckCircle } from "lucide-react"
+import { validateBloodPressure, validateHeartRate, validateTemperature } from "@/utils/validation"
 
 export function VitalsForm() {
-  const { vitals, setVitals, errors } = useIntakeStore()
+  const { vitals, setVitals, errors, clearErrors } = useIntakeStore()
   const { convertTemperatureValue } = useUnitConversion()
+  
+  // Local state for real-time validation
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
+  const [touchedFields, setTouchedFields] = useState<Set<string>>(new Set())
 
+  // Real-time validation function
+  const validateField = (field: string, value: any) => {
+    let error = ""
+    
+    switch (field) {
+      case "bloodPressure":
+        if (vitals.systolicBP && vitals.diastolicBP) {
+          error = validateBloodPressure(vitals.systolicBP, vitals.diastolicBP) || ""
+        }
+        break
+      case "heartRate":
+        if (value) {
+          error = validateHeartRate(value) || ""
+        }
+        break
+      case "temperature":
+        if (value) {
+          error = validateTemperature(value, vitals.temperatureUnit) || ""
+        }
+        break
+      default:
+        break
+    }
+    
+    return error
+  }
+
+  // Handle input change with real-time validation
   const handleInputChange = (field: keyof typeof vitals, value: string | number | undefined) => {
+    // Mark field as touched
+    setTouchedFields(prev => new Set([...prev, field]))
+    
+    // Update the store
     setVitals({ [field]: value })
+    
+    // Validate the field immediately
+    let error = ""
+    if (field === "systolicBP" || field === "diastolicBP") {
+      error = validateField("bloodPressure", value)
+    } else {
+      error = validateField(field, value)
+    }
+    
+    setFieldErrors(prev => ({
+      ...prev,
+      [field]: error
+    }))
+    
+    // Clear the error from store if field is now valid
+    if (!error && errors[field]) {
+      clearErrors()
+    }
   }
 
   const handleTemperatureUnitToggle = () => {
@@ -27,9 +83,29 @@ export function VitalsForm() {
         temperatureUnit: newUnit,
         temperature: convertedTemp,
       })
+      
+      // Re-validate temperature with new unit
+      const error = validateField("temperature", convertedTemp)
+      setFieldErrors(prev => ({
+        ...prev,
+        temperature: error
+      }))
     } else {
       setVitals({ temperatureUnit: newUnit })
     }
+  }
+
+  // Get error for a specific field
+  const getFieldError = (field: string) => {
+    if (touchedFields.has(field) && fieldErrors[field]) {
+      return fieldErrors[field]
+    }
+    return errors[field] || ""
+  }
+
+  // Check if field is valid
+  const isFieldValid = (field: string) => {
+    return touchedFields.has(field) && !getFieldError(field)
   }
 
   return (
@@ -59,19 +135,27 @@ export function VitalsForm() {
               <div className="space-y-2">
                 <Label htmlFor="systolic">Systolic (top number)</Label>
                 <div className="flex gap-2">
-                  <Input
-                    id="systolic"
-                    type="number"
-                    min="70"
-                    max="250"
-                    value={vitals.systolicBP || ""}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      handleInputChange("systolicBP", value === "" ? undefined : Number.parseInt(value) || undefined);
-                    }}
-                    placeholder="120"
-                    className={errors.bloodPressure ? "border-destructive" : ""}
-                  />
+                  <div className="relative flex-1">
+                    <Input
+                      id="systolic"
+                      type="number"
+                      min="70"
+                      max="250"
+                      value={vitals.systolicBP || ""}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        handleInputChange("systolicBP", value === "" ? undefined : Number.parseInt(value) || undefined);
+                      }}
+                      placeholder="120"
+                      className={`${getFieldError("systolicBP") ? "border-destructive pr-10" : isFieldValid("systolicBP") ? "border-green-500 pr-10" : ""}`}
+                    />
+                    {getFieldError("systolicBP") && (
+                      <AlertCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-destructive" />
+                    )}
+                    {isFieldValid("systolicBP") && (
+                      <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
+                    )}
+                  </div>
                   <Badge variant="outline" className="px-3 py-2">
                     mmHg
                   </Badge>
@@ -80,26 +164,39 @@ export function VitalsForm() {
               <div className="space-y-2">
                 <Label htmlFor="diastolic">Diastolic (bottom number)</Label>
                 <div className="flex gap-2">
-                  <Input
-                    id="diastolic"
-                    type="number"
-                    min="40"
-                    max="150"
-                    value={vitals.diastolicBP || ""}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      handleInputChange("diastolicBP", value === "" ? undefined : Number.parseInt(value) || undefined);
-                    }}
-                    placeholder="80"
-                    className={errors.bloodPressure ? "border-destructive" : ""}
-                  />
+                  <div className="relative flex-1">
+                    <Input
+                      id="diastolic"
+                      type="number"
+                      min="40"
+                      max="150"
+                      value={vitals.diastolicBP || ""}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        handleInputChange("diastolicBP", value === "" ? undefined : Number.parseInt(value) || undefined);
+                      }}
+                      placeholder="80"
+                      className={`${getFieldError("diastolicBP") ? "border-destructive pr-10" : isFieldValid("diastolicBP") ? "border-green-500 pr-10" : ""}`}
+                    />
+                    {getFieldError("diastolicBP") && (
+                      <AlertCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-destructive" />
+                    )}
+                    {isFieldValid("diastolicBP") && (
+                      <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
+                    )}
+                  </div>
                   <Badge variant="outline" className="px-3 py-2">
                     mmHg
                   </Badge>
                 </div>
               </div>
             </div>
-            {errors.bloodPressure && <p className="text-sm text-destructive">{errors.bloodPressure}</p>}
+            {(getFieldError("systolicBP") || getFieldError("diastolicBP")) && (
+              <p className="text-sm text-destructive flex items-center gap-1">
+                <AlertCircle className="h-3 w-3" />
+                {getFieldError("systolicBP") || getFieldError("diastolicBP")}
+              </p>
+            )}
             <div className="text-xs text-muted-foreground">
               Normal: Less than 120/80 mmHg • High: 140/90 mmHg or higher
             </div>
@@ -113,9 +210,8 @@ export function VitalsForm() {
             <CardDescription>Your resting heart rate in beats per minute</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="heartRate">Beats per minute</Label>
-              <div className="flex gap-2">
+            <div className="flex gap-2">
+              <div className="relative flex-1">
                 <Input
                   id="heartRate"
                   type="number"
@@ -127,59 +223,85 @@ export function VitalsForm() {
                     handleInputChange("heartRate", value === "" ? undefined : Number.parseInt(value) || undefined);
                   }}
                   placeholder="72"
-                  className={errors.heartRate ? "border-destructive" : ""}
+                  className={`${getFieldError("heartRate") ? "border-destructive pr-10" : isFieldValid("heartRate") ? "border-green-500 pr-10" : ""}`}
                 />
-                <Badge variant="outline" className="px-3 py-2">
-                  bpm
-                </Badge>
+                {getFieldError("heartRate") && (
+                  <AlertCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-destructive" />
+                )}
+                {isFieldValid("heartRate") && (
+                  <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
+                )}
               </div>
-              {errors.heartRate && <p className="text-sm text-destructive">{errors.heartRate}</p>}
-              <div className="text-xs text-muted-foreground">Normal resting: 60-100 bpm • Athletic: 40-60 bpm</div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Temperature */}
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg">Body Temperature</CardTitle>
-          <CardDescription>Your current body temperature (if feeling unwell)</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="temperature">Temperature</Label>
-              <Button variant="ghost" size="sm" onClick={handleTemperatureUnitToggle} className="h-6 px-2 text-xs">
-                <RotateCcw className="h-3 w-3 mr-1" />
-                {vitals.temperatureUnit === "celsius" ? "Switch to °F" : "Switch to °C"}
-              </Button>
-            </div>
-            <div className="flex gap-2 max-w-xs">
-              <Input
-                id="temperature"
-                type="number"
-                step="0.1"
-                value={vitals.temperature || ""}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  handleInputChange("temperature", value === "" ? undefined : Number.parseFloat(value) || undefined);
-                }}
-                placeholder={vitals.temperatureUnit === "celsius" ? "37.0" : "98.6"}
-                className={errors.temperature ? "border-destructive" : ""}
-              />
               <Badge variant="outline" className="px-3 py-2">
-                °{vitals.temperatureUnit === "celsius" ? "C" : "F"}
+                bpm
               </Badge>
             </div>
-            {errors.temperature && <p className="text-sm text-destructive">{errors.temperature}</p>}
+            {getFieldError("heartRate") && (
+              <p className="text-sm text-destructive flex items-center gap-1">
+                <AlertCircle className="h-3 w-3" />
+                {getFieldError("heartRate")}
+              </p>
+            )}
+            <div className="text-xs text-muted-foreground">Normal resting: 60-100 bpm • Athletic: 40-60 bpm</div>
+          </CardContent>
+        </Card>
+
+        {/* Temperature */}
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-lg">Body Temperature</CardTitle>
+            <CardDescription>Your body temperature</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex gap-2 flex-1">
+                <div className="relative flex-1">
+                  <Input
+                    id="temperature"
+                    type="number"
+                    step="0.1"
+                    value={vitals.temperature || ""}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      handleInputChange("temperature", value === "" ? undefined : Number.parseFloat(value) || undefined);
+                    }}
+                    placeholder={vitals.temperatureUnit === "celsius" ? "37.0" : "98.6"}
+                    className={`${getFieldError("temperature") ? "border-destructive pr-10" : isFieldValid("temperature") ? "border-green-500 pr-10" : ""}`}
+                  />
+                  {getFieldError("temperature") && (
+                    <AlertCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-destructive" />
+                  )}
+                  {isFieldValid("temperature") && (
+                    <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
+                  )}
+                </div>
+                <Badge variant="outline" className="px-3 py-2">
+                  °{vitals.temperatureUnit === "celsius" ? "C" : "F"}
+                </Badge>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleTemperatureUnitToggle}
+                className="h-8 px-2 text-xs"
+              >
+                <RotateCcw className="h-3 w-3 mr-1" />
+                Switch to {vitals.temperatureUnit === "celsius" ? "°F" : "°C"}
+              </Button>
+            </div>
+            {getFieldError("temperature") && (
+              <p className="text-sm text-destructive flex items-center gap-1">
+                <AlertCircle className="h-3 w-3" />
+                {getFieldError("temperature")}
+              </p>
+            )}
             <div className="text-xs text-muted-foreground">
               Normal: {vitals.temperatureUnit === "celsius" ? "36.1-37.2°C" : "97.0-99.0°F"} • Fever:{" "}
               {vitals.temperatureUnit === "celsius" ? "38.0°C+" : "100.4°F+"}
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
 
       <div className="text-sm text-muted-foreground bg-muted/50 p-4 rounded-md">
         <p className="font-medium mb-2">Tips for accurate measurements:</p>

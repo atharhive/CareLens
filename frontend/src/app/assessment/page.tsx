@@ -28,7 +28,7 @@ const ASSESSMENT_STEPS = [
 ]
 
 export default function AssessmentPage() {
-  const { currentStep, isValid, errors, nextStep, previousStep, setCurrentStep, validateCurrentStep, resetForm } =
+  const { currentStep, isValid, errors, nextStep, previousStep, setCurrentStep, validateCurrentStep, resetForm, validateDemographics, validateVitals, symptoms, demographics, vitals } =
     useIntakeStore()
 
   const { restoreFormData, clearSavedData } = useFormPersistence()
@@ -65,6 +65,42 @@ export default function AssessmentPage() {
   const handlePrevious = () => {
     previousStep()
   }
+
+  // Compute readiness for current step with real-time validation
+  const canProceed = (() => {
+    switch (currentStep) {
+      case 0: {
+        // Demographics validation
+        const ageError = demographics.age < 18 || demographics.age > 150 ? "Age must be between 18 and 150" : ""
+        const heightError = demographics.height < 100 || demographics.height > 250 ? "Height must be between 100-250 cm" : ""
+        const weightError = demographics.weight < 30 || demographics.weight > 300 ? "Weight must be between 30-300 kg" : ""
+        const ethnicityError = !demographics.ethnicity ? "Ethnicity is required" : ""
+        
+        return !ageError && !heightError && !weightError && !ethnicityError
+      }
+      case 1: {
+        // Vitals validation - all fields are optional
+        return true
+      }
+      case 2:
+        return symptoms.length > 0
+      case 3:
+      case 4:
+        return true
+      case 5: {
+        // On review step, validate all required fields
+        const ageError = demographics.age < 18 || demographics.age > 150 ? "Age must be between 18 and 150" : ""
+        const heightError = demographics.height < 100 || demographics.height > 250 ? "Height must be between 100-250 cm" : ""
+        const weightError = demographics.weight < 30 || demographics.weight > 300 ? "Weight must be between 30-300 kg" : ""
+        const ethnicityError = !demographics.ethnicity ? "Ethnicity is required" : ""
+        const symptomsError = symptoms.length === 0 ? "Please select at least one symptom" : ""
+        
+        return !ageError && !heightError && !weightError && !ethnicityError && !symptomsError
+      }
+      default:
+        return true
+    }
+  })()
 
   const renderCurrentStep = () => {
     switch (currentStep) {
@@ -187,7 +223,7 @@ export default function AssessmentPage() {
 
               <Button 
                 onClick={handleNext} 
-                disabled={!isValid && currentStep !== 5} 
+                disabled={!canProceed}
                 className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-700"
               >
                 {isLastStep ? (

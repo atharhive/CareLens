@@ -97,10 +97,19 @@ export const useIntakeStore = create<IntakeState>()(
       setDemographics: (demographics) =>
         set((state) => {
           const newDemographics = { ...state.demographics, ...demographics }
-          const errors = get().validateDemographics()
+          // Validate against the NEW demographics state
+          const updatedErrors: Record<string, string> = {}
+          const ageError = validateAge(newDemographics.age)
+          if (ageError) updatedErrors.age = ageError
+          const heightError = validateHeight(newDemographics.height, newDemographics.heightUnit)
+          if (heightError) updatedErrors.height = heightError
+          const weightError = validateWeight(newDemographics.weight, newDemographics.weightUnit)
+          if (weightError) updatedErrors.weight = weightError
+          if (!newDemographics.ethnicity) updatedErrors.ethnicity = "Ethnicity is required"
+
           return {
             demographics: newDemographics,
-            errors: { ...state.errors, ...errors },
+            errors: { ...state.errors, ...updatedErrors },
           }
         }),
 
@@ -108,10 +117,24 @@ export const useIntakeStore = create<IntakeState>()(
       setVitals: (vitals) =>
         set((state) => {
           const newVitals = { ...state.vitals, ...vitals }
-          const errors = get().validateVitals()
+          // Validate against the NEW vitals state
+          const updatedErrors: Record<string, string> = {}
+          if (newVitals.systolicBP != null && newVitals.diastolicBP != null) {
+            const bpError = validateBloodPressure(newVitals.systolicBP, newVitals.diastolicBP)
+            if (bpError) updatedErrors.bloodPressure = bpError
+          }
+          if (newVitals.heartRate != null) {
+            const hrError = validateHeartRate(newVitals.heartRate)
+            if (hrError) updatedErrors.heartRate = hrError
+          }
+          if (newVitals.temperature != null) {
+            const tempError = validateTemperature(newVitals.temperature, newVitals.temperatureUnit)
+            if (tempError) updatedErrors.temperature = tempError
+          }
+
           return {
             vitals: newVitals,
-            errors: { ...state.errors, ...errors },
+            errors: { ...state.errors, ...updatedErrors },
           }
         }),
 
