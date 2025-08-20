@@ -10,7 +10,7 @@ import {
   BarChart3, 
   MapPin, 
   Share2,
-  Activity
+  Heart
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -57,8 +57,8 @@ export function Navigation() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <Activity className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold">CareLens</span>
+              <Heart className="h-8 w-8 text-blue-600" />
+              <span className="text-xl font-bold text-gray-900">CareLens</span>
             </Link>
           </div>
 
@@ -74,7 +74,7 @@ export function Navigation() {
                     variant={isActive ? "default" : "ghost"}
                     className={cn(
                       "flex items-center space-x-2",
-                      isActive && "bg-primary text-primary-foreground"
+                      isActive && "bg-blue-600 text-white hover:bg-blue-700"
                     )}
                   >
                     <Icon className="h-4 w-4" />
@@ -118,14 +118,17 @@ export function Navigation() {
               <Link key={item.href} href={item.href}>
                 <Card className={cn(
                   "cursor-pointer transition-colors",
-                  isActive && "bg-primary text-primary-foreground"
+                  isActive && "bg-blue-600 text-white"
                 )}>
                   <CardContent className="p-3">
                     <div className="flex items-center space-x-3">
                       <Icon className="h-5 w-5" />
                       <div>
                         <div className="font-medium">{item.label}</div>
-                        <div className="text-sm text-muted-foreground">{item.description}</div>
+                        <div className={cn(
+                          "text-sm",
+                          isActive ? "text-blue-100" : "text-muted-foreground"
+                        )}>{item.description}</div>
                       </div>
                     </div>
                   </CardContent>
