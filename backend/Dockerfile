@@ -35,7 +35,7 @@ EXPOSE 5000
 
 # Set environment variables
 ENV FLASK_APP=main.py
-ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_HOST=127.0.0.1
 ENV FLASK_DEBUG=0
 
 # Run the application with Gunicorn
