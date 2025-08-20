@@ -71,7 +71,7 @@ FILE_TTL_MINUTES=5
 SHARE_LINK_MAX_DAYS=7
 
 # Frontend (.env.local)
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:5000
 VITE_GOOGLE_MAPS_KEY=your_key_here
 VITE_ENABLE_ANALYTICS=false
 ```
@@ -92,8 +92,8 @@ redis-server
 
 **Access Points:**
 - Frontend: http://localhost:3000
-- Backend API: http://localhost:8000
-- API Documentation: http://localhost:8000/docs
+- Backend API: http://localhost:5000
+- API Documentation: http://localhost:5000/docs
 
 ---
 

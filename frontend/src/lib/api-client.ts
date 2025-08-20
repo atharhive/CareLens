@@ -3,7 +3,7 @@
  * Handles authentication, error handling, and request/response formatting
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 export interface ApiResponse<T = any> {
   data?: T;

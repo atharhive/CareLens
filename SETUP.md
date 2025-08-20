@@ -88,8 +88,8 @@ npm run dev
 ## Access Points
 
 - **Frontend Application**: http://localhost:3000
-- **Backend API**: http://localhost:8000
-- **API Documentation**: http://localhost:8000/docs
+- **Backend API**: http://localhost:5000
+- **API Documentation**: http://localhost:5000/docs
 - **Development Proxy**: http://localhost:5000
 
 ## Environment Configuration
@@ -105,7 +105,7 @@ REDIS_URL=redis://localhost:6379/0
 
 ### Frontend (.env.local)
 ```bash
-NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_API_URL=http://localhost:5000
 ```
 
 ## Production Deployment
@@ -145,10 +145,10 @@ npm start
 ### Testing Backend Connection
 ```bash
 # Test backend health
-curl http://localhost:8000/health
+curl http://localhost:5000/health
 
 # Test API documentation
-open http://localhost:8000/docs
+open http://localhost:5000/docs
 ```
 
 ## Development Notes

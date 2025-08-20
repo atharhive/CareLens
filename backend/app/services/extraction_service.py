@@ -349,5 +349,4 @@ class ExtractionService:
         }
 
 async def get_extraction_service() -> ExtractionService:
-    """Get the extraction service instance."""
     return ExtractionService()
