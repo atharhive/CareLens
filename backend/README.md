@@ -145,8 +145,8 @@ flake8 app/
 
 ### API Documentation
 When running in development mode, access:
-- Swagger UI: http://localhost:8000/docs
-- ReDoc: http://localhost:8000/redoc
+- Swagger UI: http://localhost:5000/docs
+- ReDoc: http://localhost:5000/redoc
 
 ## Production Deployment
 

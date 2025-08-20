@@ -286,8 +286,8 @@ cd client && npm run dev
 
 **Access Points:**
 - 🌐 Frontend: http://localhost:3000
-- 🔌 Backend API: http://localhost:8000
-- 📚 API Docs: http://localhost:8000/docs
+- 🔌 Backend API: http://localhost:5000
+- 📚 API Docs: http://localhost:5000/docs
 
 ## 🎯 User Experience Flow
 
@@ -434,7 +434,7 @@ kubectl apply -f k8s/
 kubectl get pods -n medibridge
 
 # Health Checks
-curl http://localhost:8000/health
+curl http://localhost:5000/health
 curl http://localhost:3000/health
 ```
 

@@ -36,11 +36,11 @@ npm start
 
 ## API Integration
 
-The frontend connects to the FastAPI backend at `http://localhost:8000` by default. You can configure this with the `NEXT_PUBLIC_API_URL` environment variable.
+The frontend connects to the FastAPI backend at `http://localhost:5000` by default. You can configure this with the `NEXT_PUBLIC_API_URL` environment variable.
 
 Create a `.env.local` file:
 ```
-NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_API_URL=http://localhost:5000
 ```
 
 ## Project Structure
