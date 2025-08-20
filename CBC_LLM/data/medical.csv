@@ -1,0 +1,501 @@
+text,label,hemoglobin,rbc,wbc,platelet,neutrophils,lymphocytes,eosinophils,monocytes,basophils
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.3,6.2,6506,238513,52,28,5,7,2
+CBC within normal ranges.,0,13.3,4.7,9431,186956,58,31,5,7,2
+CBC indicates thrombocytopenia with low platelet count.,4,14.5,4.9,6778,56421,62,30,5,5,1
+CBC indicates anemia with low hemoglobin and RBC.,1,10.0,4.2,5337,204312,56,28,2,8,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.7,6.6,7600,200656,58,34,5,6,1
+CBC within normal ranges.,0,15.3,5.3,5153,241024,51,37,2,5,2
+CBC indicates eosinophilia with high eosinophils.,6,14.3,4.9,6216,249986,61,27,15,7,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.7,5.6,6711,347772,61,32,5,4,0
+CBC suggests infection with elevated WBC count.,2,14.4,4.6,14340,262490,73,40,3,7,1
+CBC indicates anemia with low hemoglobin and RBC.,1,9.5,3.6,6652,333245,56,37,2,3,0
+CBC within normal ranges.,0,16.0,4.7,5810,290666,59,27,3,5,2
+CBC suggests leukopenia with low WBC count.,3,14.9,5.5,2601,210029,60,33,5,4,0
+CBC suggests leukopenia with low WBC count.,3,13.6,4.5,2611,311225,62,30,4,2,2
+CBC indicates eosinophilia with high eosinophils.,6,15.2,5.1,5752,278019,62,30,7,8,2
+CBC indicates thrombocytopenia with low platelet count.,4,14.1,4.5,7473,31226,53,26,1,6,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.6,6.4,8863,212967,52,40,4,3,1
+CBC indicates anemia with low hemoglobin and RBC.,1,7.6,3.7,6147,261714,56,36,3,6,1
+CBC suggests infection with elevated WBC count.,2,13.1,5.1,15750,237728,67,27,5,7,0
+CBC within normal ranges.,0,16.0,4.6,6449,253001,60,40,1,6,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.3,6.2,8372,243700,62,40,3,3,0
+CBC suggests leukopenia with low WBC count.,3,14.4,5.4,3639,349392,51,26,3,7,1
+CBC indicates eosinophilia with high eosinophils.,6,13.4,4.7,8893,297601,52,38,10,4,1
+CBC indicates eosinophilia with high eosinophils.,6,16.2,4.9,9008,205666,50,25,9,8,0
+CBC suggests leukopenia with low WBC count.,3,14.7,4.7,3897,195370,52,37,0,5,1
+CBC indicates eosinophilia with high eosinophils.,6,15.7,4.8,9052,307577,52,31,16,3,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.5,6.9,4968,193144,59,40,4,8,2
+CBC within normal ranges.,0,16.0,4.6,5056,241657,56,28,4,3,2
+CBC indicates thrombocytopenia with low platelet count.,4,13.1,4.6,9885,113872,59,35,2,3,2
+CBC suggests infection with elevated WBC count.,2,13.8,4.9,22177,258642,83,35,0,2,1
+CBC within normal ranges.,0,13.3,4.7,6672,214722,55,27,1,4,1
+CBC indicates anemia with low hemoglobin and RBC.,1,8.5,4.1,6978,340347,62,25,5,8,2
+CBC indicates anemia with low hemoglobin and RBC.,1,8.7,4.1,9032,220749,54,34,4,3,2
+CBC indicates eosinophilia with high eosinophils.,6,13.9,5.0,4916,204195,60,38,12,2,0
+CBC indicates eosinophilia with high eosinophils.,6,13.5,5.5,5823,295824,58,38,8,2,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.9,6.9,7524,332701,58,29,3,3,0
+CBC indicates eosinophilia with high eosinophils.,6,16.4,4.5,7431,235070,60,32,19,2,1
+CBC indicates thrombocytopenia with low platelet count.,4,16.1,4.9,9584,43509,53,30,1,5,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.6,6.8,7872,245055,54,30,5,2,1
+CBC indicates anemia with low hemoglobin and RBC.,1,7.9,3.8,7364,260003,62,32,1,2,2
+CBC indicates eosinophilia with high eosinophils.,6,13.2,5.3,7376,348160,58,37,12,8,2
+CBC within normal ranges.,0,13.4,5.5,5962,332198,54,26,0,6,1
+CBC suggests infection with elevated WBC count.,2,15.5,4.8,12727,314066,78,37,4,3,1
+CBC within normal ranges.,0,14.8,5.3,9993,231651,55,38,0,7,1
+CBC indicates thrombocytopenia with low platelet count.,4,14.1,5.3,6960,58752,54,38,2,5,2
+CBC indicates thrombocytopenia with low platelet count.,4,13.4,4.9,7605,59829,59,34,3,6,0
+CBC suggests infection with elevated WBC count.,2,13.7,5.3,20375,264475,80,39,3,7,0
+CBC indicates eosinophilia with high eosinophils.,6,16.2,5.3,5890,202228,54,35,17,8,0
+CBC suggests infection with elevated WBC count.,2,13.8,4.7,19461,192114,78,40,4,8,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.0,6.7,7645,309598,56,32,1,7,2
+CBC indicates eosinophilia with high eosinophils.,6,16.1,5.3,6292,226107,62,39,20,6,0
+CBC within normal ranges.,0,14.6,5.3,9968,319233,58,35,3,6,2
+CBC indicates thrombocytopenia with low platelet count.,4,14.5,5.4,8152,130082,61,40,3,4,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.9,6.0,8469,344298,53,33,3,2,2
+CBC suggests infection with elevated WBC count.,2,16.1,4.6,18797,240623,78,29,5,3,0
+CBC suggests infection with elevated WBC count.,2,14.9,4.9,12096,290138,76,25,4,5,1
+CBC suggests infection with elevated WBC count.,2,15.6,5.4,19140,321091,80,32,3,3,1
+CBC within normal ranges.,0,14.4,5.2,7812,223265,57,29,4,6,0
+CBC suggests leukopenia with low WBC count.,3,15.1,5.2,2532,348492,56,29,3,3,0
+CBC suggests leukopenia with low WBC count.,3,14.1,5.0,2963,279385,54,38,2,8,0
+CBC within normal ranges.,0,15.6,4.6,7366,238778,60,27,5,2,0
+CBC indicates anemia with low hemoglobin and RBC.,1,11.6,3.9,5748,242533,52,40,5,2,2
+CBC suggests infection with elevated WBC count.,2,15.7,4.7,12420,210024,74,30,2,2,2
+CBC indicates thrombocytopenia with low platelet count.,4,15.4,5.5,7749,131449,51,32,0,7,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.5,6.1,9136,190766,55,38,5,4,0
+CBC indicates eosinophilia with high eosinophils.,6,14.5,5.0,8051,274945,60,39,9,3,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.8,6.1,9545,321078,62,40,3,5,2
+CBC indicates anemia with low hemoglobin and RBC.,1,8.9,3.5,8192,243927,62,39,4,6,2
+CBC indicates eosinophilia with high eosinophils.,6,14.1,5.0,7406,247725,55,33,15,7,1
+CBC within normal ranges.,0,14.8,4.7,6477,286542,57,32,5,5,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.0,6.1,5262,257132,53,37,5,3,1
+CBC indicates thrombocytopenia with low platelet count.,4,14.9,4.9,9008,50217,55,39,2,4,1
+CBC within normal ranges.,0,15.5,4.8,8889,228535,53,31,5,5,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.5,5.6,9388,254186,51,31,2,3,1
+CBC indicates thrombocytopenia with low platelet count.,4,13.4,4.5,4946,33446,54,29,5,8,1
+CBC indicates eosinophilia with high eosinophils.,6,13.0,4.8,8421,295466,55,30,8,4,1
+CBC indicates eosinophilia with high eosinophils.,6,13.2,5.0,9226,345005,60,26,11,3,2
+CBC within normal ranges.,0,16.5,4.6,7909,338942,59,32,4,5,1
+CBC suggests leukopenia with low WBC count.,3,14.0,5.1,3940,260053,59,26,4,7,0
+CBC indicates eosinophilia with high eosinophils.,6,13.7,4.7,9910,201282,52,32,9,6,0
+CBC within normal ranges.,0,14.4,5.2,8349,256351,50,32,2,7,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.7,5.8,6412,249351,62,31,3,2,2
+CBC suggests infection with elevated WBC count.,2,15.9,4.6,23283,260638,74,34,3,2,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.2,6.4,8923,309445,57,27,4,2,1
+CBC within normal ranges.,0,13.3,5.5,9212,333910,50,33,4,2,0
+CBC suggests leukopenia with low WBC count.,3,14.8,4.9,3984,227576,59,38,5,8,1
+CBC within normal ranges.,0,14.6,4.9,7130,207420,52,35,3,7,1
+CBC suggests infection with elevated WBC count.,2,15.3,4.9,13899,189619,77,27,2,4,1
+CBC indicates eosinophilia with high eosinophils.,6,14.8,5.5,9887,322237,57,38,12,3,2
+CBC indicates thrombocytopenia with low platelet count.,4,15.6,5.1,4922,83532,54,29,2,5,2
+CBC within normal ranges.,0,13.1,5.1,6460,221517,54,25,4,5,0
+CBC indicates anemia with low hemoglobin and RBC.,1,9.5,3.7,8280,210793,60,29,3,7,1
+CBC indicates eosinophilia with high eosinophils.,6,14.7,5.0,8241,324510,52,37,18,6,2
+CBC indicates anemia with low hemoglobin and RBC.,1,8.5,4.0,7899,269096,62,33,0,4,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.1,6.9,8912,306967,55,35,4,8,2
+CBC indicates eosinophilia with high eosinophils.,6,13.7,5.2,9184,280393,53,38,14,4,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.0,5.7,9936,219873,57,26,1,6,2
+CBC indicates eosinophilia with high eosinophils.,6,14.5,5.0,8243,184023,61,29,9,8,2
+CBC within normal ranges.,0,14.6,5.5,7273,343383,61,37,5,2,1
+CBC indicates eosinophilia with high eosinophils.,6,15.4,5.0,7094,344311,61,40,8,2,2
+CBC indicates anemia with low hemoglobin and RBC.,1,9.2,4.1,6363,203692,56,28,5,7,0
+CBC within normal ranges.,0,13.2,5.3,6903,273969,55,38,1,3,2
+CBC suggests leukopenia with low WBC count.,3,15.0,5.3,3019,225893,51,37,4,7,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.5,5.0,6580,91643,54,25,3,4,2
+CBC indicates anemia with low hemoglobin and RBC.,1,11.1,3.7,9313,258421,60,38,5,4,1
+CBC suggests leukopenia with low WBC count.,3,16.0,4.6,3699,329926,55,34,5,4,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.8,6.1,4901,338965,61,40,2,8,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.9,6.2,9900,215855,60,28,5,7,0
+CBC indicates thrombocytopenia with low platelet count.,4,14.3,4.6,6917,123089,61,38,1,3,0
+CBC indicates thrombocytopenia with low platelet count.,4,16.1,4.9,8610,117853,52,33,3,8,1
+CBC indicates eosinophilia with high eosinophils.,6,14.2,4.6,5116,216898,62,32,13,7,2
+CBC indicates eosinophilia with high eosinophils.,6,15.8,4.9,7732,183648,54,28,18,4,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.7,6.4,9730,277379,51,32,3,2,2
+CBC indicates thrombocytopenia with low platelet count.,4,13.8,4.6,8303,24877,60,38,0,3,0
+CBC suggests infection with elevated WBC count.,2,16.5,4.6,24175,320914,82,37,3,4,2
+CBC suggests leukopenia with low WBC count.,3,15.1,5.2,2758,205957,57,38,2,2,2
+CBC indicates anemia with low hemoglobin and RBC.,1,7.3,3.7,7471,206045,60,36,4,7,1
+CBC within normal ranges.,0,16.3,5.3,5250,235602,60,25,0,8,1
+CBC indicates anemia with low hemoglobin and RBC.,1,8.6,3.6,6181,197985,62,31,4,3,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.0,5.4,5685,133567,58,33,1,2,2
+CBC within normal ranges.,0,13.5,4.9,6449,334364,55,25,1,4,0
+CBC indicates anemia with low hemoglobin and RBC.,1,9.2,3.7,5020,304845,57,36,4,6,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.2,5.3,9897,82781,54,39,5,2,0
+CBC indicates eosinophilia with high eosinophils.,6,14.4,5.2,8516,296277,51,27,8,6,0
+CBC indicates anemia with low hemoglobin and RBC.,1,9.1,4.2,8992,265245,56,34,3,6,2
+CBC within normal ranges.,0,16.0,5.2,9016,236367,56,39,1,5,1
+CBC indicates eosinophilia with high eosinophils.,6,14.6,4.9,5278,261932,56,35,9,4,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.4,6.4,5199,204439,56,28,5,7,1
+CBC indicates thrombocytopenia with low platelet count.,4,16.3,5.1,9988,133782,56,36,5,8,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.7,5.8,7059,272181,51,31,1,7,1
+CBC indicates eosinophilia with high eosinophils.,6,14.9,4.6,6782,330496,53,38,16,8,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.8,6.1,9888,250109,50,30,2,7,1
+CBC indicates anemia with low hemoglobin and RBC.,1,8.1,3.9,7783,198241,52,25,0,7,2
+CBC suggests infection with elevated WBC count.,2,13.6,4.8,24360,328791,84,27,0,3,0
+CBC within normal ranges.,0,15.4,4.8,9922,291152,57,39,3,4,0
+CBC indicates eosinophilia with high eosinophils.,6,14.8,4.8,5408,254251,60,40,7,7,1
+CBC indicates anemia with low hemoglobin and RBC.,1,8.4,3.6,4562,233588,54,31,1,8,1
+CBC suggests leukopenia with low WBC count.,3,15.6,4.7,3651,319613,61,32,4,6,2
+CBC suggests infection with elevated WBC count.,2,13.3,5.4,21433,294352,78,39,0,8,1
+CBC indicates thrombocytopenia with low platelet count.,4,14.4,5.1,6871,80305,56,25,2,3,2
+CBC indicates eosinophilia with high eosinophils.,6,15.4,4.9,8077,207751,53,38,8,5,2
+CBC suggests leukopenia with low WBC count.,3,16.0,5.2,2233,267311,62,30,0,6,2
+CBC indicates thrombocytopenia with low platelet count.,4,14.8,5.4,7362,53550,61,29,1,2,0
+CBC indicates anemia with low hemoglobin and RBC.,1,10.7,3.9,9869,199753,52,40,3,8,2
+CBC indicates thrombocytopenia with low platelet count.,4,15.3,5.5,7147,77961,55,29,3,2,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.1,6.1,4960,272259,58,27,2,5,1
+CBC suggests infection with elevated WBC count.,2,13.3,5.4,24973,341220,66,37,3,6,2
+CBC suggests leukopenia with low WBC count.,3,16.2,5.1,2922,264286,59,40,4,3,0
+CBC within normal ranges.,0,15.8,5.3,5190,312264,60,30,0,3,2
+CBC suggests leukopenia with low WBC count.,3,16.5,5.0,3586,221614,55,36,2,5,1
+CBC suggests infection with elevated WBC count.,2,15.4,4.6,23114,349687,77,27,2,2,2
+CBC suggests infection with elevated WBC count.,2,13.9,5.4,17731,219419,74,27,4,7,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.4,6.5,9374,202208,54,37,5,8,1
+CBC indicates eosinophilia with high eosinophils.,6,16.3,5.5,8812,204498,60,38,12,4,0
+CBC suggests infection with elevated WBC count.,2,13.6,4.7,24912,230333,68,29,1,2,1
+CBC indicates thrombocytopenia with low platelet count.,4,15.7,5.3,8813,69377,60,35,4,3,2
+CBC indicates anemia with low hemoglobin and RBC.,1,10.3,3.7,9617,223395,61,39,0,5,1
+CBC suggests leukopenia with low WBC count.,3,15.1,5.3,3851,241342,58,32,2,8,1
+CBC indicates eosinophilia with high eosinophils.,6,13.7,5.2,9172,295499,57,34,13,6,2
+CBC indicates anemia with low hemoglobin and RBC.,1,10.5,4.0,5633,245536,50,40,2,6,0
+CBC within normal ranges.,0,14.0,5.3,6734,297786,58,29,3,2,0
+CBC indicates eosinophilia with high eosinophils.,6,14.6,4.8,4718,288762,50,37,13,4,0
+CBC within normal ranges.,0,14.3,4.5,5311,267894,62,29,1,2,1
+CBC indicates eosinophilia with high eosinophils.,6,14.7,5.3,8342,297598,59,25,10,2,1
+CBC indicates eosinophilia with high eosinophils.,6,13.5,5.4,9487,318352,56,28,8,3,1
+CBC within normal ranges.,0,13.8,5.1,9602,299829,51,28,3,6,2
+CBC within normal ranges.,0,15.2,5.1,5676,256355,56,25,4,4,0
+CBC indicates thrombocytopenia with low platelet count.,4,14.5,5.2,5201,123076,55,27,4,6,2
+CBC indicates thrombocytopenia with low platelet count.,4,14.9,4.9,8351,22128,60,37,2,4,2
+CBC suggests infection with elevated WBC count.,2,15.8,4.8,20945,344693,75,35,1,2,1
+CBC indicates eosinophilia with high eosinophils.,6,15.2,5.3,8306,305444,60,30,19,2,2
+CBC suggests leukopenia with low WBC count.,3,13.1,4.7,2969,190985,55,34,4,5,2
+CBC suggests infection with elevated WBC count.,2,13.1,5.1,14039,273578,76,26,5,4,1
+CBC suggests leukopenia with low WBC count.,3,16.1,5.2,3892,268876,52,40,5,5,1
+CBC indicates eosinophilia with high eosinophils.,6,14.8,5.3,7977,200690,56,30,8,4,1
+CBC within normal ranges.,0,14.1,4.8,8152,337973,61,38,1,7,1
+CBC suggests infection with elevated WBC count.,2,14.6,5.2,13229,341179,85,33,5,8,0
+CBC suggests leukopenia with low WBC count.,3,14.3,5.3,2483,188163,52,39,0,3,0
+CBC indicates eosinophilia with high eosinophils.,6,15.3,4.9,9146,188489,59,29,12,5,1
+CBC suggests leukopenia with low WBC count.,3,15.7,5.1,3967,276193,56,35,5,4,0
+CBC within normal ranges.,0,13.1,4.7,8741,281446,58,28,2,8,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.4,6.9,6839,308765,53,28,1,8,0
+CBC suggests leukopenia with low WBC count.,3,16.5,5.3,3825,271075,61,27,4,6,1
+CBC suggests infection with elevated WBC count.,2,16.0,5.2,15292,225636,69,36,4,3,0
+CBC indicates anemia with low hemoglobin and RBC.,1,11.3,3.6,9038,330019,55,39,4,3,2
+CBC suggests leukopenia with low WBC count.,3,16.5,5.2,3991,287687,62,38,4,2,0
+CBC suggests infection with elevated WBC count.,2,15.2,4.9,12907,270312,68,30,1,5,2
+CBC indicates thrombocytopenia with low platelet count.,4,13.5,4.7,7143,103238,55,34,0,4,0
+CBC indicates thrombocytopenia with low platelet count.,4,14.0,5.1,9533,42439,51,30,4,6,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.3,6.0,7265,327749,50,25,0,2,2
+CBC indicates anemia with low hemoglobin and RBC.,1,8.2,4.2,9734,187939,57,34,5,4,1
+CBC suggests leukopenia with low WBC count.,3,14.0,4.6,2696,221439,57,38,3,5,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.5,5.4,7115,33917,56,29,2,6,2
+CBC suggests infection with elevated WBC count.,2,13.8,4.6,22082,244990,78,28,0,4,1
+CBC indicates anemia with low hemoglobin and RBC.,1,9.4,4.0,7182,331437,61,35,1,8,0
+CBC suggests leukopenia with low WBC count.,3,16.1,5.0,2722,283086,58,39,1,3,2
+CBC within normal ranges.,0,13.2,5.0,9859,303361,54,25,0,5,0
+CBC suggests infection with elevated WBC count.,2,15.5,5.3,17939,191860,82,26,4,6,0
+CBC suggests infection with elevated WBC count.,2,13.3,5.0,18114,253327,75,28,1,2,1
+CBC indicates thrombocytopenia with low platelet count.,4,16.3,5.3,6130,25100,58,37,4,2,0
+CBC indicates anemia with low hemoglobin and RBC.,1,7.8,4.4,8754,299796,52,29,2,6,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.4,5.6,8655,313618,58,40,5,6,1
+CBC suggests infection with elevated WBC count.,2,15.4,5.5,22741,260655,83,25,4,5,1
+CBC indicates thrombocytopenia with low platelet count.,4,13.8,4.6,8435,51745,58,37,1,8,2
+CBC within normal ranges.,0,15.0,5.2,6062,184964,57,35,3,3,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.6,6.1,9509,303628,61,26,5,3,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.3,6.6,5918,300498,58,35,4,4,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.8,7.0,8466,230400,53,33,4,4,0
+CBC indicates eosinophilia with high eosinophils.,6,14.0,4.7,8505,263110,57,36,11,8,2
+CBC suggests infection with elevated WBC count.,2,13.4,5.2,23700,283424,67,29,2,2,1
+CBC suggests infection with elevated WBC count.,2,16.2,5.2,14249,236095,68,33,4,7,1
+CBC indicates thrombocytopenia with low platelet count.,4,15.6,4.7,4915,63292,53,32,0,2,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.4,5.9,5626,181358,58,30,3,7,1
+CBC suggests infection with elevated WBC count.,2,14.1,5.1,12595,330505,77,26,1,5,0
+CBC indicates eosinophilia with high eosinophils.,6,14.7,5.4,6871,189821,50,34,12,6,0
+CBC suggests infection with elevated WBC count.,2,14.6,5.1,17417,309476,70,39,2,3,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.3,5.8,6025,183692,61,35,2,6,2
+CBC indicates eosinophilia with high eosinophils.,6,15.2,4.9,8003,315077,55,27,9,7,0
+CBC indicates anemia with low hemoglobin and RBC.,1,11.7,3.8,4555,248363,56,32,3,8,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.2,6.3,7445,241945,50,28,3,4,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.5,6.6,9732,257342,55,32,1,3,1
+CBC indicates thrombocytopenia with low platelet count.,4,14.3,5.2,8357,134443,62,31,1,7,2
+CBC indicates eosinophilia with high eosinophils.,6,13.3,4.9,7463,200474,59,28,15,8,2
+CBC indicates anemia with low hemoglobin and RBC.,1,9.9,3.6,7187,316404,57,28,5,3,2
+CBC indicates thrombocytopenia with low platelet count.,4,14.6,4.6,5580,80604,56,39,4,2,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.3,6.6,7743,246704,50,31,4,2,0
+CBC indicates thrombocytopenia with low platelet count.,4,16.5,5.4,5065,120378,50,34,3,3,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.0,6.5,7943,278162,56,39,3,5,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.5,5.4,5471,49188,58,37,4,3,2
+CBC indicates eosinophilia with high eosinophils.,6,13.0,4.5,6944,301373,60,38,10,5,0
+CBC suggests leukopenia with low WBC count.,3,14.2,4.8,2492,188445,62,38,4,8,0
+CBC indicates anemia with low hemoglobin and RBC.,1,9.0,3.7,8157,336705,60,26,1,7,0
+CBC indicates anemia with low hemoglobin and RBC.,1,9.8,4.2,5647,312093,54,32,5,6,1
+CBC indicates eosinophilia with high eosinophils.,6,14.1,4.8,5673,316642,53,38,15,4,0
+CBC indicates thrombocytopenia with low platelet count.,4,16.1,5.4,9628,107994,58,40,0,4,2
+CBC suggests leukopenia with low WBC count.,3,15.8,4.8,2969,287022,52,34,3,3,2
+CBC indicates anemia with low hemoglobin and RBC.,1,7.7,3.7,5682,301379,50,38,3,6,2
+CBC indicates anemia with low hemoglobin and RBC.,1,10.3,4.0,8184,277275,51,31,0,4,1
+CBC indicates eosinophilia with high eosinophils.,6,13.3,5.3,9313,326499,53,40,11,8,1
+CBC within normal ranges.,0,13.7,4.7,5461,305546,53,31,3,3,2
+CBC suggests infection with elevated WBC count.,2,15.7,4.9,19635,274177,68,33,2,6,1
+CBC indicates eosinophilia with high eosinophils.,6,16.4,5.0,7123,233248,55,35,20,2,2
+CBC indicates anemia with low hemoglobin and RBC.,1,8.6,3.8,9032,333100,59,38,2,3,0
+CBC indicates eosinophilia with high eosinophils.,6,13.9,5.1,7265,247456,62,40,14,7,2
+CBC suggests leukopenia with low WBC count.,3,13.6,5.3,3960,216689,61,40,1,6,2
+CBC within normal ranges.,0,14.8,5.3,5108,192717,62,25,3,3,2
+CBC indicates anemia with low hemoglobin and RBC.,1,10.3,4.1,6291,312574,57,36,0,6,2
+CBC suggests leukopenia with low WBC count.,3,15.3,4.5,2562,324610,56,25,0,6,2
+CBC indicates thrombocytopenia with low platelet count.,4,16.4,4.5,8027,45156,51,28,4,3,0
+CBC indicates thrombocytopenia with low platelet count.,4,14.8,5.3,6689,51877,51,36,3,5,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.4,6.5,5160,188305,51,37,3,5,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.7,6.9,8054,349058,62,35,4,8,0
+CBC indicates anemia with low hemoglobin and RBC.,1,11.4,4.0,9143,304649,54,26,0,7,1
+CBC within normal ranges.,0,13.6,5.4,4628,234305,59,29,5,8,1
+CBC within normal ranges.,0,14.0,5.1,9142,282015,60,35,3,8,2
+CBC indicates anemia with low hemoglobin and RBC.,1,8.1,3.6,5142,311279,61,36,0,2,1
+CBC indicates thrombocytopenia with low platelet count.,4,15.7,5.5,7749,66636,50,33,3,5,0
+CBC indicates thrombocytopenia with low platelet count.,4,16.3,4.9,9299,30752,51,34,1,7,0
+CBC suggests infection with elevated WBC count.,2,13.5,5.2,13499,220442,65,37,2,4,0
+CBC suggests infection with elevated WBC count.,2,14.6,5.3,21088,214735,81,30,3,5,2
+CBC suggests leukopenia with low WBC count.,3,13.4,4.6,2847,204396,59,35,3,2,1
+CBC suggests leukopenia with low WBC count.,3,15.7,5.2,2284,243633,59,30,5,5,0
+CBC suggests infection with elevated WBC count.,2,14.1,5.0,24823,223832,67,33,3,4,1
+CBC suggests infection with elevated WBC count.,2,13.9,4.7,16991,309971,65,31,3,2,0
+CBC suggests leukopenia with low WBC count.,3,14.2,5.1,2615,295401,55,38,5,6,0
+CBC suggests infection with elevated WBC count.,2,15.1,5.2,23386,262361,85,37,2,4,2
+CBC suggests leukopenia with low WBC count.,3,16.4,5.3,2409,278580,54,37,2,2,2
+CBC indicates thrombocytopenia with low platelet count.,4,16.5,4.7,9006,124554,61,39,5,3,1
+CBC suggests infection with elevated WBC count.,2,15.9,4.6,14525,310889,78,34,1,4,2
+CBC indicates eosinophilia with high eosinophils.,6,14.3,4.9,9398,305628,59,37,13,6,2
+CBC indicates thrombocytopenia with low platelet count.,4,13.1,5.5,8898,106193,60,27,0,8,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.3,5.7,4862,327644,60,37,2,8,1
+CBC indicates anemia with low hemoglobin and RBC.,1,10.8,4.0,9255,330794,53,39,2,5,1
+CBC indicates thrombocytopenia with low platelet count.,4,13.5,5.5,8454,38569,54,38,0,2,2
+CBC suggests infection with elevated WBC count.,2,14.1,5.0,23829,316607,79,36,3,2,1
+CBC suggests infection with elevated WBC count.,2,13.2,4.5,24132,185920,72,28,5,8,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.6,4.7,9086,44430,57,32,3,7,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.6,6.0,9530,231727,57,38,3,2,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.3,6.5,5333,320742,52,36,2,3,1
+CBC suggests leukopenia with low WBC count.,3,14.8,5.1,2720,281879,59,37,4,2,1
+CBC indicates eosinophilia with high eosinophils.,6,14.6,4.7,6936,341083,59,27,8,3,1
+CBC indicates anemia with low hemoglobin and RBC.,1,8.9,3.7,5658,313909,56,38,4,3,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.9,6.2,5919,325467,52,40,2,3,0
+CBC within normal ranges.,0,16.0,5.5,8469,215791,53,37,4,6,2
+CBC suggests leukopenia with low WBC count.,3,14.4,5.0,2598,308109,52,27,4,2,0
+CBC within normal ranges.,0,14.0,5.0,5877,299884,59,40,4,6,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.4,5.3,7505,48644,62,26,5,5,2
+CBC suggests leukopenia with low WBC count.,3,13.4,5.3,2899,258042,50,39,2,4,0
+CBC indicates eosinophilia with high eosinophils.,6,16.5,5.3,6441,235018,62,36,13,6,2
+CBC indicates anemia with low hemoglobin and RBC.,1,9.6,3.8,6195,195560,59,36,4,4,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.4,6.8,8714,204962,52,38,0,4,2
+CBC indicates anemia with low hemoglobin and RBC.,1,10.1,3.8,6527,282944,57,29,4,7,1
+CBC within normal ranges.,0,15.2,5.4,5262,285604,58,33,5,4,1
+CBC suggests leukopenia with low WBC count.,3,14.1,4.5,2814,300179,60,36,0,8,2
+CBC indicates anemia with low hemoglobin and RBC.,1,7.6,4.3,8552,250395,55,34,2,6,2
+CBC indicates eosinophilia with high eosinophils.,6,14.2,5.2,4896,192043,51,39,14,2,0
+CBC suggests leukopenia with low WBC count.,3,13.0,5.5,2191,214580,60,34,1,8,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.1,5.9,9943,223391,50,37,5,4,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.0,5.6,6248,304992,51,29,4,3,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.2,5.7,7959,214648,57,27,1,5,0
+CBC suggests infection with elevated WBC count.,2,14.3,4.8,12138,214903,84,29,0,6,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.3,5.9,6245,344647,61,29,3,6,2
+CBC within normal ranges.,0,13.5,4.6,7645,272152,56,35,1,3,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.6,6.3,9415,339276,54,25,5,4,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.8,6.3,6460,309731,56,28,1,5,2
+CBC within normal ranges.,0,16.5,5.4,5581,281407,59,38,2,6,2
+CBC indicates anemia with low hemoglobin and RBC.,1,7.2,3.6,5097,184375,59,27,0,4,0
+CBC indicates eosinophilia with high eosinophils.,6,14.4,4.8,8604,288903,56,37,15,7,2
+CBC indicates thrombocytopenia with low platelet count.,4,13.5,4.6,5147,96865,53,29,4,4,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.2,5.7,9768,197331,54,38,5,8,0
+CBC suggests leukopenia with low WBC count.,3,13.4,5.1,2281,261078,60,30,0,2,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.2,6.8,7340,317102,58,33,1,4,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.8,7.0,4740,267821,62,38,2,6,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.3,6.9,7450,194533,57,30,2,3,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.1,6.9,8668,180673,50,25,1,2,1
+CBC indicates anemia with low hemoglobin and RBC.,1,8.6,4.2,9029,289935,53,35,1,5,2
+CBC indicates thrombocytopenia with low platelet count.,4,14.3,5.0,4931,133512,53,26,3,2,1
+CBC suggests infection with elevated WBC count.,2,15.7,4.8,21237,324989,74,25,2,3,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.5,6.9,9347,309331,62,31,5,6,0
+CBC within normal ranges.,0,13.8,4.8,4578,267822,50,37,5,7,1
+CBC within normal ranges.,0,13.7,5.5,7939,308982,50,29,5,4,0
+CBC within normal ranges.,0,16.2,5.4,8757,288280,61,36,3,7,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.3,4.6,7730,51034,59,26,3,7,0
+CBC suggests infection with elevated WBC count.,2,13.9,4.8,15321,265524,69,39,2,3,0
+CBC indicates eosinophilia with high eosinophils.,6,15.7,4.6,5365,223089,57,39,15,5,0
+CBC suggests infection with elevated WBC count.,2,16.4,4.7,16984,301463,84,28,0,3,2
+CBC within normal ranges.,0,13.8,5.4,5715,203910,61,32,2,5,2
+CBC within normal ranges.,0,15.4,4.8,5924,188147,56,39,4,7,2
+CBC indicates anemia with low hemoglobin and RBC.,1,11.0,3.8,5645,211838,50,26,1,3,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.3,5.8,9301,247848,51,25,0,3,2
+CBC indicates eosinophilia with high eosinophils.,6,15.9,4.8,4849,300847,50,30,13,5,2
+CBC suggests leukopenia with low WBC count.,3,13.1,5.2,3809,272784,53,30,2,4,1
+CBC indicates anemia with low hemoglobin and RBC.,1,7.3,3.8,6513,349680,54,40,3,6,1
+CBC indicates anemia with low hemoglobin and RBC.,1,8.8,4.0,8807,245312,60,25,3,8,2
+CBC suggests leukopenia with low WBC count.,3,14.2,5.1,2448,281811,54,30,0,4,2
+CBC within normal ranges.,0,16.1,5.3,4979,303649,58,36,4,3,0
+CBC within normal ranges.,0,13.9,4.7,8871,194656,62,32,4,8,1
+CBC suggests infection with elevated WBC count.,2,16.3,5.5,21692,226163,65,35,5,7,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.5,5.7,9117,217251,59,31,3,6,1
+CBC within normal ranges.,0,13.8,4.7,8812,305301,50,35,4,3,0
+CBC suggests infection with elevated WBC count.,2,15.5,5.4,24687,195612,68,29,4,7,0
+CBC indicates eosinophilia with high eosinophils.,6,14.8,4.9,5094,277934,61,37,11,2,1
+CBC suggests infection with elevated WBC count.,2,13.5,4.7,23363,347579,84,35,1,7,2
+CBC indicates eosinophilia with high eosinophils.,6,14.2,5.2,5936,279191,54,34,7,3,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.7,6.9,9148,188488,52,35,4,3,2
+CBC indicates anemia with low hemoglobin and RBC.,1,10.6,3.8,7341,263759,52,27,5,7,2
+CBC within normal ranges.,0,13.9,4.7,5055,271876,54,28,5,2,0
+CBC suggests leukopenia with low WBC count.,3,14.5,4.9,2207,288532,57,37,2,6,1
+CBC indicates eosinophilia with high eosinophils.,6,14.7,5.4,9832,239135,52,39,11,8,0
+CBC within normal ranges.,0,14.1,5.5,5107,269602,52,37,1,7,0
+CBC indicates thrombocytopenia with low platelet count.,4,16.3,5.5,7268,105673,59,40,5,2,1
+CBC indicates anemia with low hemoglobin and RBC.,1,9.7,4.3,4938,206544,55,31,1,5,2
+CBC indicates thrombocytopenia with low platelet count.,4,13.9,4.8,6445,40131,50,37,4,6,1
+CBC within normal ranges.,0,14.3,4.9,6912,343863,59,40,1,2,0
+CBC indicates anemia with low hemoglobin and RBC.,1,11.4,3.7,5171,304143,51,34,3,5,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.4,5.9,7624,276836,52,39,0,4,1
+CBC suggests infection with elevated WBC count.,2,15.0,4.7,15727,205350,82,36,4,5,2
+CBC within normal ranges.,0,15.9,5.3,7929,320381,60,40,4,3,1
+CBC suggests infection with elevated WBC count.,2,13.3,5.4,14832,311622,70,29,0,8,1
+CBC indicates anemia with low hemoglobin and RBC.,1,7.7,4.0,7968,200543,60,38,1,8,2
+CBC suggests infection with elevated WBC count.,2,16.2,5.4,20514,202813,79,37,4,4,1
+CBC indicates eosinophilia with high eosinophils.,6,13.0,5.2,9313,316986,62,38,9,5,0
+CBC indicates thrombocytopenia with low platelet count.,4,15.1,5.3,5320,135361,59,28,2,8,2
+CBC suggests infection with elevated WBC count.,2,16.1,4.8,18602,307293,69,40,0,3,1
+CBC indicates thrombocytopenia with low platelet count.,4,15.1,5.2,4817,55203,55,32,0,7,1
+CBC suggests infection with elevated WBC count.,2,13.1,5.3,15734,261513,69,40,5,7,0
+CBC suggests infection with elevated WBC count.,2,16.4,4.9,15079,250626,79,38,4,7,0
+CBC indicates anemia with low hemoglobin and RBC.,1,7.3,4.1,8468,315397,55,26,4,8,0
+CBC suggests leukopenia with low WBC count.,3,13.5,5.4,2510,187588,52,31,1,8,0
+CBC within normal ranges.,0,14.6,5.4,6131,251821,55,39,4,5,2
+CBC within normal ranges.,0,15.4,4.7,8504,335724,57,30,3,6,2
+CBC suggests infection with elevated WBC count.,2,14.2,5.3,21375,203695,71,25,3,2,0
+CBC indicates eosinophilia with high eosinophils.,6,13.8,4.7,6193,250538,60,38,7,2,2
+CBC suggests leukopenia with low WBC count.,3,16.2,5.1,3459,182218,53,33,4,8,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.0,6.8,7584,271412,57,33,1,5,1
+CBC suggests leukopenia with low WBC count.,3,15.0,4.5,2986,278102,58,34,2,7,0
+CBC within normal ranges.,0,14.2,4.8,7163,252583,54,34,1,3,2
+CBC indicates eosinophilia with high eosinophils.,6,13.8,4.6,9415,285931,60,35,7,3,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.4,6.1,7928,286063,56,26,4,7,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.6,5.9,8397,273977,58,34,1,8,2
+CBC within normal ranges.,0,14.6,5.2,9079,227990,60,35,5,2,0
+CBC suggests infection with elevated WBC count.,2,13.8,5.4,13929,266852,80,33,4,4,1
+CBC within normal ranges.,0,16.0,5.1,9584,198668,57,31,4,2,2
+CBC suggests leukopenia with low WBC count.,3,14.9,4.9,2293,216009,53,35,3,6,1
+CBC suggests infection with elevated WBC count.,2,16.0,4.7,12077,307816,79,30,2,7,0
+CBC suggests infection with elevated WBC count.,2,13.7,5.3,22379,221532,78,27,1,6,1
+CBC suggests leukopenia with low WBC count.,3,14.5,5.0,3826,189889,58,31,5,4,0
+CBC suggests infection with elevated WBC count.,2,15.6,5.0,17113,181081,69,32,1,7,1
+CBC within normal ranges.,0,14.3,5.1,5868,197114,50,34,2,5,2
+CBC indicates thrombocytopenia with low platelet count.,4,15.1,4.8,5596,22506,57,36,1,3,1
+CBC indicates anemia with low hemoglobin and RBC.,1,10.2,3.5,6230,185744,59,30,0,4,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.1,5.8,4898,335693,50,28,5,8,0
+CBC suggests leukopenia with low WBC count.,3,14.3,5.0,2206,220141,53,25,2,5,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.5,6.5,5623,289792,51,28,2,2,0
+CBC indicates eosinophilia with high eosinophils.,6,13.9,5.0,6152,273827,61,38,15,3,0
+CBC suggests leukopenia with low WBC count.,3,16.2,5.2,3857,266665,53,25,0,7,0
+CBC within normal ranges.,0,15.9,5.2,5721,203614,62,27,5,7,0
+CBC suggests infection with elevated WBC count.,2,15.3,5.0,12646,249238,74,26,0,8,0
+CBC suggests infection with elevated WBC count.,2,15.8,4.8,22868,204903,85,26,0,8,0
+CBC indicates anemia with low hemoglobin and RBC.,1,7.9,3.9,9593,250335,61,27,2,8,1
+CBC suggests leukopenia with low WBC count.,3,14.0,4.9,3487,290556,60,30,0,3,2
+CBC within normal ranges.,0,16.4,5.3,5349,289059,59,40,4,7,1
+CBC indicates anemia with low hemoglobin and RBC.,1,11.3,3.9,9508,187554,60,29,3,5,0
+CBC within normal ranges.,0,13.9,4.8,8799,331165,61,32,5,8,1
+CBC indicates thrombocytopenia with low platelet count.,4,14.8,5.2,5280,108643,60,32,3,4,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.5,6.8,9073,340671,50,25,5,3,2
+CBC indicates eosinophilia with high eosinophils.,6,13.6,5.3,7126,243148,55,33,15,6,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.3,5.8,5145,300348,57,39,0,8,1
+CBC suggests leukopenia with low WBC count.,3,15.6,4.5,3972,288092,50,25,0,8,2
+CBC indicates thrombocytopenia with low platelet count.,4,15.2,5.4,9106,127031,60,39,2,4,0
+CBC indicates anemia with low hemoglobin and RBC.,1,7.5,4.1,9577,337273,57,36,5,5,0
+CBC within normal ranges.,0,14.2,5.3,6891,323573,58,36,5,2,0
+CBC indicates anemia with low hemoglobin and RBC.,1,8.1,4.2,7852,208039,54,31,1,2,1
+CBC indicates anemia with low hemoglobin and RBC.,1,9.9,4.0,7895,192189,60,28,3,5,2
+CBC suggests leukopenia with low WBC count.,3,13.0,5.2,3416,293458,59,40,4,8,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.6,5.3,5348,99822,60,35,4,5,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.1,6.6,7308,257115,57,29,1,5,2
+CBC suggests infection with elevated WBC count.,2,16.0,5.0,23704,325118,74,31,1,3,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.7,6.4,9825,226612,58,35,5,2,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.1,5.7,8873,254954,56,25,4,2,0
+CBC within normal ranges.,0,13.7,5.3,5818,255134,60,33,1,8,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.2,6.8,8933,188468,55,39,0,6,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.9,7.0,8685,255402,61,26,3,5,1
+CBC suggests infection with elevated WBC count.,2,16.4,4.6,23625,233238,85,39,1,7,2
+CBC suggests infection with elevated WBC count.,2,15.6,5.0,23184,231503,67,31,2,5,0
+CBC indicates anemia with low hemoglobin and RBC.,1,7.6,4.0,5477,278880,50,38,2,6,1
+CBC suggests infection with elevated WBC count.,2,13.0,5.0,22086,190470,74,35,4,2,2
+CBC suggests leukopenia with low WBC count.,3,15.8,5.1,3610,263324,58,32,1,6,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.6,5.0,7804,63393,55,32,1,7,1
+CBC suggests infection with elevated WBC count.,2,14.0,5.5,19301,319067,72,25,0,7,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.2,5.6,4826,264131,56,28,3,4,2
+CBC indicates thrombocytopenia with low platelet count.,4,15.9,4.9,8667,61984,57,26,2,7,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.3,4.6,8907,121394,50,27,1,7,2
+CBC indicates anemia with low hemoglobin and RBC.,1,10.7,3.6,5351,233891,58,38,5,8,0
+CBC suggests leukopenia with low WBC count.,3,15.5,4.5,3682,194226,52,33,4,2,2
+CBC indicates anemia with low hemoglobin and RBC.,1,10.3,4.0,8195,345207,56,38,2,2,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.9,6.6,9297,191931,61,27,2,6,0
+CBC indicates thrombocytopenia with low platelet count.,4,13.3,5.3,8085,48818,56,25,3,3,2
+CBC indicates anemia with low hemoglobin and RBC.,1,10.2,4.4,8970,257326,60,29,2,7,2
+CBC within normal ranges.,0,14.9,5.1,5509,190950,50,37,4,6,0
+CBC suggests infection with elevated WBC count.,2,13.7,5.2,22107,235505,73,29,1,3,0
+CBC indicates anemia with low hemoglobin and RBC.,1,8.4,3.6,9147,194257,62,39,5,6,0
+CBC within normal ranges.,0,13.7,5.1,7210,273621,52,32,0,4,2
+CBC within normal ranges.,0,16.2,4.8,8191,266073,59,34,5,6,0
+CBC indicates thrombocytopenia with low platelet count.,4,15.0,5.3,8008,113349,50,35,1,8,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.1,6.0,7444,215207,60,35,3,5,1
+CBC indicates thrombocytopenia with low platelet count.,4,13.4,5.1,5171,30022,52,31,2,7,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.7,6.4,8654,345577,50,37,4,3,0
+CBC indicates thrombocytopenia with low platelet count.,4,14.7,5.3,7496,86900,53,34,1,5,2
+CBC within normal ranges.,0,14.4,5.0,9928,242621,62,30,4,3,1
+CBC indicates anemia with low hemoglobin and RBC.,1,10.7,3.7,9901,218325,61,40,2,2,0
+CBC suggests infection with elevated WBC count.,2,14.3,4.5,12760,315760,66,36,3,5,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.5,6.5,8771,346085,54,33,4,6,2
+CBC suggests infection with elevated WBC count.,2,15.1,5.4,17781,315440,76,37,1,6,1
+CBC suggests leukopenia with low WBC count.,3,15.8,5.4,3053,311553,52,39,1,3,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.4,6.6,5789,274954,59,28,5,3,1
+CBC suggests leukopenia with low WBC count.,3,15.4,5.0,2261,222269,60,38,0,3,0
+CBC indicates thrombocytopenia with low platelet count.,4,15.1,4.6,8699,43597,59,29,0,3,1
+CBC indicates thrombocytopenia with low platelet count.,4,16.4,5.1,9117,99498,50,34,0,3,1
+CBC suggests leukopenia with low WBC count.,3,16.0,4.7,2541,337506,52,30,4,7,2
+CBC indicates anemia with low hemoglobin and RBC.,1,7.6,3.5,8214,336377,59,27,1,5,1
+CBC indicates thrombocytopenia with low platelet count.,4,16.0,5.0,7938,98618,59,28,1,5,2
+CBC within normal ranges.,0,16.1,5.0,5462,204429,57,29,4,6,0
+CBC indicates eosinophilia with high eosinophils.,6,15.4,4.9,7946,277092,50,38,19,8,1
+CBC indicates eosinophilia with high eosinophils.,6,14.3,5.1,9219,205615,56,29,20,5,0
+CBC within normal ranges.,0,14.0,5.4,7847,247582,53,25,5,7,0
+CBC indicates thrombocytopenia with low platelet count.,4,14.8,5.0,7572,40287,61,35,3,4,0
+CBC suggests leukopenia with low WBC count.,3,15.3,4.8,2813,291034,59,36,4,4,2
+CBC indicates eosinophilia with high eosinophils.,6,13.7,5.1,9067,306476,52,36,11,6,1
+CBC suggests infection with elevated WBC count.,2,15.0,5.3,24830,216193,70,28,5,3,1
+CBC within normal ranges.,0,13.8,4.9,7272,324330,59,26,1,5,2
+CBC within normal ranges.,0,15.8,5.3,8363,337350,56,27,0,4,0
+CBC suggests infection with elevated WBC count.,2,13.3,4.5,24674,285026,70,34,5,6,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.5,6.6,9881,315830,54,31,0,8,2
+CBC indicates thrombocytopenia with low platelet count.,4,13.6,4.5,6459,66285,52,27,2,8,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.2,6.4,8741,184028,61,27,0,6,1
+CBC indicates thrombocytopenia with low platelet count.,4,14.2,5.5,6765,20609,59,31,3,5,2
+CBC suggests infection with elevated WBC count.,2,13.6,5.0,16222,198975,82,34,2,2,2
+CBC indicates eosinophilia with high eosinophils.,6,15.8,4.8,8127,278849,59,40,19,8,1
+CBC suggests leukopenia with low WBC count.,3,15.4,5.4,3615,306345,51,33,0,5,2
+CBC indicates anemia with low hemoglobin and RBC.,1,8.2,3.6,7086,288114,55,25,5,8,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.8,6.9,9042,226788,57,35,2,3,2
+CBC suggests polycythemia with high hemoglobin and RBC.,5,17.6,5.9,6135,241567,61,32,2,3,0
+CBC indicates thrombocytopenia with low platelet count.,4,14.2,5.3,5482,25539,60,40,4,2,2
+CBC indicates eosinophilia with high eosinophils.,6,14.7,5.1,8533,330606,54,40,11,8,2
+CBC suggests leukopenia with low WBC count.,3,13.8,5.1,3029,317818,62,38,3,6,0
+CBC suggests infection with elevated WBC count.,2,14.4,5.2,12193,299851,71,39,2,7,0
+CBC suggests leukopenia with low WBC count.,3,15.0,4.8,3963,248078,52,33,1,4,1
+CBC indicates thrombocytopenia with low platelet count.,4,14.2,4.7,7972,56651,56,36,2,8,1
+CBC suggests leukopenia with low WBC count.,3,13.6,4.6,3753,239917,51,33,1,6,1
+CBC suggests leukopenia with low WBC count.,3,13.7,5.3,2275,303990,62,25,1,5,1
+CBC indicates eosinophilia with high eosinophils.,6,15.2,5.0,7086,307564,54,33,7,8,2
+CBC suggests leukopenia with low WBC count.,3,13.3,4.7,2532,246660,57,28,3,7,1
+CBC suggests infection with elevated WBC count.,2,14.3,5.1,21921,270214,71,38,0,4,2
+CBC indicates thrombocytopenia with low platelet count.,4,15.0,5.1,5929,121547,55,35,5,6,1
+CBC suggests polycythemia with high hemoglobin and RBC.,5,18.3,6.5,9527,255110,57,29,1,7,1
+CBC suggests leukopenia with low WBC count.,3,16.0,4.6,3454,270079,53,35,2,7,1
+CBC suggests infection with elevated WBC count.,2,15.1,4.9,12378,275201,69,39,3,3,0
+CBC suggests polycythemia with high hemoglobin and RBC.,5,19.8,6.3,5155,235200,52,37,0,2,0
+CBC within normal ranges.,0,13.1,4.9,5181,207244,54,29,0,7,1
+CBC suggests infection with elevated WBC count.,2,13.8,5.2,12468,344228,66,29,4,8,0

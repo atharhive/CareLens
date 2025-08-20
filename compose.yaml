@@ -4,12 +4,13 @@ services:
       context: .
       dockerfile: backend/Dockerfile
     ports:
-      - "5001:5000"
+      - "127.0.0.1:5000:5000"
     environment:
       - FLASK_APP=main.py
       - FLASK_DEBUG=0 # Set to 1 for development
     restart: unless-stopped
-    command: uvicorn app.main:app --host 0.0.0.0 --port 5000
+    env_file:
+      - backend/.env
     networks:
       - default
 
@@ -32,6 +33,8 @@ services:
     restart: unless-stopped
     networks:
       - default
+    env_file:
+      - frontend/.env.local
 
 networks:
   default:
