@@ -168,7 +168,7 @@ export default function AssessmentPage() {
             <h1 className="text-3xl font-bold text-gray-900">Health Risk Assessment</h1>
           </div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Complete this comprehensive assessment to understand your health risks and get personalized recommendations. 
+            Complete this comprehensive assessment to understand your health risks and get personalized recommendations.
             Your data is secure and protected by HIPAA compliance standards.
           </p>
         </div>
@@ -176,7 +176,7 @@ export default function AssessmentPage() {
         {/* Progress Indicator */}
         <Card className="shadow-lg border-0">
           <CardContent className="p-6">
-            <ProgressIndicator steps={ASSESSMENT_STEPS} currentStep={currentStep} />
+        <ProgressIndicator steps={ASSESSMENT_STEPS} currentStep={currentStep} />
           </CardContent>
         </Card>
 
@@ -199,10 +199,10 @@ export default function AssessmentPage() {
                 <AlertDescription>
                   <div className="font-medium mb-2">Please correct the following errors:</div>
                   <ul className="list-disc list-inside space-y-1 text-sm">
-                    {Object.entries(errors).map(([field, error]) => (
-                      <li key={field}>{error}</li>
-                    ))}
-                  </ul>
+                  {Object.entries(errors).map(([field, error]) => (
+                    <li key={field}>{error}</li>
+                  ))}
+                </ul>
                 </AlertDescription>
               </Alert>
             )}
@@ -243,7 +243,7 @@ export default function AssessmentPage() {
         {/* Medical Disclaimer */}
         <Card className="shadow-lg border-0 bg-gray-50">
           <CardContent className="p-6">
-            <MedicalDisclaimer variant="compact" />
+        <MedicalDisclaimer variant="compact" />
           </CardContent>
         </Card>
 

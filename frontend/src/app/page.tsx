@@ -32,22 +32,22 @@ export default function HomePage() {
           
           <div className="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link href="/assessment">
-              <Button 
-                size="lg"
+            <Button 
+              size="lg"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg w-full sm:w-auto"
-              >
-                Start Health Assessment
+            >
+              Start Health Assessment
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+            </Button>
             </Link>
             <Link href="/providers">
-              <Button 
-                variant="outline" 
-                size="lg"
+            <Button 
+              variant="outline" 
+              size="lg"
                 className="px-8 py-3 text-lg w-full sm:w-auto border-2"
-              >
-                Find Healthcare Providers
-              </Button>
+            >
+              Find Healthcare Providers
+            </Button>
             </Link>
           </div>
 
@@ -307,9 +307,9 @@ export default function HomePage() {
             {/* Company Info */}
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <Heart className="h-8 w-8 text-blue-400" />
-                <h3 className="text-2xl font-bold">CareLens</h3>
-              </div>
+              <Heart className="h-8 w-8 text-blue-400" />
+              <h3 className="text-2xl font-bold">CareLens</h3>
+            </div>
               <p className="text-gray-400 leading-relaxed">
                 AI-Powered Health Risk Assessment Platform helping individuals understand their health risks and connect with appropriate care.
               </p>
@@ -411,10 +411,10 @@ export default function HomePage() {
           {/* Bottom Footer */}
           <div className="border-t border-gray-800 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <p className="text-sm text-gray-500">
-                © 2024 CareLens. All rights reserved. 
-                This platform is for educational and informational purposes only and should not replace professional medical advice.
-              </p>
+            <p className="text-sm text-gray-500">
+              © 2024 CareLens. All rights reserved. 
+              This platform is for educational and informational purposes only and should not replace professional medical advice.
+            </p>
               <div className="flex items-center space-x-4 text-sm text-gray-500">
                 <span>Made with ❤️ for better health</span>
                 <span>•</span>
