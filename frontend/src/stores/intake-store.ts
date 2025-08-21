@@ -55,11 +55,11 @@ interface IntakeState {
 }
 
 const initialDemographics: Demographics = {
-  age: 0,
-  sex: "male",
-  height: 0,
-  weight: 0,
-  ethnicity: "",
+  age: undefined,
+  sex: undefined,
+  height: undefined,
+  weight: undefined,
+  ethnicity: undefined,
   heightUnit: "cm",
   weightUnit: "kg",
 }
@@ -98,18 +98,18 @@ export const useIntakeStore = create<IntakeState>()(
         set((state) => {
           const newDemographics = { ...state.demographics, ...demographics }
           // Validate against the NEW demographics state
-          const updatedErrors: Record<string, string> = {}
+          const updatedErrors: Record<string, string> = { ...state.errors }
           const ageError = validateAge(newDemographics.age)
-          if (ageError) updatedErrors.age = ageError
+          if (ageError) updatedErrors.age = ageError; else delete updatedErrors.age
           const heightError = validateHeight(newDemographics.height, newDemographics.heightUnit)
-          if (heightError) updatedErrors.height = heightError
+          if (heightError) updatedErrors.height = heightError; else delete updatedErrors.height
           const weightError = validateWeight(newDemographics.weight, newDemographics.weightUnit)
-          if (weightError) updatedErrors.weight = weightError
-          if (!newDemographics.ethnicity) updatedErrors.ethnicity = "Ethnicity is required"
+          if (weightError) updatedErrors.weight = weightError; else delete updatedErrors.weight
+          if (!newDemographics.ethnicity) updatedErrors.ethnicity = "Ethnicity is required"; else delete updatedErrors.ethnicity
 
           return {
             demographics: newDemographics,
-            errors: { ...state.errors, ...updatedErrors },
+            errors: updatedErrors,
           }
         }),
 
@@ -118,23 +118,29 @@ export const useIntakeStore = create<IntakeState>()(
         set((state) => {
           const newVitals = { ...state.vitals, ...vitals }
           // Validate against the NEW vitals state
-          const updatedErrors: Record<string, string> = {}
+          const updatedErrors: Record<string, string> = { ...state.errors }
           if (newVitals.systolicBP != null && newVitals.diastolicBP != null) {
             const bpError = validateBloodPressure(newVitals.systolicBP, newVitals.diastolicBP)
-            if (bpError) updatedErrors.bloodPressure = bpError
+            if (bpError) updatedErrors.bloodPressure = bpError; else delete updatedErrors.bloodPressure
+          } else {
+            delete updatedErrors.bloodPressure
           }
           if (newVitals.heartRate != null) {
             const hrError = validateHeartRate(newVitals.heartRate)
-            if (hrError) updatedErrors.heartRate = hrError
+            if (hrError) updatedErrors.heartRate = hrError; else delete updatedErrors.heartRate
+          } else {
+            delete updatedErrors.heartRate
           }
           if (newVitals.temperature != null) {
             const tempError = validateTemperature(newVitals.temperature, newVitals.temperatureUnit)
-            if (tempError) updatedErrors.temperature = tempError
+            if (tempError) updatedErrors.temperature = tempError; else delete updatedErrors.temperature
+          } else {
+            delete updatedErrors.temperature
           }
 
           return {
             vitals: newVitals,
-            errors: { ...state.errors, ...updatedErrors },
+            errors: updatedErrors,
           }
         }),
 
@@ -243,6 +249,7 @@ export const useIntakeStore = create<IntakeState>()(
         if (weightError) errors.weight = weightError
 
         if (!demographics.ethnicity) errors.ethnicity = "Ethnicity is required"
+        if (!demographics.sex) errors.sex = "Sex is required"
 
         return errors
       },
@@ -251,17 +258,17 @@ export const useIntakeStore = create<IntakeState>()(
         const { vitals } = get()
         const errors: Record<string, string> = {}
 
-        if (vitals.systolicBP && vitals.diastolicBP) {
+        if (vitals.systolicBP != null && vitals.diastolicBP != null) {
           const bpError = validateBloodPressure(vitals.systolicBP, vitals.diastolicBP)
           if (bpError) errors.bloodPressure = bpError
         }
 
-        if (vitals.heartRate) {
+        if (vitals.heartRate != null) {
           const hrError = validateHeartRate(vitals.heartRate)
           if (hrError) errors.heartRate = hrError
         }
 
-        if (vitals.temperature) {
+        if (vitals.temperature != null) {
           const tempError = validateTemperature(vitals.temperature, vitals.temperatureUnit)
           if (tempError) errors.temperature = tempError
         }

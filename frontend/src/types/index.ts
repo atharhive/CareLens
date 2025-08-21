@@ -1,9 +1,9 @@
 export interface Demographics {
-  age: number
-  sex: "male" | "female" | "other"
-  height: number
-  weight: number
-  ethnicity: string
+  age?: number
+  sex?: "male" | "female" | "other"
+  height?: number
+  weight?: number
+  ethnicity?: string
   heightUnit: "cm" | "ft"
   weightUnit: "kg" | "lbs"
 }

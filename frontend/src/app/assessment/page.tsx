@@ -9,6 +9,7 @@ import { useIntakeStore } from "@/stores/intake-store"
 import { useFormPersistence } from "@/hooks/use-form-persistence"
 import { ArrowLeft, ArrowRight, Heart, AlertCircle, CheckCircle } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { validateAge, validateHeight, validateWeight } from "@/utils/validation"
 
 // Import form step components
 import { DemographicsForm } from "@/components/forms/demographics-form"
@@ -70,32 +71,29 @@ export default function AssessmentPage() {
   const canProceed = (() => {
     switch (currentStep) {
       case 0: {
-        // Demographics validation
-        const ageError = demographics.age < 18 || demographics.age > 150 ? "Age must be between 18 and 150" : ""
-        const heightError = demographics.height < 100 || demographics.height > 250 ? "Height must be between 100-250 cm" : ""
-        const weightError = demographics.weight < 30 || demographics.weight > 300 ? "Weight must be between 30-300 kg" : ""
-        const ethnicityError = !demographics.ethnicity ? "Ethnicity is required" : ""
-        
-        return !ageError && !heightError && !weightError && !ethnicityError
+        const ageErr = validateAge(demographics.age)
+        const heightErr = validateHeight(demographics.height, demographics.heightUnit)
+        const weightErr = validateWeight(demographics.weight, demographics.weightUnit)
+        const sexOk = !!demographics.sex
+        const ethnicityOk = !!demographics.ethnicity
+        return !ageErr && !heightErr && !weightErr && sexOk && ethnicityOk
       }
-      case 1: {
-        // Vitals validation - all fields are optional
+      case 1:
         return true
-      }
       case 2:
         return symptoms.length > 0
       case 3:
+        return true
       case 4:
         return true
       case 5: {
-        // On review step, validate all required fields
-        const ageError = demographics.age < 18 || demographics.age > 150 ? "Age must be between 18 and 150" : ""
-        const heightError = demographics.height < 100 || demographics.height > 250 ? "Height must be between 100-250 cm" : ""
-        const weightError = demographics.weight < 30 || demographics.weight > 300 ? "Weight must be between 30-300 kg" : ""
-        const ethnicityError = !demographics.ethnicity ? "Ethnicity is required" : ""
-        const symptomsError = symptoms.length === 0 ? "Please select at least one symptom" : ""
-        
-        return !ageError && !heightError && !weightError && !ethnicityError && !symptomsError
+        const ageErr = validateAge(demographics.age)
+        const heightErr = validateHeight(demographics.height, demographics.heightUnit)
+        const weightErr = validateWeight(demographics.weight, demographics.weightUnit)
+        const sexOk = !!demographics.sex
+        const ethnicityOk = !!demographics.ethnicity
+        const symptomsOk = symptoms.length > 0
+        return !ageErr && !heightErr && !weightErr && sexOk && ethnicityOk && symptomsOk
       }
       default:
         return true

@@ -49,6 +49,9 @@ export function DemographicsForm() {
       case "ethnicity":
         error = !value ? "Ethnicity is required" : ""
         break
+      case "sex":
+        error = !value ? "Sex is required" : ""
+        break
       default:
         break
     }
@@ -57,22 +60,25 @@ export function DemographicsForm() {
   }
 
   // Handle input change with real-time validation
-  const handleInputChange = (field: keyof typeof demographics, value: string | number) => {
+  const handleInputChange = (field: keyof typeof demographics, value: any) => {
+    // Normalize empty strings to undefined
+    const normalized = value === "" ? undefined : value
+
     // Mark field as touched
     setTouchedFields(prev => new Set([...prev, field]))
     
     // Update the store
-    setDemographics({ [field]: value })
+    setDemographics({ [field]: normalized } as any)
     
     // Validate the field immediately
-    const error = validateField(field, value)
+    const error = validateField(field as string, normalized)
     setFieldErrors(prev => ({
       ...prev,
-      [field]: error
+      [field as string]: error
     }))
     
     // Clear the error from store if field is now valid
-    if (!error && errors[field]) {
+    if (!error && errors[field as string]) {
       clearErrors()
     }
   }
@@ -82,7 +88,7 @@ export function DemographicsForm() {
     const currentUnit = demographics[field]
     const newUnit = field === "heightUnit" ? (currentUnit === "cm" ? "ft" : "cm") : currentUnit === "kg" ? "lbs" : "kg"
 
-    if (field === "heightUnit" && demographics.height > 0) {
+    if (field === "heightUnit" && demographics.height) {
       const convertedHeight = convertHeightValue(
         demographics.height,
         currentUnit as "cm" | "ft",
@@ -99,7 +105,7 @@ export function DemographicsForm() {
         ...prev,
         height: error
       }))
-    } else if (field === "weightUnit" && demographics.weight > 0) {
+    } else if (field === "weightUnit" && demographics.weight) {
       const convertedWeight = convertWeightValue(
         demographics.weight,
         currentUnit as "kg" | "lbs",
@@ -117,7 +123,7 @@ export function DemographicsForm() {
         weight: error
       }))
     } else {
-      setDemographics({ [field]: newUnit })
+      setDemographics({ [field]: newUnit } as any)
     }
   }
 
@@ -135,7 +141,7 @@ export function DemographicsForm() {
   }
 
   const bmi =
-    demographics.height > 0 && demographics.weight > 0
+    demographics.height && demographics.weight
       ? calculateBMI(demographics.weight, demographics.height, demographics.weightUnit, demographics.heightUnit)
       : 0
 
@@ -153,8 +159,8 @@ export function DemographicsForm() {
               type="number"
               min="18"
               max="150"
-              value={demographics.age || ""}
-              onChange={(e) => handleInputChange("age", Number.parseInt(e.target.value) || 0)}
+              value={demographics.age ?? ""}
+              onChange={(e) => handleInputChange("age", e.target.value === "" ? undefined : Number.parseInt(e.target.value))}
               className={`${getFieldError("age") ? "border-destructive pr-10" : isFieldValid("age") ? "border-green-500 pr-10" : ""}`}
               placeholder="Enter your age"
             />
@@ -175,7 +181,7 @@ export function DemographicsForm() {
         <div className="space-y-2">
           <Label htmlFor="sex">Biological Sex *</Label>
           <Select value={demographics.sex} onValueChange={(value) => handleInputChange("sex", value)}>
-            <SelectTrigger>
+            <SelectTrigger className={`${getFieldError("sex") ? "border-destructive pr-10" : isFieldValid("sex") ? "border-green-500 pr-10" : ""}`}>
               <SelectValue placeholder="Select biological sex" />
             </SelectTrigger>
             <SelectContent>
@@ -184,6 +190,10 @@ export function DemographicsForm() {
               <SelectItem value="other">Other</SelectItem>
             </SelectContent>
           </Select>
+          {getFieldError("sex") && <p className="text-sm text-destructive flex items-center gap-1">
+            <AlertCircle className="h-3 w-3" />
+            {getFieldError("sex")}
+          </p>}
         </div>
 
         {/* Height */}
@@ -206,8 +216,8 @@ export function DemographicsForm() {
                 id="height"
                 type="number"
                 step="0.1"
-                value={demographics.height || ""}
-                onChange={(e) => handleInputChange("height", Number.parseFloat(e.target.value) || 0)}
+                value={demographics.height ?? ""}
+                onChange={(e) => handleInputChange("height", e.target.value === "" ? undefined : Number.parseFloat(e.target.value))}
                 className={`${getFieldError("height") ? "border-destructive pr-10" : isFieldValid("height") ? "border-green-500 pr-10" : ""}`}
                 placeholder={demographics.heightUnit === "cm" ? "170" : "5.7"}
               />
@@ -248,8 +258,8 @@ export function DemographicsForm() {
                 id="weight"
                 type="number"
                 step="0.1"
-                value={demographics.weight || ""}
-                onChange={(e) => handleInputChange("weight", Number.parseFloat(e.target.value) || 0)}
+                value={demographics.weight ?? ""}
+                onChange={(e) => handleInputChange("weight", e.target.value === "" ? undefined : Number.parseFloat(e.target.value))}
                 className={`${getFieldError("weight") ? "border-destructive pr-10" : isFieldValid("weight") ? "border-green-500 pr-10" : ""}`}
                 placeholder={demographics.weightUnit === "kg" ? "70" : "154"}
               />
