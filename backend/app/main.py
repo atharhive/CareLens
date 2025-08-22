@@ -20,6 +20,7 @@ from app.core.exceptions import (
 )
 from app.ml.registry import ModelRegistry
 from app.core.privacy import PrivacyManager
+from app.core.security import SecurityManager
 
 from app.routers import (
     ingest,
@@ -46,6 +47,7 @@ logger = logging.getLogger(__name__)
 # Global instances
 model_registry = None
 privacy_manager = None
+security_manager = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -53,7 +55,7 @@ async def lifespan(app: FastAPI):
     Application startup and shutdown event handler.
     Manages model loading and cleanup operations.
     """
-    global model_registry, privacy_manager
+    global model_registry, privacy_manager, security_manager
     
     # Startup
     logger.info("Starting healthcare risk assessment API...")
@@ -67,10 +69,15 @@ async def lifespan(app: FastAPI):
         model_registry = ModelRegistry()
         await model_registry.initialize()
         logger.info("Model registry initialized")
+
+        # Initialize security manager
+        security_manager = SecurityManager()
+        logger.info("Security manager initialized")
         
         # Store in app state
         app.state.model_registry = model_registry
         app.state.privacy_manager = privacy_manager
+        app.state.security_manager = security_manager
         
         logger.info("Application startup completed successfully")
         
@@ -90,6 +97,10 @@ async def lifespan(app: FastAPI):
     if model_registry:
         model_registry.cleanup()
         logger.info("Model registry cleaned up")
+
+    if security_manager:
+        # Security manager doesn't need cleanup
+        logger.info("Security manager cleanup completed")
     
     logger.info("Application shutdown completed")
 
@@ -109,12 +120,21 @@ app.add_middleware(
     allowed_hosts=settings.ALLOWED_HOSTS
 )
 
+# Add CORS middleware FIRST (before other middleware)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:3001", 
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:3001",
+        "http://localhost:5000",
+        "https://carelens.ai"
+    ],
     allow_credentials=False,  # Never allow credentials for HIPAA compliance
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["X-Request-ID"],
 )
 
 @app.middleware("http")
@@ -174,6 +194,8 @@ async def validation_exception_handler(request: Request, exc: ValidationExceptio
             "timestamp": time.time()
         }
     )
+
+
 
 @app.exception_handler(ModelException)
 async def model_exception_handler(request: Request, exc: ModelException):

@@ -100,12 +100,29 @@ async def health_check(request: Request):
                 "read_write": "operational"
             }
         else:
-            raise Exception("File storage read/write test failed")
+            raise Exception("File storage test failed")
             
     except Exception as e:
         services_status["storage"]["status"] = "unhealthy"
         services_status["storage"]["details"] = {"error": str(e)}
         overall_status = "degraded"
+
+@router.get("/cors-test")
+async def cors_test():
+    """
+    Simple endpoint to test CORS functionality.
+    """
+    return {
+        "message": "CORS test successful",
+        "timestamp": datetime.utcnow().isoformat(),
+        "cors_enabled": True,
+        "allowed_origins": [
+            "http://localhost:3000",
+            "http://localhost:3001",
+            "http://127.0.0.1:3000",
+            "http://127.0.0.1:3001"
+        ]
+    }
     
     # Check external APIs
     external_status = await _check_external_apis()

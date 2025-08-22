@@ -19,6 +19,9 @@ class Settings(BaseSettings):
     ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1", "0.0.0.0", "*.replit.dev"]
     CORS_ORIGINS: List[str] = [
         "http://localhost:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3000", 
+        "http://127.0.0.1:3001",
         "http://localhost:5000",
         "https://carelens.ai"
     ]

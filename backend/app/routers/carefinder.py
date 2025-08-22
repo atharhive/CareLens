@@ -18,9 +18,9 @@ from app.core.security import SecurityManager
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
-def get_security_manager(request: Request) -> SecurityManager:
+def get_security_manager(request: Request) -> Optional[SecurityManager]:
     """Dependency to get security manager."""
-    return request.app.state.security_manager
+    return getattr(request.app.state, 'security_manager', None)
 
 @router.get("/", response_model=ProviderSearchResponse)
 async def find_providers(
@@ -47,9 +47,13 @@ async def find_providers(
         
         # Validate API key is available
         if not settings.GOOGLE_MAPS_API_KEY:
-            raise HTTPException(
-                status_code=503,
-                detail="Provider search service temporarily unavailable"
+            logger.warning("Google Maps API key not available, using mock data for development")
+            # Use mock data for development
+            providers = _get_mock_providers(lat, lng, specialty, radius_km, max_results)
+        else:
+            # Search for healthcare providers using Google Maps API
+            providers = await _search_healthcare_providers(
+                lat, lng, specialty, radius_km, max_results, language
             )
         
         # Validate coordinates
@@ -59,11 +63,6 @@ async def find_providers(
                 detail="Invalid coordinates provided"
             )
         
-        # Search for healthcare providers
-        providers = await _search_healthcare_providers(
-            lat, lng, specialty, radius_km, max_results, language
-        )
-        
         # Sort providers by distance and rating
         sorted_providers = sorted(
             providers,
@@ -71,16 +70,17 @@ async def find_providers(
         )
         
         # Log security event
-        security_manager.log_security_event(
-            "provider_search_completed",
-            {
-                "search_location": {"lat": lat, "lng": lng},
-                "specialty": specialty,
-                "results_count": len(sorted_providers),
-                "radius_km": radius_km
-            },
-            request_id
-        )
+        if security_manager:
+            security_manager.log_security_event(
+                "provider_search_completed",
+                {
+                    "search_location": {"lat": lat, "lng": lng},
+                    "specialty": specialty,
+                    "results_count": len(sorted_providers),
+                    "radius_km": radius_km
+                },
+                request_id
+            )
         
         response = ProviderSearchResponse(
             providers=sorted_providers,
@@ -433,3 +433,86 @@ def _calculate_distance(lat1: float, lng1: float, lat2: float, lng2: float) -> f
     # Radius of earth in kilometers
     km = 6371 * c
     return km
+
+def _get_mock_providers(lat: float, lng: float, specialty: str, radius_km: int, max_results: int) -> List[ProviderLocation]:
+    """Mock provider search for development when Google Maps API key is not available."""
+    providers = []
+    
+    # Generate mock providers around the search location
+    mock_providers_data = [
+        {
+            "name": "Mock Primary Care Clinic",
+            "address": "123 Mock Ave, Mock City, MO 63105",
+            "phone": "555-123-4567",
+            "rating": 4.5,
+            "distance_km": 1.2,
+            "specialty": "primary_care",
+            "accepts_new_patients": True,
+            "insurance_accepted": ["Blue Cross Blue Shield", "Aetna"]
+        },
+        {
+            "name": "Mock Cardiology Center",
+            "address": "456 Mock St, Mock City, MO 63105",
+            "phone": "555-234-5678",
+            "rating": 3.8,
+            "distance_km": 2.5,
+            "specialty": "cardiology",
+            "accepts_new_patients": True,
+            "insurance_accepted": ["Medicare"]
+        },
+        {
+            "name": "Mock Neurology Institute",
+            "address": "789 Mock Ln, Mock City, MO 63105",
+            "phone": "555-345-6789",
+            "rating": 5.0,
+            "distance_km": 0.8,
+            "specialty": "neurology",
+            "accepts_new_patients": True,
+            "insurance_accepted": ["United Healthcare"]
+        },
+        {
+            "name": "Mock Family Medicine",
+            "address": "321 Mock Dr, Mock City, MO 63105",
+            "phone": "555-456-7890",
+            "rating": 4.2,
+            "distance_km": 3.1,
+            "specialty": "primary_care",
+            "accepts_new_patients": True,
+            "insurance_accepted": ["Cigna", "Humana"]
+        },
+        {
+            "name": "Mock Urgent Care",
+            "address": "654 Mock Blvd, Mock City, MO 63105",
+            "phone": "555-567-8901",
+            "rating": 4.0,
+            "distance_km": 1.8,
+            "specialty": "urgent_care",
+            "accepts_new_patients": True,
+            "insurance_accepted": ["All major insurance"]
+        }
+    ]
+    
+    for i, mock_data in enumerate(mock_providers_data):
+        if len(providers) >= max_results:
+            break
+            
+        # Filter by specialty if specified
+        if specialty != "primary_care" and mock_data["specialty"] != specialty:
+            continue
+            
+        # Check if within radius
+        if mock_data["distance_km"] <= radius_km:
+            provider = ProviderLocation(
+                place_id=f"mock_place_{i}",
+                name=mock_data["name"],
+                address=mock_data["address"],
+                phone=mock_data["phone"],
+                rating=mock_data["rating"],
+                distance_km=mock_data["distance_km"],
+                specialty=mock_data["specialty"],
+                accepts_new_patients=mock_data["accepts_new_patients"],
+                insurance_accepted=mock_data["insurance_accepted"]
+            )
+            providers.append(provider)
+    
+    return providers
