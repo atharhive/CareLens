@@ -1,139 +1,117 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
 
 interface LoadingSkeletonProps {
-  variant?: "risk-card" | "provider-card" | "form" | "results"
-  count?: number
   className?: string
+  count?: number
+  type?: "card" | "text" | "avatar" | "button"
 }
 
-export function LoadingSkeleton({ variant = "risk-card", count = 1, className }: LoadingSkeletonProps) {
+export function LoadingSkeleton({ className, count = 1, type = "card" }: LoadingSkeletonProps) {
   const renderSkeleton = () => {
-    switch (variant) {
-      case "risk-card":
+    switch (type) {
+      case "card":
         return (
-          <Card className="animate-pulse">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <Skeleton className="h-6 w-32" />
-                <Skeleton className="h-6 w-20" />
-              </div>
-              <Skeleton className="h-4 w-48" />
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="text-center space-y-2">
-                <Skeleton className="h-12 w-16 mx-auto" />
-                <Skeleton className="h-2 w-full" />
-                <Skeleton className="h-4 w-24 mx-auto" />
-              </div>
-              <div className="space-y-2">
-                <Skeleton className="h-4 w-32" />
-                <div className="space-y-1">
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-3/4" />
-                </div>
-              </div>
-              <div className="flex gap-2">
-                <Skeleton className="h-8 flex-1" />
-                <Skeleton className="h-8 flex-1" />
-              </div>
-            </CardContent>
-          </Card>
-        )
-
-      case "provider-card":
-        return (
-          <Card className="animate-pulse">
-            <CardHeader>
-              <div className="flex items-start justify-between">
-                <div className="space-y-2">
-                  <Skeleton className="h-6 w-40" />
-                  <Skeleton className="h-5 w-24" />
-                </div>
-                <Skeleton className="h-6 w-16" />
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Skeleton className="h-4 w-32" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-24" />
-              </div>
-              <div className="space-y-2">
-                <Skeleton className="h-4 w-32" />
-                <Skeleton className="h-4 w-28" />
-              </div>
-              <Skeleton className="h-4 w-36" />
-              <div className="flex gap-2">
-                <Skeleton className="h-9 flex-1" />
-                <Skeleton className="h-9 w-24" />
-              </div>
-            </CardContent>
-          </Card>
-        )
-
-      case "form":
-        return (
-          <div className="space-y-6 animate-pulse">
-            <div className="space-y-2">
-              <Skeleton className="h-4 w-24" />
-              <Skeleton className="h-10 w-full" />
-            </div>
-            <div className="space-y-2">
-              <Skeleton className="h-4 w-32" />
-              <Skeleton className="h-10 w-full" />
-            </div>
-            <div className="space-y-2">
-              <Skeleton className="h-4 w-28" />
-              <Skeleton className="h-20 w-full" />
-            </div>
-            <Skeleton className="h-10 w-32" />
+          <div className="space-y-4">
+            <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse"></div>
+            <div className="h-3 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+            <div className="h-3 bg-gray-200 rounded w-2/3 animate-pulse"></div>
+            <div className="h-3 bg-gray-200 rounded w-1/3 animate-pulse"></div>
           </div>
         )
-
-      case "results":
+      case "text":
         return (
-          <div className="space-y-6 animate-pulse">
-            <Skeleton className="h-16 w-full" />
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <Card key={i}>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <Skeleton className="h-6 w-32" />
-                      <Skeleton className="h-6 w-20" />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-center space-y-2 mb-4">
-                      <Skeleton className="h-12 w-16 mx-auto" />
-                      <Skeleton className="h-2 w-full" />
-                    </div>
-                    <div className="space-y-2">
-                      <Skeleton className="h-4 w-full" />
-                      <Skeleton className="h-4 w-3/4" />
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-full animate-pulse"></div>
+            <div className="h-4 bg-gray-200 rounded w-5/6 animate-pulse"></div>
+            <div className="h-4 bg-gray-200 rounded w-4/6 animate-pulse"></div>
+          </div>
+        )
+      case "avatar":
+        return (
+          <div className="flex items-center space-x-4">
+            <div className="h-12 w-12 bg-gray-200 rounded-full animate-pulse"></div>
+            <div className="space-y-2">
+              <div className="h-4 bg-gray-200 rounded w-24 animate-pulse"></div>
+              <div className="h-3 bg-gray-200 rounded w-32 animate-pulse"></div>
             </div>
           </div>
         )
-
+      case "button":
+        return (
+          <div className="h-10 bg-gray-200 rounded w-24 animate-pulse"></div>
+        )
       default:
-        return <Skeleton className="h-20 w-full" />
+        return (
+          <div className="space-y-4">
+            <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse"></div>
+            <div className="h-3 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+            <div className="h-3 bg-gray-200 rounded w-2/3 animate-pulse"></div>
+          </div>
+        )
     }
   }
 
+  if (count === 1) {
+    return (
+      <div className={cn("animate-pulse", className)}>
+        {renderSkeleton()}
+      </div>
+    )
+  }
+
   return (
-    <div className={cn("", className)}>
-      {Array.from({ length: count }).map((_, index) => (
-        <div key={index} className={count > 1 ? "mb-4" : ""}>
+    <div className="space-y-4">
+      {Array.from({ length: count }).map((_, i) => (
+        <div key={i} className={cn("animate-pulse", className)}>
           {renderSkeleton()}
         </div>
       ))}
+    </div>
+  )
+}
+
+export function ProviderCardSkeleton({ className }: { className?: string }) {
+  return (
+    <div className={cn("rounded-lg border p-6 space-y-4", className)}>
+      <div className="flex items-start justify-between">
+        <div className="space-y-2 flex-1">
+          <div className="h-5 bg-gray-200 rounded w-3/4 animate-pulse"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/3 animate-pulse"></div>
+        </div>
+        <div className="flex items-center gap-1">
+          <div className="h-4 w-4 bg-gray-200 rounded animate-pulse"></div>
+          <div className="h-4 bg-gray-200 rounded w-8 animate-pulse"></div>
+        </div>
+      </div>
+      
+      <div className="space-y-3">
+        <div className="h-4 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+        <div className="flex items-start gap-2">
+          <div className="h-4 w-4 bg-gray-200 rounded animate-pulse mt-0.5 flex-shrink-0"></div>
+          <div className="space-y-2 flex-1">
+            <div className="h-4 bg-gray-200 rounded w-full animate-pulse"></div>
+            <div className="h-4 bg-gray-200 rounded w-1/3 animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="space-y-2">
+        <div className="h-4 bg-gray-200 rounded w-1/4 animate-pulse"></div>
+        <div className="h-4 bg-gray-200 rounded w-1/3 animate-pulse"></div>
+      </div>
+      
+      <div className="space-y-2">
+        <div className="h-4 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+        <div className="flex gap-2">
+          <div className="h-6 bg-gray-200 rounded w-16 animate-pulse"></div>
+          <div className="h-6 bg-gray-200 rounded w-20 animate-pulse"></div>
+        </div>
+      </div>
+      
+      <div className="flex gap-2 pt-2">
+        <div className="h-10 bg-gray-200 rounded flex-1 animate-pulse"></div>
+        <div className="h-10 bg-gray-200 rounded w-24 animate-pulse"></div>
+      </div>
     </div>
   )
 }

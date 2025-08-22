@@ -1,4 +1,4 @@
-import { apiRequest, ApiError } from "@/src/lib/api-client"
+import { apiRequest, ApiError } from "@/lib/api-client"
 import type { Demographics, Vitals, MedicalHistory, UploadedFile, DetectionResults, TriageResult } from "@/types"
 
 export interface AssessmentSubmission {

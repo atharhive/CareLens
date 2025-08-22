@@ -194,63 +194,59 @@ export const useCareStore = create<CareState>((set, get) => ({
     set({ isLoadingProviders: true, providersError: null })
 
     try {
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      if (!location) {
+        throw new Error("Location is required for provider search")
+      }
 
-      // Mock provider data
-      const mockProviders: Provider[] = [
-        {
-          id: "1",
-          name: "Dr. Sarah Johnson",
-          specialty: specialty || "Primary Care",
-          practice: "City Medical Center",
-          address: "123 Healthcare Blvd, Medical District",
-          distance: 2.3,
-          rating: 4.8,
-          reviewCount: 127,
-          acceptsInsurance: ["Blue Cross", "Aetna", "Cigna"],
-          languages: ["English", "Spanish"],
-          availability: "Next available: Tomorrow",
-          phone: "(555) 123-4567",
-          website: "https://citymedical.com/dr-johnson",
-        },
-        {
-          id: "2",
-          name: "Dr. Michael Chen",
-          specialty: "Endocrinology",
-          practice: "Diabetes & Hormone Clinic",
-          address: "456 Wellness Ave, Health Plaza",
-          distance: 4.7,
-          rating: 4.9,
-          reviewCount: 89,
-          acceptsInsurance: ["Medicare", "Blue Cross", "United"],
-          languages: ["English", "Mandarin"],
-          availability: "Next available: Next week",
-          phone: "(555) 234-5678",
-        },
-        {
-          id: "3",
-          name: "Dr. Emily Rodriguez",
-          specialty: "Cardiology",
-          practice: "Heart & Vascular Institute",
-          address: "789 Cardiac Way, Medical Center",
-          distance: 6.1,
-          rating: 4.7,
-          reviewCount: 156,
-          acceptsInsurance: ["Aetna", "Cigna", "Humana"],
-          languages: ["English", "Spanish", "Portuguese"],
-          availability: "Next available: In 2 weeks",
-          phone: "(555) 345-6789",
-          website: "https://heartvascular.com/dr-rodriguez",
-        },
-      ]
-
-      set({
-        providers: mockProviders,
-        filteredProviders: mockProviders,
-        isLoadingProviders: false,
+      // Build query parameters for the backend API
+      const params = new URLSearchParams({
+        lat: location.latitude.toString(),
+        lng: location.longitude.toString(),
+        specialty: specialty || "primary_care",
+        radius_km: Math.round((get().searchRadius || 25) * 1.60934).toString(), // Convert miles to km
+        max_results: "50",
+        language: "en"
       })
 
+      // Call the backend API directly
+      const response = await fetch(`http://localhost:5000/carefinder/?${params.toString()}`, {
+        method: "GET",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        mode: "cors",
+      })
+
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.detail || "Failed to search providers")
+      }
+
+      const data = await response.json()
+      
+      // Transform backend response to frontend format
+      const providers = (data.providers || []).map((p: any) => ({
+        id: p.place_id,
+        name: p.name,
+        specialty: p.specialty,
+        practice: p.name,
+        address: p.address,
+        distance: Math.round((p.distance_km ?? 0) * 10) / 10,
+        rating: p.rating ?? 0,
+        reviewCount: 0,
+        acceptsInsurance: p.insurance_accepted || [],
+        languages: ["English"],
+        availability: "",
+        phone: p.phone || "",
+        website: undefined,
+      }))
+
+      set({
+        providers,
+        filteredProviders: providers,
+        isLoadingProviders: false,
+      })
       get().applyFilters()
     } catch (error) {
       set({
@@ -284,7 +280,7 @@ export const useCareStore = create<CareState>((set, get) => ({
       insuranceFilter: "",
       languageFilter: "",
       availabilityFilter: "",
-  userLocation: undefined,
+      userLocation: undefined,
       isLocationLoading: false,
       locationError: null,
       isLoadingProviders: false,

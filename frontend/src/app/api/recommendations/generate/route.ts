@@ -2,131 +2,77 @@ import { type NextRequest, NextResponse } from "next/server"
 import type { PersonalizedPlanRequest } from "@/services/recommendations-service"
 import type { Recommendations } from "@/types"
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"
+
 export async function POST(request: NextRequest) {
   try {
     const data: PersonalizedPlanRequest = await request.json()
 
     if (!data.assessmentId) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Assessment ID is required",
-        },
+        { success: false, message: "Assessment ID is required" },
         { status: 400 },
       )
     }
 
-    // Simulate processing delay
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    const backendRes = await fetch(`${API_BASE_URL}/recommend/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        session_id: data.assessmentId,
+        recommendation_types: ["lifestyle", "dietary", "monitoring", "follow_up"],
+        cultural_preferences: undefined,
+        lifestyle_goals: data.preferences?.focusAreas,
+      }),
+    })
 
-    // Mock recommendations
-    const mockRecommendations: Recommendations = {
-      immediate: [
-        {
-          id: "1",
-          title: "Schedule Primary Care Visit",
-          description: "Book an appointment with your primary care physician to discuss your risk assessment results",
-          priority: "high",
-          timeframe: "Within 2 weeks",
-        },
-        {
-          id: "2",
-          title: "Monitor Key Health Metrics",
-          description: "Begin tracking blood pressure, weight, and other relevant health indicators",
-          priority: "medium",
-          timeframe: "Start immediately",
-        },
-      ],
-      lifestyle: [
-        {
-          category: "diet",
-          title: "Heart-Healthy Diet",
-          description: "Adopt a Mediterranean-style diet to reduce cardiovascular risk",
-          specifics: [
-            "Increase intake of fruits and vegetables",
-            "Choose whole grains over refined carbohydrates",
-            "Include omega-3 rich fish twice per week",
-            "Limit processed foods and added sugars",
-          ],
-        },
-        {
-          category: "exercise",
-          title: "Regular Physical Activity",
-          description: "Incorporate moderate exercise to improve overall health",
-          specifics: [
-            "30 minutes of brisk walking 5 days per week",
-            "Include strength training 2 days per week",
-            "Start slowly and gradually increase intensity",
-            "Consider activities you enjoy to maintain consistency",
-          ],
-        },
-        {
-          category: "monitoring",
-          title: "Health Tracking",
-          description: "Monitor key health indicators regularly",
-          specifics: [
-            "Check blood pressure weekly",
-            "Track weight changes monthly",
-            "Monitor symptoms and energy levels",
-            "Keep a health journal",
-          ],
-        },
-      ],
-      followUp: [
-        {
-          type: "lab",
-          title: "Comprehensive Metabolic Panel",
-          timeframe: "Within 3 months",
-          description: "Monitor blood glucose, kidney function, and electrolyte balance",
-        },
-        {
-          type: "appointment",
-          title: "Specialist Consultation",
-          timeframe: "If recommended by primary care",
-          description: "Consider specialist evaluation based on risk factors",
-        },
-        {
-          type: "screening",
-          title: "Cardiovascular Screening",
-          timeframe: "Annually",
-          description: "Regular cardiovascular health assessment",
-        },
-      ],
-      educational: [
-        {
-          title: "Understanding Your Health Risks",
-          description: "Learn about your specific risk factors and how to manage them",
-          url: "https://example.com/health-risks",
-          type: "article",
-        },
-        {
-          title: "Heart-Healthy Living Guide",
-          description: "Comprehensive guide to cardiovascular health",
-          url: "https://example.com/heart-health-guide",
-          type: "pdf",
-        },
-        {
-          title: "Nutrition for Health",
-          description: "Video series on healthy eating habits",
-          url: "https://example.com/nutrition-videos",
-          type: "video",
-        },
-      ],
+    if (!backendRes.ok) {
+      const err = await safeJson(backendRes)
+      return NextResponse.json({ success: false, message: err?.detail || "Failed to generate recommendations" }, { status: backendRes.status })
     }
 
-    return NextResponse.json({
-      success: true,
-      data: mockRecommendations,
-      message: "Personalized plan generated successfully",
-    })
+    const backendJson = await backendRes.json()
+
+    const recommendations: Recommendations = mapBackendToFrontend(backendJson)
+
+    return NextResponse.json({ success: true, data: recommendations, message: "Personalized plan generated successfully" })
   } catch (error) {
     console.error("Recommendations generation error:", error)
     return NextResponse.json(
-      {
-        success: false,
-        message: "Internal server error",
-      },
+      { success: false, message: "Internal server error" },
       { status: 500 },
     )
   }
 }
+
+async function safeJson(res: Response) { try { return await res.json() } catch { return undefined } }
+
+function mapBackendToFrontend(backendJson: any): Recommendations {
+  const recs = backendJson?.recommendations || backendJson || {}
+
+  const lifestyle: any[] = recs.lifestyle || recs.lifestyle_recommendations || []
+  const followUp: any[] = recs.follow_up || recs.follow_up_recommendations || []
+  const educational: string[] = recs.educational || recs.educational_resources || []
+
+  return {
+    immediate: [],
+    lifestyle: lifestyle.map((r: any) => ({
+      category: (r.category || "diet") as any,
+      title: r.recommendation || r.title || "",
+      description: r.recommendation || r.description || "",
+      specifics: r.personalization_factors || [],
+    })),
+    followUp: followUp.map((r: any) => ({
+      type: (r.test_type ? "lab" : "appointment") as any,
+      title: r.test_type || r.title || "",
+      timeframe: r.timeframe || "",
+      description: r.reason || r.description || "",
+    })),
+    educational: educational.map((e: any) => ({
+      title: typeof e === "string" ? e : e.title || "",
+      description: typeof e === "string" ? "" : e.description || "",
+      url: typeof e === "string" ? e : e.url || "",
+      type: "article",
+    })),
+  }
+} 

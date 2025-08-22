@@ -17,7 +17,15 @@ export function useAccessibility() {
     screenReader: false,
   })
 
+  const [mounted, setMounted] = useState(false)
+
   useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted) return
+
     // Load settings from localStorage
     const saved = localStorage.getItem("accessibility-settings")
     if (saved) {
@@ -54,9 +62,11 @@ export function useAccessibility() {
       prefersReducedMotion.removeEventListener("change", handleMotionChange)
       prefersHighContrast.removeEventListener("change", handleContrastChange)
     }
-  }, [])
+  }, [mounted])
 
   useEffect(() => {
+    if (!mounted) return
+
     // Apply settings to document
     const root = document.documentElement
 
@@ -80,7 +90,7 @@ export function useAccessibility() {
 
     // Save to localStorage
     localStorage.setItem("accessibility-settings", JSON.stringify(settings))
-  }, [settings])
+  }, [settings, mounted])
 
   const updateSetting = useCallback(
     <K extends keyof AccessibilitySettings>(key: K, value: AccessibilitySettings[K]) => {
@@ -90,6 +100,8 @@ export function useAccessibility() {
   )
 
   const announceToScreenReader = useCallback((message: string) => {
+    if (!mounted) return
+    
     const announcement = document.createElement("div")
     announcement.setAttribute("aria-live", "polite")
     announcement.setAttribute("aria-atomic", "true")
@@ -98,11 +110,12 @@ export function useAccessibility() {
 
     document.body.appendChild(announcement)
     setTimeout(() => document.body.removeChild(announcement), 1000)
-  }, [])
+  }, [mounted])
 
   return {
     settings,
     updateSetting,
     announceToScreenReader,
+    mounted,
   }
 }
