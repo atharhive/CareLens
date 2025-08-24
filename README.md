@@ -56,7 +56,7 @@ A cutting-edge web application that **Detects** early risk, **Connects** people 
 
 **Try out the live demo:**
 
-[**demo.carelens.ai**](https://your-demo-website-link.com)
+[**demo.carelens.ai**](https://care-lens-alpha.vercel.app/)
 
 </div>
 
