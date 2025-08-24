@@ -594,17 +594,6 @@ MONITORING_ENDPOINT=${MONITORING_URL}
 - **Data Science Consultants** - Model development and validation
 - **Security & Privacy Consultants** - HIPAA compliance and security architecture
 
-### Inspiration & References
-
-This project draws inspiration from several open-source medical AI projects:
-
-1. **[Elixir Cancer Diagnosis](https://github.com/precillieo/Elixir-Cancer-Diagnosis-AI-Based-System)** - CNN-based cancer detection system
-2. **[Gen AI Healthcare](https://github.com/shivam6862/Gen-AI-Hackathon)** - Multi-disease detection with LLM integration
-3. **[Brain Stroke Detector](https://github.com/Peco602/brain-stroke-detector)** - Dockerized stroke detection from CT scans
-4. **[NoHarm Summary](https://github.com/noharm-ai/summary)** - Clinical text summarization with LLMs
-5. **[AI Medical Agents](https://github.com/ahmadvh/AI-Agents-for-Medical-Diagnostics)** - Multi-agent medical diagnosis system
-6. **[Flask-React Dashboard](https://github.com/app-generator/react-soft-dashboard-flask)** - Full-stack boilerplate architecture
-
 ### Datasets & Models
 - **UCI ML Repository** - Medical datasets for model training
 - **Kaggle Medical Competitions** - Diabetes, heart disease, and stroke datasets  
