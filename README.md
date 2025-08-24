@@ -45,7 +45,7 @@ A cutting-edge web application that **Detects** early risk, **Connects** people 
 
 **Watch a demo of CareLens in action:**
 
-[![CareLens Demo Video](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID)
+[![CareLens Demo Video](https://img.youtube.com/vi/JNq_7e48Cg4/0.jpg)](https://www.youtube.com/watch?v=JNq_7e48Cg4)
 
 </div>
 
