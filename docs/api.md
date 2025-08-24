@@ -1,5 +1,7 @@
 # CareLens - API Documentation
 
+> **Note:** This document describes the target API design. The current implementation may not include all of these features. For the current API, please refer to the [Swagger UI documentation](http://localhost:8000/docs).
+
 ## Overview
 
 The CareLens API provides endpoints for health risk assessment, document processing, care provider discovery, and personalized health recommendations. All endpoints follow RESTful conventions and use JSON for data exchange.
